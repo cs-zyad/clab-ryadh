@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نادي ريادة الأعمال | الصفحة الرئيسية</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container container-flex">
+            <div class="logo-area">
+                <img src="assets/image.png" alt="شعار نادي ريادة الأعمال" class="club-logo">
+            </div>
+            
+            <nav class="navbar">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">الرئيسية</a></li>
+                    <li><a href="activities/" class="nav-link">الأنشطة والفعاليات</a></li>
+                    <li><a href="about/" class="nav-link">من نحن</a></li>
+                    <li><a href="development/" class="nav-link">قسم التطوير</a></li>
+                    <li><a href="members/" class="nav-link">أعضاء النادي</a></li>
+                    <li><a href="achievements/" class="nav-link">الإنجازات</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                 <button class="mobile-toggle" id="mobile-toggle">
+                    <i data-lucide="menu"></i>
+                 </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- MBS Quote Section -->
+        <section class="quote-section">
+            <div class="container quote-container">
+
+                <p class="quote-text">
+                    من لا يستطيع أن <span class="highlight">يحلم</span> لا يتفاوض معنا لا يأتي معنا ولا يأتي لأبوابنا فقط <span class="highlight">نرحب بالحالمين</span> الذين يريدون <span class="highlight">صنع عالم جديد!</span>
+                </p>
+                <div class="quote-author">الأمير محمد بن سلمان</div>
+            </div>
+        </section>
+
+        <!-- Slider Section -->
+        <section class="gallery-section py-100">
+            <div class="container text-center">
+                <h2 class="section-title">أحدث الأخبار</h2>
+                <div class="slider-wrapper">
+                    <div class="slider" id="main-slider">
+                        <div class="slide active">
+                            <div class="slide-placeholder">
+                                 <i data-lucide="image" class="placeholder-icon"></i>
+                                 <span>صورة من فعاليات النادي</span>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                 <i data-lucide="image" class="placeholder-icon"></i>
+                                 <span>لقطة من المعسكر التدريبي</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="nav-btn prev"><i data-lucide="chevron-right"></i></button>
+                        <button class="nav-btn next"><i data-lucide="chevron-left"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Minimal About Section -->
+        <section class="about-simple-section py-100">
+            <div class="container">
+                <h2 class="section-title text-center">نبذة عن النادي</h2>
+                
+                <div class="about-grid">
+                    <!-- Who we are -->
+                    <div class="about-card">
+                        <div class="card-icon"><i data-lucide="info"></i></div>
+                        <h3>من نحن؟</h3>
+                        <p>كيان طلابي بجامعة الملك عبدالعزيز يعزز وينشر مفهوم ريادة الأعمال من خلال برامج وأنشطة إبداعية.</p>
+                        <a href="about/" class="card-arrow" title="اقرأ المزيد"><i data-lucide="arrow-up-left"></i></a>
+                    </div>
+
+                    <!-- Vision -->
+                    <div class="about-card highlight">
+                        <div class="card-icon"><i data-lucide="eye"></i></div>
+                        <h3>رؤيتنا</h3>
+                        <p>الالريادة في خلق مجتمع طلابي ريادي طموح في الأعمال الريادية.</p>
+                        <a href="about/" class="card-arrow" title="اقرأ المزيد"><i data-lucide="arrow-up-left"></i></a>
+                    </div>
+
+                    <!-- Mission -->
+                    <div class="about-card">
+                        <div class="card-icon"><i data-lucide="target"></i></div>
+                        <h3>رسالتنا</h3>
+                        <p>تطوير الجانب الريادي لدى الطلبة لبناء شخصية ريادية تتسم بالمسؤولية والطموح.</p>
+                        <a href="about/" class="card-arrow" title="اقرأ المزيد"><i data-lucide="arrow-up-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booklet Section -->
+        <section class="booklet-section py-100 bg-light">
+            <div class="container container-flex">
+                <div class="booklet-info" style="max-width: 500px;">
+                    <h2 class="section-title" style="text-align: right;">الكتيب التعريفي</h2>
+                    <p>استكشف تفاصيل النادي، رؤيتنا، وأهدافنا للمستقبل من خلال الكتيب التعريفي الخاص بنا.</p>
+                    <div class="mt-50">
+                        <a href="https://heyzine.com/flip-book/550438701d.html" target="_blank" class="btn btn-primary">
+                            <i data-lucide="file-text"></i>
+                            استعراض الكتيب
+                        </a>
+                    </div>
+                </div>
+                <div class="booklet-visual">
+                    <div class="booklet-mockup">
+                        <i data-lucide="book-open" style="width: 150px; height: 150px; color: var(--accent-gold);"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <!-- Column 1: Entrepreneurship Info -->
+            <div class="footer-col">
+                <h3 class="footer-title">رائد الأعمال</h3>
+                <ul class="footer-list">
+                    <li><i data-lucide="lightbulb"></i> يلهم</li>
+                    <li><i data-lucide="settings"></i> يمكن</li>
+                    <li><i data-lucide="book-open"></i> يثقف</li>
+                    <li><i data-lucide="users"></i> منصة الحالمين</li>
+                    <li><i data-lucide="award"></i> النادي الأكثر تأثيراً</li>
+                </ul>
+            </div>
+
+            <!-- Column 2: Contact Info -->
+            <div class="footer-col">
+                <h3 class="footer-title">تواصل معنا</h3>
+                <ul class="footer-list">
+                    <li><i data-lucide="mail"></i> البريد الإلكتروني</li>
+                    <li><i data-lucide="map-pin"></i> الموقع</li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Social & Logo -->
+            <div class="footer-col">
+                <h3 class="footer-title">منصات التواصل الاجتماعي</h3>
+                <div class="social-icons">
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="message-circle"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Logo Area (Right Side in RTL) -->
+            <div class="footer-logo-col">
+                <img src="assets/image copy 2.png" alt="شعار النادي" class="footer-logo-img">
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 جميع الحقوق محفوظة | نادي ريادة الأعمال</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
