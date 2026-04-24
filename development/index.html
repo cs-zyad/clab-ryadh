@@ -32,20 +32,473 @@
         </div>
     </header>
 
-    <main class="py-100">
-        <div class="container">
-            <h1 class="section-title">قسم التطوير</h1>
-            <p>محتوى قسم التطوير يوضع هنا...</p>
+    <main>
+        <!-- 1. Hero Section -->
+        <section class="dev-hero">
+            <div class="container text-center">
+                <h1 class="dev-title">قسم التطوير</h1>
+                <p class="dev-subtitle">نصنع القادة ونطور المهارات لبناء مستقبل ريادي واعد</p>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+
+        <!-- 2. About Section (نبذة عن القسم) -->
+        <section class="dev-about py-100">
+            <div class="container">
+                <div class="dev-about-grid">
+                    <div class="dev-about-content">
+                        <div class="section-badge"><i data-lucide="sparkles"></i> من نحن</div>
+                        <h2 class="section-title">عن قسم التطوير</h2>
+                        <p class="dev-lead-text">قسم التطوير التابع لـ نادي ريادة الأعمال هو القسم المختص بتعزيز المهارات الناعمة والتقنية لدى مستفيدي النادي.</p>
+                        <p class="dev-sub-text">يتم ذلك من خلال إقامة برامج تدريبية متخصصة، وجلسات حوارية تفاعلية، إضافة إلى تصميم برامج طويلة المدى تمتد من شهر إلى ثلاثة أشهر، تهدف إلى صقل المهارات، وتعزيز الجاهزية لسوق العمل، وبناء عقلية ريادية قادرة على التطور وصناعة الأثر.</p>
+                    </div>
+                    <div class="dev-about-images">
+                        <div class="img-wrapper img-1">
+                            <img src="../assets/image copy 3.png" alt="لقطة من نشاط قسم التطوير" class="dev-img">
+                        </div>
+                        <div class="img-wrapper img-2">
+                            <img src="../assets/image copy 4.png" alt="برامج قسم التطوير" class="dev-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Programs Section (أبرز البرامج) -->
+        <section class="dev-programs py-100 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title">أبرز برامجنا</h2>
+                    <p class="section-desc">مبادرات وبرامج نوعية تهدف إلى صقل المواهب الريادية.</p>
+                </div>
+                <!-- سيتم ملء الكروت لاحقاً -->
+                <div class="programs-grid" id="programs-container">
+                    <!-- Jusoor -->
+                    <div class="program-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="program-logo">
+                                    <img src="../assets/logo/image.png" alt="شعار جسور" class="prog-logo-img">
+                                </div>
+                                <h3 class="program-name">جسور</h3>
+                            </div>
+                            <div class="card-back">
+                                <h3>جسور</h3>
+                                <p>برنامج تدريبي ومجموعات تعلم تعاوني تمتد لشهر كامل بهدف إتقان مهارات تقنية مثل PowerBI و Excel.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Link -->
+                    <div class="program-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="program-logo">
+                                    <img src="../assets/logo/image copy.png" alt="شعار لينك" class="prog-logo-img">
+                                </div>
+                                <h3 class="program-name">لينك</h3>
+                            </div>
+                            <div class="card-back">
+                                <h3>لينك</h3>
+                                <p>يربط طلاب جامعة الملك عبدالعزيز بالشركات الناشئة المحلية، لتطوير مهاراتهم عمليًا عبر التواصل المباشر.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nawaat -->
+                    <div class="program-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="program-logo">
+                                    <img src="../assets/logo/image copy 2.png" alt="شعار نواة" class="prog-logo-img">
+                                </div>
+                                <h3 class="program-name">نواة</h3>
+                            </div>
+                            <div class="card-back">
+                                <h3>نواة</h3>
+                                <p>يجمع الطلاب المهتمين بالتعلم عبر مصادر Y Combinator لتأسيس شركاتهم الناشئة.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wasl -->
+                    <div class="program-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="program-logo">
+                                    <img src="../assets/logo/image copy 3.png" alt="شعار وصل" class="prog-logo-img">
+                                </div>
+                                <h3 class="program-name">وصل</h3>
+                            </div>
+                            <div class="card-back">
+                                <h3>وصل</h3>
+                                <p>سلسلة تهدف لتناقل الخبرات وتعزيز العلاقات بين رواد الاعمال عبر استضافة شخصيات ملهمة.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Boosla -->
+                    <div class="program-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="program-logo">
+                                    <img src="../assets/logo/image copy 4.png" alt="شعار بوصلة حالم" class="prog-logo-img">
+                                </div>
+                                <h3 class="program-name">بوصلة حالم</h3>
+                            </div>
+                            <div class="card-back">
+                                <h3>بوصلة حالم</h3>
+                                <p>كتب ملهمة، بودكاست، وتوصيات ثرية يختارها فريقنا كل يوم أحد على منصة X.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Meetings Section (أحدث اللقاءات) -->
+        <section class="dev-meetings py-100">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title">أحدث اللقاءات</h2>
+                    <p class="section-desc">مساحة متجددة لأحدث الحوارات واللقاءات مع الخبراء.</p>
+                </div>
+                <!-- سيتم برمجة قسم تفاعلي متجدد هنا -->
+                <div class="meetings-container">
+                    <!-- Ticket 1 -->
+                    <div class="ticket-card">
+                        <div class="ticket-glare"></div>
+                        <div class="ticket-main">
+                            <div class="ticket-badge available">التسجيل متاح</div>
+                            <div class="ticket-content">
+                                <div class="ticket-image">
+                                    <img src="../assets/prnamg/image.png" alt="بوستر اللقاء" class="ticket-poster">
+                                </div>
+                                <div class="ticket-details">
+                                    <h3 class="ticket-title">مستقبل التقنية في ريادة الأعمال</h3>
+                                    <p class="guest-name">لقاء حواري مع متمكنين من سوق العمل</p>
+                                    <div class="ticket-info-row">
+                                        <span><i data-lucide="calendar"></i> 25 مايو 2024</span>
+                                        <span><i data-lucide="clock"></i> 8:00 مساءً</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ticket-divider">
+                            <div class="cutout-top"></div>
+                            <div class="dashed-line"></div>
+                            <div class="cutout-bottom"></div>
+                        </div>
+                        <div class="ticket-side">
+                            <div class="ticket-id">TR-2024-01</div>
+                            <a href="https://forms.gle/your-link" target="_blank" class="ticket-action">سجّل الآن</a>
+                        </div>
+                    </div>
+
+                    <!-- Ticket 2 -->
+                    <div class="ticket-card">
+                        <div class="ticket-glare"></div>
+                        <div class="ticket-main">
+                            <div class="ticket-badge available">التسجيل متاح</div>
+                            <div class="ticket-content">
+                                <div class="ticket-image">
+                                    <img src="../assets/prnamg/image copy.png" alt="بوستر اللقاء" class="ticket-poster">
+                                </div>
+                                <div class="ticket-details">
+                                    <h3 class="ticket-title">جلسة حوارية: بوصلة رائد</h3>
+                                    <p class="guest-name">نحن هنا لنصنع الأثر ونطور المهارات</p>
+                                    <div class="ticket-info-row">
+                                        <span><i data-lucide="calendar"></i> 1 يونيو 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ticket-divider">
+                            <div class="cutout-top"></div>
+                            <div class="dashed-line"></div>
+                            <div class="cutout-bottom"></div>
+                        </div>
+                        <div class="ticket-side">
+                            <div class="ticket-id">TR-2024-02</div>
+                            <a href="https://forms.gle/your-link" target="_blank" class="ticket-action">سجّل الآن</a>
+                        </div>
+                    </div>
+
+                    <!-- Ticket 3 (Past) -->
+                    <div class="ticket-card past">
+                        <div class="ticket-glare"></div>
+                        <div class="ticket-main">
+                            <div class="ticket-badge">لقاء سابق</div>
+                            <div class="ticket-content">
+                                <div class="ticket-image">
+                                    <img src="../assets/prnamg/image copy 2.png" alt="بوستر اللقاء" class="ticket-poster">
+                                </div>
+                                <div class="ticket-details">
+                                    <h3 class="ticket-title">أساسيات بناء المشروع الصغير</h3>
+                                    <p class="guest-name">الضيف: أ. محمد العتيبي</p>
+                                    <div class="ticket-info-row">
+                                        <span><i data-lucide="calendar"></i> 10 أبريل 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ticket-divider">
+                            <div class="cutout-top"></div>
+                            <div class="dashed-line"></div>
+                            <div class="cutout-bottom"></div>
+                        </div>
+                        <div class="ticket-side">
+                            <div class="ticket-id">TR-2024-03</div>
+                            <a href="#" class="ticket-action watch">مشاهدة</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ticket Modal (نافذة التكبير) -->
+        <div class="ticket-modal-overlay" id="ticketModal">
+            <div class="ticket-modal-content">
+                <button class="close-modal" id="closeModal"><i data-lucide="x"></i></button>
+                <div class="modal-body">
+                    <div class="modal-poster-side">
+                        <img src="" alt="Poster" id="modalPoster">
+                    </div>
+                    <div class="modal-info-side">
+                        <h2 id="modalTitle">عنوان اللقاء</h2>
+                        <p id="modalGuest">اسم الضيف</p>
+                        <div class="modal-meta">
+                            <span id="modalDate"><i data-lucide="calendar"></i> التاريخ</span>
+                        </div>
+                        <a href="" id="modalAction" target="_blank" class="modal-btn">سجّل الآن في اللقاء</a>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- 5. Stats Section (أرقام القسم) -->
+        <section class="dev-stats py-100">
+            <div class="container">
+                <div class="stats-header text-center mb-5">
+                    <h2 class="section-title">القسم في أرقام</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="users"></i></div>
+                        <div class="stat-number" data-target="900">0</div>
+                        <div class="stat-label">مستفيد</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="mic"></i></div>
+                        <div class="stat-number" data-target="30">0</div>
+                        <div class="stat-label">ضيف ومدرب</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="rocket"></i></div>
+                        <div class="stat-number" data-target="8">0</div>
+                        <div class="stat-label">برامج تم إطلاقها</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="timer"></i></div>
+                        <div class="stat-number" data-target="75">0</div>
+                        <div class="stat-label">ساعة تدريبية</div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="footer">
-        <div class="container footer-bottom">
-            <p>© 2025 جميع الحقوق محفوظة | نادي ريادة الأعمال</p>
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3 class="footer-title">رائد الأعمال</h3>
+                <ul class="footer-list">
+                    <li><i data-lucide="lightbulb"></i> يلهم</li>
+                    <li><i data-lucide="settings"></i> يمكن</li>
+                    <li><i data-lucide="book-open"></i> يثقف</li>
+                    <li><i data-lucide="users"></i> منصة الحالمين</li>
+                    <li><i data-lucide="award"></i> النادي الأكثر تأثيراً</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">تواصل معنا</h3>
+                <ul class="footer-list">
+                    <li><i data-lucide="mail"></i> البريد الإلكتروني</li>
+                    <li><i data-lucide="map-pin"></i> الموقع</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">منصات التواصل الاجتماعي</h3>
+                <div class="social-icons">
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-col footer-logo-col">
+                <img src="../assets/image copy 2.png" alt="شعار نادي ريادة الأعمال" class="footer-logo-img">
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2024 لوكالة عمادة شؤون الطلاب للأنشطة والمهارات - نادي ريادة الأعمال</p>
         </div>
     </footer>
+    <script>
+        lucide.createIcons();
 
-    <script src="../js/main.js"></script>
-    <script>lucide.createIcons();</script>
+        // تفعيل زر القائمة في الجوال
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if(mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                
+                // تغيير الأيقونة من وإلى (قائمة / إغلاق)
+                const icon = mobileToggle.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.setAttribute('data-lucide', 'x');
+                } else {
+                    icon.setAttribute('data-lucide', 'menu');
+                }
+                lucide.createIcons(); // تحديث الأيقونة
+            });
+        }
+
+        const modal = document.getElementById('ticketModal');
+
+        const closeModal = document.getElementById('closeModal');
+        const tickets = document.querySelectorAll('.ticket-card');
+
+        // دالة موحدة للميلان
+        function applyTilt(element, rotateX, rotateY, x, y) {
+            const glare = element.querySelector('.ticket-glare');
+            element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            if (glare) {
+                glare.style.setProperty('--x', `${x}px`);
+                glare.style.setProperty('--y', `${y}px`);
+                glare.style.opacity = '1';
+            }
+        }
+
+        function resetTilt(element) {
+            const glare = element.querySelector('.ticket-glare');
+            element.style.transform = `rotateX(0deg) rotateY(0deg)`;
+            if (glare) glare.style.opacity = '0';
+        }
+
+        tickets.forEach(ticket => {
+            // دعم الماوس (كمبيوتر)
+            ticket.addEventListener('mousemove', (e) => {
+                const rect = ticket.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (centerY - y) / 15;
+                const rotateY = (x - centerX) / 25;
+                applyTilt(ticket, rotateX, rotateY, x, y);
+            });
+
+            ticket.addEventListener('mouseleave', () => resetTilt(ticket));
+
+            // دعم اللمس (جوال)
+            ticket.addEventListener('touchmove', (e) => {
+                const touch = e.touches[0];
+                const rect = ticket.getBoundingClientRect();
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (centerY - y) / 20;
+                const rotateY = (x - centerX) / 30;
+                applyTilt(ticket, rotateX, rotateY, x, y);
+            }, { passive: true });
+
+            ticket.addEventListener('touchend', () => resetTilt(ticket));
+
+            // فتح النافذة
+            ticket.addEventListener('click', (e) => {
+                if(e.target.classList.contains('ticket-action')) return;
+                
+                const title = ticket.querySelector('.ticket-title').innerText;
+                const guest = ticket.querySelector('.guest-name').innerText;
+                const dateEl = ticket.querySelector('.ticket-info-row span:first-child');
+                const dateText = dateEl ? dateEl.innerHTML : '';
+                const imgSrc = ticket.querySelector('.ticket-poster').src;
+                const actionBtn = ticket.querySelector('.ticket-action');
+
+                document.getElementById('modalTitle').innerText = title;
+                document.getElementById('modalGuest').innerText = guest;
+                document.getElementById('modalDate').innerHTML = dateText;
+                document.getElementById('modalPoster').src = imgSrc;
+                document.getElementById('modalAction').href = actionBtn.href;
+                document.getElementById('modalAction').innerText = actionBtn.innerText;
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // دعم حساس الجوال (Accelerometer)
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', (event) => {
+                const beta = event.beta; // من -180 لـ 180 (تأرجح للأمام والخلف)
+                const gamma = event.gamma; // من -90 لـ 90 (تأرجح لليمين واليسار)
+                
+                if (beta !== null && gamma !== null) {
+                    tickets.forEach(ticket => {
+                        // ميلان خفيف بناءً على حركة الجوال
+                        const rotateX = (beta - 45) / 4; // ضبط الزاوية المريحة لمسكة الجوال
+                        const rotateY = gamma / 4;
+                        ticket.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    });
+                }
+            }, true);
+        }
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Counter Animation Logic
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200; // سرعة العداد
+
+        const startCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 15);
+                    } else {
+                        // إضافة علامة + للأرقام التي تتطلب ذلك
+                        if (target === 900 || target === 30) {
+                            counter.innerText = target + '+';
+                        } else {
+                            counter.innerText = target;
+                        }
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // تشغيل العداد فقط عند الوصول للقسم باستخدام Intersection Observer
+        const statsSection = document.querySelector('.dev-stats');
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                startCounters();
+                observer.unobserve(statsSection); // تشغيله مرة واحدة فقط
+            }
+        }, { threshold: 0.5 });
+
+        if (statsSection) observer.observe(statsSection);
+    </script>
 </body>
 </html>
