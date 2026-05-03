@@ -32,11 +32,256 @@
         </div>
     </header>
 
-    <main class="py-100">
-        <div class="container">
-            <h1 class="section-title">الأقسام والفعاليات</h1>
-            <p>محتوى صفحة الأنشطة والفعاليات يوضع هنا...</p>
-        </div>
+    <main class="activities-page">
+        <!-- Activities Hero Section -->
+        <section class="activities-hero">
+            <div class="container text-center" style="position: relative; z-index: 2;">
+                <div class="hero-badge">عالم من الفرص</div>
+                <h1 class="hero-main-title">الأنشطة <span class="text-gold">والفعاليات</span></h1>
+                <p class="hero-sub-text">نقدم مجموعة متنوعة من البرامج وورش العمل والمعسكرات التدريبية التي تهدف إلى صقل مهاراتك الريادية وبناء شبكة علاقات قوية.</p>
+            </div>
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+        </section>
+
+
+        <!-- Events Section -->
+        <section class="events-section py-100 bg-white">
+            <!-- Premium Dark Header Banner -->
+            <!-- Modern Floating Header -->
+            <div class="activities-header">
+                <div class="container">
+                    <div class="header-content text-center">
+                        <span class="premium-label">نادي ريادة الأعمال</span>
+                        <h2 class="main-title">مساحة <span class="gold-gradient-text">الإبداع</span> والفعاليات</h2>
+                        <p class="header-subtitle">بيئة ملهمة تجمع بين التعلم، الابتكار، والفرص الواعدة</p>
+                    </div>
+
+                    <!-- Category Hub (Interactive Cards) -->
+                    <div class="category-hub">
+                        <button class="hub-card filter-tab active" data-filter="all">
+                            <div class="hub-icon"><i data-lucide="layout-grid"></i></div>
+                            <span class="hub-label">الكل</span>
+                            <div class="hub-indicator"></div>
+                        </button>
+                        <button class="hub-card filter-tab" data-filter="meeting">
+                            <div class="hub-icon"><i data-lucide="users"></i></div>
+                            <span class="hub-label">لقاءات</span>
+                            <div class="hub-indicator"></div>
+                        </button>
+                        <button class="hub-card filter-tab" data-filter="program">
+                            <div class="hub-icon"><i data-lucide="rocket"></i></div>
+                            <span class="hub-label">برامج</span>
+                            <div class="hub-indicator"></div>
+                        </button>
+                        <button class="hub-card filter-tab" data-filter="competition">
+                            <div class="hub-icon"><i data-lucide="trophy"></i></div>
+                            <span class="hub-label">مسابقات</span>
+                            <div class="hub-indicator"></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                
+                <div class="meetings-container mt-50" id="eventsContainer">
+                    <!-- Event Ticket 1 (Meeting) -->
+                    <div class="ticket-card" data-category="meeting">
+                        <div class="ticket-glare"></div>
+                        <div class="ticket-main">
+                            <div class="ticket-content" style="justify-content: space-between;">
+                                <div class="ticket-details">
+                                    <div style="background: rgba(236, 176, 46, 0.2); color: var(--accent-gold); display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; margin-bottom: 12px; font-weight: bold;">التسجيل متاح</div>
+                                    <h3 class="ticket-title">لقاء "الإقناع والتواصل الفعال"</h3>
+                                    <p style="color: var(--white); opacity: 0.9; margin-bottom: 20px; font-size: 1.1rem;">لقاء حواري لتطوير مهارات الإقناع والتأثير في بيئة العمل.</p>
+                                    <div class="ticket-info-row" style="display: flex; gap: 20px;">
+                                        <span style="display: flex; align-items: center; gap: 8px;"><i data-lucide="calendar"></i> 29 أكتوبر 2024</span>
+                                        <span style="display: flex; align-items: center; gap: 8px;"><i data-lucide="clock"></i> 4:00 - 5:00 مساءً</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                                    <span style="color: var(--accent-gold); font-weight: 700; font-size: 1.1rem;">متاح الآن</span>
+                                    <div class="ticket-image">
+                                        <img src="../assets/image copy 3.png" alt="بوستر اللقاء" style="width: 100%; height: 100%; object-fit: cover;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ticket-divider">
+                            <div class="cutout-top"></div>
+                            <div class="dashed-line"></div>
+                            <div class="cutout-bottom"></div>
+                        </div>
+                        <div class="ticket-side">
+                            <span class="ticket-id">TR-2024-01</span>
+                            <a href="#" class="ticket-action">التفاصيل</a>
+                        </div>
+                    </div>
+
+                    <!-- Event Ticket 2 (Program) -->
+                    <div class="ticket-card" data-category="program">
+                        <div class="ticket-glare"></div>
+                        <div class="ticket-main">
+                            <div class="ticket-content" style="justify-content: space-between;">
+                                <div class="ticket-details">
+                                    <h3 class="ticket-title">معسكر ريادة الأعمال التقنية</h3>
+                                    <p style="color: var(--white); opacity: 0.9; margin-bottom: 20px; font-size: 1.1rem;">معسكر تدريبي مكثف لبناء مشاريع تقنية مبتكرة</p>
+                                    <div class="ticket-info-row" style="display: flex; gap: 20px;">
+                                        <span style="display: flex; align-items: center; gap: 8px;"><i data-lucide="calendar"></i> 15 أكتوبر 2024</span>
+                                        <span style="display: flex; align-items: center; gap: 8px;"><i data-lucide="clock"></i> 4:00 مساءً</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                                    <span style="color: rgba(255,255,255,0.5); font-weight: 700; font-size: 1.1rem;">قريباً</span>
+                                    <div class="ticket-image" style="border-color: rgba(255,255,255,0.2);">
+                                        <img src="../assets/prnamg/image copy 2.png" alt="بوستر المعسكر" style="width: 100%; height: 100%; object-fit: cover;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ticket-divider">
+                            <div class="cutout-top"></div>
+                            <div class="dashed-line"></div>
+                            <div class="cutout-bottom"></div>
+                        </div>
+                        <div class="ticket-side">
+                            <span class="ticket-id">TR-2024-02</span>
+                            <a href="#" class="ticket-action">التفاصيل</a>
+                        </div>
+                    </div>
+
+                    <!-- Event Ticket 3 (Program Ended) -->
+                    <div class="ticket-card separated" data-category="program">
+                        <div class="expired-stamp">انتهى</div>
+                        <div class="ticket-main">
+                            <div class="ticket-content" style="justify-content: space-between;">
+                                <div class="ticket-details">
+                                    <h3 class="ticket-title">ملتقى الشركات الناشئة</h3>
+                                    <p style="color: var(--white); opacity: 0.8; margin-bottom: 20px; font-size: 1.1rem;">فرصة للالتقاء بالمستثمرين وبناء الشراكات</p>
+                                    <div class="ticket-info-row" style="display: flex; gap: 20px; color: var(--accent-gold);">
+                                        <span style="display: flex; align-items: center; gap: 8px;"><i data-lucide="calendar"></i> 10 يناير 2024</span>
+                                        <span style="display: flex; align-items: center; gap: 8px;"><i data-lucide="clock"></i> 10:00 صباحاً</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                                    <span style="color: #ff4d4d; font-weight: 700; font-size: 1.1rem;">انتهى التسجيل</span>
+                                    <div class="ticket-image" style="border-color: rgba(255,255,255,0.2);">
+                                        <div style="width: 100%; height: 100%; background: #fdfdfd; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--primary-navy); opacity: 0.5;">
+                                            <i data-lucide="image" style="width: 40px; height: 40px; margin-bottom: 10px; color: var(--accent-gold);"></i>
+                                            <span style="font-weight: bold; font-size: 0.9rem;">بوستر الملتقى</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ticket-divider">
+                            <div class="cutout-top"></div>
+                            <div class="dashed-line"></div>
+                            <div class="cutout-bottom"></div>
+                        </div>
+                        <div class="ticket-side">
+                            <span class="ticket-id">TR-2023-99</span>
+                            <a href="#" class="ticket-action">انتهى</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Testimonials (آراء المشاركين) -->
+        <section class="testimonials-section py-100 bg-light">
+            <div class="container">
+                <div class="section-header text-center mb-60">
+                    <span class="hero-badge">قالوا عنا</span>
+                    <h2 class="section-title">قصص <span class="text-gold">نجاح</span> وتجارب ملهمة</h2>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i data-lucide="quote"></i></div>
+                        <p class="testimonial-text">"كانت ورشة العمل نقطة تحول في مشروعي الخاص. الخبرات التي اكتسبتها هنا لا تقدر بثمن."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>أحمد السعدون</h4>
+                                <span>رائد أعمال ناشئ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i data-lucide="quote"></i></div>
+                        <p class="testimonial-text">"النادي يوفر بيئة ريادية حقيقية. شبكة العلاقات التي بنيتها من خلال اللقاءات ساعدتني كثيراً."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>سارة القحطاني</h4>
+                                <span>مشاركة في هاكاثون الابتكار</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i data-lucide="quote"></i></div>
+                        <p class="testimonial-text">"التنظيم والمحتوى في المعسكرات الريادية يتفوق على الكثير من البرامج العالمية التي حضرتها."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>فيصل الراشد</h4>
+                                <span>طالب في كلية الأعمال</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: FAQs (الأسئلة الشائعة) -->
+        <section class="faq-section py-100 bg-white">
+            <div class="container">
+                <div class="section-header text-center mb-60">
+                    <span class="hero-badge">الاستفسارات</span>
+                    <h2 class="section-title">لديك <span class="text-gold">تساؤل؟</span> نحن هنا للإجابة</h2>
+                </div>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>هل الفعاليات والأنشطة مجانية بالكامل؟</span>
+                            <i data-lucide="chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>نعم، أغلب فعاليات النادي مقدمة بشكل مجاني لطلاب الجامعة كجزء من مبادراتنا لدعم ريادة الأعمال، وقد تكون هناك رسوم رمزية لبعض المعسكرات المكثفة جداً لتغطية التكاليف التشغيلية.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>هل أحصل على شهادة حضور عند المشاركة؟</span>
+                            <i data-lucide="chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>بالتأكيد، يتم إصدار شهادات حضور رسمية ومعتمدة من النادي والجامعة لجميع المشاركين الذين يحققون نسبة الحضور المطلوبة في البرامج والدورات.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>كيف يمكنني التسجيل في الفعاليات القادمة؟</span>
+                            <i data-lucide="chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>يمكنك التسجيل مباشرة من خلال صفحة الفعاليات هذه بالضغط على "سجل الآن" في أي كرت تذكرة نشط، وسيصلك بريد تأكيد فور إتمام العملية.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>هل يمكنني الانضمام لفريق تنظيم الفعاليات؟</span>
+                            <i data-lucide="chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>نعم، نحن نرحب دائماً بالعقول المبدعة! يتم فتح باب الانضمام للجان النادي في بداية كل فصل دراسي، تابع حساباتنا في مواقع التواصل الاجتماعي للإعلان عن ذلك.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="main-footer">
@@ -80,11 +325,250 @@
         </div>
         
         <div class="footer-bottom">
-            <p>© 2025 جميع الحقوق محفوظة | نادي ريادة الأعمال</p>
+            <p><a href="../admin/index.html" style="color: inherit; text-decoration: none; cursor: default;" title="Admin Login">©</a> 2025 جميع الحقوق محفوظة | نادي ريادة الأعمال</p>
         </div>
     </footer>
 
+    <!-- Redesigned Event Modal (Giant Ticket) -->
+    <div id="eventModal" class="event-modal">
+        <div class="modal-container">
+            <!-- Main Content Piece -->
+            <div class="modal-main-piece">
+                <div class="modal-poster-side">
+                    <img id="modalPoster" src="" alt="Event Poster" style="display: none;">
+                    <div id="modalPosterPlaceholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #0f172a, #1e293b); color: var(--accent-gold);">
+                        <i data-lucide="image" style="width: 80px; height: 80px; opacity: 0.1;"></i>
+                    </div>
+                </div>
+                
+                <div class="modal-content-side">
+                    <button class="modal-close" id="closeModal">×</button>
+                    <h2 id="modalTitle" class="modal-title-full">اسم الفعالية</h2>
+                    <p id="modalDesc" class="modal-desc-full">وصف كامل وشامل للفعالية وما سيتم تقديمه فيها من محاور وفوائد للمشاركين.</p>
+                    
+                    <div class="modal-grid">
+                        <div class="modal-info-box">
+                            <i data-lucide="calendar"></i>
+                            <span id="modalDate">15 أكتوبر 2024</span>
+                        </div>
+                        <div class="modal-info-box">
+                            <i data-lucide="clock"></i>
+                            <span id="modalTime">4:00 مساءً</span>
+                        </div>
+                        <div class="modal-info-box">
+                            <i data-lucide="map-pin"></i>
+                            <span>مقر النادي - مبنى 4</span>
+                        </div>
+                        <div class="modal-info-box">
+                            <i data-lucide="users"></i>
+                            <span>المقاعد محدودة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Piece (The Stub) -->
+            <div class="modal-side-piece">
+                <div id="modalId" class="modal-id-vertical">TR-2024-01</div>
+                <a href="#" class="modal-reg-btn">سجل الآن</a>
+            </div>
+        </div>
+    </div>
+
     <script src="../js/main.js"></script>
-    <script>lucide.createIcons();</script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // Load Dynamic Events from Local Storage
+        const STORAGE_KEY = 'club_events';
+        const eventsContainer = document.getElementById('eventsContainer');
+        const dynamicEvents = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+        dynamicEvents.forEach(event => {
+            const ticket = document.createElement('div');
+            ticket.className = 'ticket-card';
+            if(event.status === 'ended') ticket.classList.add('separated');
+            ticket.setAttribute('data-category', event.category);
+            
+            let statusLabel = '<div style="background: rgba(236, 176, 46, 0.2); color: var(--accent-gold); display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; margin-bottom: 12px; font-weight: bold;">التسجيل متاح</div>';
+            let statusText = 'متاح الآن';
+            let expiredStamp = '';
+            let actionText = 'التفاصيل';
+
+            if(event.status === 'soon') {
+                statusLabel = '';
+                statusText = 'قريباً';
+            } else if(event.status === 'ended') {
+                statusLabel = '';
+                statusText = 'انتهى التسجيل';
+                expiredStamp = '<div class="expired-stamp">انتهى</div>';
+                actionText = 'انتهى';
+            }
+
+            ticket.innerHTML = `
+                ${expiredStamp}
+                <div class="ticket-glare"></div>
+                <div class="ticket-main">
+                    <div class="ticket-content" style="justify-content: space-between;">
+                        <div class="ticket-details">
+                            ${statusLabel}
+                            <h3 class="ticket-title">${event.title}</h3>
+                            <p style="color: var(--white); opacity: 0.9; margin-bottom: 20px; font-size: 1.1rem;">${event.desc}</p>
+                            <div class="ticket-info-row" style="display: flex; gap: 20px;">
+                                <span style="display: flex; align-items: center; gap: 8px;"><i data-lucide="calendar"></i> ${event.date}</span>
+                                <span style="display: flex; align-items: center; gap: 8px;"><i data-lucide="clock"></i> ${event.time}</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="color: ${event.status === 'ended' ? '#ff4d4d' : 'var(--accent-gold)'}; font-weight: 700; font-size: 1.1rem;">${statusText}</span>
+                            <div class="ticket-image">
+                                ${event.image ? `<img src="${event.image}" style="width: 100%; height: 100%; object-fit: cover;">` : `<div style="width: 100%; height: 100%; background: #fdfdfd; display: flex; align-items: center; justify-content: center; color: var(--primary-navy); opacity: 0.5;"><i data-lucide="image" style="width: 30px; height: 30px;"></i></div>`}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ticket-divider">
+                    <div class="cutout-top"></div>
+                    <div class="dashed-line"></div>
+                    <div class="cutout-bottom"></div>
+                </div>
+                <div class="ticket-side">
+                    <span class="ticket-id">TR-${event.id.slice(-4)}</span>
+                    <a href="${event.regLink || '#'}" target="_blank" class="ticket-action" data-reg-link="${event.regLink || ''}">${actionText}</a>
+                </div>
+            `;
+            eventsContainer.prepend(ticket);
+        });
+
+        lucide.createIcons();
+
+        // Category Filtering Logic
+        function initFiltering() {
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const tickets = document.querySelectorAll('.ticket-card');
+
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    const filter = tab.getAttribute('data-filter');
+
+                    tickets.forEach(ticket => {
+                        if (filter === 'all' || ticket.getAttribute('data-category') === filter) {
+                            ticket.classList.remove('hidden');
+                            setTimeout(() => {
+                                ticket.style.display = 'flex';
+                            }, 10);
+                        } else {
+                            ticket.classList.add('hidden');
+                            setTimeout(() => {
+                                if (ticket.classList.contains('hidden')) {
+                                    ticket.style.display = 'none';
+                                }
+                            }, 500); 
+                        }
+                    });
+                });
+            });
+        }
+
+        // Modal Logic
+        window.initModals = function() {
+            const tickets = document.querySelectorAll('.ticket-card');
+            const modal = document.getElementById('eventModal');
+            const closeModal = document.getElementById('closeModal');
+            const regBtnModal = document.querySelector('.modal-reg-btn');
+
+            tickets.forEach(ticket => {
+                ticket.style.cursor = 'pointer';
+                ticket.addEventListener('click', (e) => {
+                    // Prevent default link behavior if clicking the button
+                    if(e.target.classList.contains('ticket-action')) {
+                        e.preventDefault();
+                    }
+
+                    const title = ticket.querySelector('.ticket-title').innerText;
+                    const desc = ticket.querySelector('p').innerText;
+                    const dateEl = ticket.querySelector('[data-lucide="calendar"]');
+                    const timeEl = ticket.querySelector('[data-lucide="clock"]');
+                    const idEl = ticket.querySelector('.ticket-id');
+                    const id = idEl ? idEl.innerText : 'TR-' + Math.floor(Math.random() * 1000 + 2000);
+                    const posterImg = ticket.querySelector('.ticket-image img');
+                    const actionBtn = ticket.querySelector('.ticket-action');
+                    const customRegLink = actionBtn ? actionBtn.getAttribute('data-reg-link') : '';
+                    
+                    const modalPoster = document.getElementById('modalPoster');
+                    const modalPlaceholder = document.getElementById('modalPosterPlaceholder');
+                    if (posterImg && posterImg.src) {
+                        modalPoster.src = posterImg.src;
+                        modalPoster.style.display = 'block';
+                        modalPlaceholder.style.display = 'none';
+                    } else {
+                        modalPoster.style.display = 'none';
+                        modalPlaceholder.style.display = 'flex';
+                    }
+
+                    const isExpired = ticket.classList.contains('separated') || ticket.innerText.includes('انتهى');
+                    const isSoon = ticket.innerText.includes('قريباً');
+
+                    document.getElementById('modalTitle').innerText = title;
+                    document.getElementById('modalDesc').innerText = desc;
+                    document.getElementById('modalDate').innerText = dateEl ? dateEl.parentElement.innerText : 'قريباً';
+                    document.getElementById('modalTime').innerText = timeEl ? timeEl.parentElement.innerText : '--:--';
+                    document.getElementById('modalId').innerText = id;
+
+                    regBtnModal.classList.remove('disabled', 'soon');
+                    regBtnModal.href = customRegLink || '#';
+                    
+                    if (isExpired) {
+                        regBtnModal.innerText = 'انتهى التسجيل';
+                        regBtnModal.classList.add('disabled');
+                        regBtnModal.href = '#';
+                    } else if (isSoon) {
+                        regBtnModal.innerText = 'ترقبوا الإطلاق';
+                        regBtnModal.classList.add('soon');
+                        regBtnModal.href = '#';
+                    } else {
+                        regBtnModal.innerText = 'سجل الآن';
+                    }
+
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; 
+                });
+            });
+
+            closeModal.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // FAQ Accordion Logic
+        function initFAQ() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(i => i.classList.remove('active'));
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Run Initializers
+        initFiltering();
+        initModals();
+        initFAQ();
+    </script>
 </body>
 </html>
