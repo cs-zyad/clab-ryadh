@@ -2175,8 +2175,49 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     transition: transform 0.8s ease;
 }
 
-.major-award-showcase:hover .award-image img {
-    transform: scale(1.05);
+.major-award-showcas.timeline-item:hover .timeline-img-wrapper img {
+    transform: scale(1.02);
+}
+
+/* Mobile Responsiveness for Members Page */
+@media (max-width: 768px) {
+    .members-premium-page {
+        padding: 60px 0;
+    }
+
+    .star-card {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        transform: rotate(0deg) !important; /* Remove rotation on mobile for cleaner look */
+    }
+
+    .best-dept-card {
+        width: 100% !important;
+        max-width: 350px !important;
+    }
+
+    .timeline-year {
+        font-size: 1.5rem;
+        bottom: 15px;
+    }
+
+    .timeline-item {
+        padding: 15px 15px 60px 15px;
+        transform: rotate(0deg) !important;
+    }
+
+    .star-img-wrapper {
+        height: 200px;
+    }
+
+    .timeline-img-wrapper img {
+        max-height: 400px;
+    }
+
+    .star-info h3 {
+        font-size: 1rem;
+    }
 }
 
 .award-badge {
@@ -4164,3 +4205,299 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     pointer-events: none;
     display: none;
 }
+
+/* New Members Page Styles */
+.members-premium-page {
+    background-color: var(--light-gray);
+    padding: 80px 0;
+}
+
+/* Stars Grid */
+.stars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 20px;
+}
+
+.star-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(35,32,85,0.05);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.star-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 5px;
+    background: linear-gradient(90deg, var(--accent-gold), var(--primary-navy));
+}
+
+.star-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(35,32,85,0.1);
+}
+
+.star-img-wrapper {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    position: relative;
+    border-radius: 50%;
+    padding: 5px;
+    background: linear-gradient(135deg, var(--accent-gold), transparent);
+}
+
+.star-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    background: var(--white);
+}
+
+.star-img.placeholder-logo {
+    object-fit: contain;
+    padding: 20px;
+}
+
+.star-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--primary-navy);
+    color: var(--accent-gold);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--white);
+}
+
+.star-info h3 {
+    color: var(--primary-navy);
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.star-info p {
+    color: #888;
+    font-size: 0.95rem;
+}
+
+/* Members Hero Banner (Screenshot Style) */
+.members-hero-banner {
+    background-color: var(--primary-navy);
+    padding: 100px 0;
+    text-align: center;
+    border-bottom: 4px solid var(--accent-gold);
+}
+
+.hero-dept-title {
+    color: var(--accent-gold);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.hero-dept-subtitle {
+    color: var(--pure-white);
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    opacity: 0.95;
+    font-weight: 500;
+}
+
+/* Polaroid Album Style - Members Page */
+.members-premium-page {
+    background-color: #fbfbfc; /* Clean background consistent with site */
+    padding: 100px 0;
+}
+
+/* Stars Grid */
+.stars-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    padding: 40px 20px;
+}
+
+.star-card {
+    background: var(--white);
+    padding: 15px 15px 50px 15px; /* Bottom padding for "caption" */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    width: 280px;
+    border-radius: 2px; /* Slight radius for paper look */
+}
+
+.star-card:nth-child(even) { transform: rotate(2deg); }
+.star-card:nth-child(odd) { transform: rotate(-2deg); }
+
+.star-card:hover {
+    transform: rotate(0deg) scale(1.05) translateY(-10px);
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.star-card::before { display: none; } /* Remove old gradient bar */
+
+.star-img-wrapper {
+    width: 100%;
+    height: 250px;
+    margin: 0;
+    border-radius: 0;
+    background: #f9f9f9;
+    overflow: hidden;
+}
+
+.star-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.star-img.placeholder-logo {
+    object-fit: contain;
+    padding: 40px;
+    opacity: 0.6;
+}
+
+.star-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--accent-gold);
+    color: var(--white);
+    width: 35px;
+    height: 35px;
+}
+
+.star-info {
+    margin-top: 15px;
+}
+
+.star-info h3 {
+    font-size: 1.1rem;
+    color: var(--primary-navy);
+    font-weight: 800;
+}
+
+/* Generations Timeline (Polaroid Style) */
+.generations-timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 120px;
+    margin-top: 80px;
+}
+
+.timeline-item {
+    background: var(--white);
+    padding: 20px 20px 80px 20px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+    width: 100%;
+    max-width: 900px;
+    border-radius: 3px;
+    position: relative;
+    transition: transform 0.4s ease;
+}
+
+.timeline-item:nth-child(odd) { transform: rotate(-1.5deg); }
+.timeline-item:nth-child(even) { transform: rotate(1.5deg); }
+
+.timeline-item:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.timeline-year {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: transparent;
+    color: var(--primary-navy);
+    font-size: 2rem;
+    font-weight: 900;
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    width: auto;
+    font-family: 'Cairo', sans-serif;
+}
+
+.timeline-img-wrapper {
+    border-radius: 0;
+    border: 1px solid #f0f0f0;
+}
+
+.timeline-img-wrapper img {
+    border-radius: 0;
+    max-height: 700px;
+}
+
+/* Mobile Responsiveness for Members Page */
+@media (max-width: 768px) {
+    .members-premium-page {
+        padding: 60px 0;
+    }
+
+    .star-card {
+        width: 100% !important;
+        max-width: 320px !important;
+        margin: 0 auto;
+        transform: rotate(0deg) !important;
+    }
+
+    .best-dept-card {
+        width: 100% !important;
+        max-width: 350px !important;
+    }
+
+
+    .timeline-item {
+        padding: 10px 10px 50px 10px !important;
+        transform: rotate(0deg) !important;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .timeline-img-wrapper {
+        width: 100% !important;
+        height: auto !important;
+        overflow: hidden;
+    }
+
+    .timeline-img-wrapper img {
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        display: block;
+    }
+
+    .timeline-year {
+        font-size: 1.2rem !important;
+        bottom: 10px !important;
+        position: relative !important;
+        left: 0 !important;
+        transform: none !important;
+        margin-top: 15px !important;
+        display: block !important;
+    }
+
+    .star-info h3 {
+        font-size: 1rem !important;
+    }
+}
+
+
