@@ -1139,6 +1139,30 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
         flex-direction: column;
         text-align: center;
     }
+
+    /* Fix for Expired Ticket on Mobile */
+    .ticket-card.separated {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    .ticket-card.separated .ticket-main, 
+    .ticket-card.separated .ticket-side {
+        width: 100% !important;
+        min-height: auto !important;
+        transform: none !important;
+        clip-path: none !important;
+        padding: 30px 20px !important;
+        border-radius: 20px !important;
+        text-align: center !important;
+    }
+    .ticket-card.separated .expired-stamp {
+        font-size: 1.6rem !important;
+        padding: 8px 20px !important;
+        left: 50% !important;
+        top: 25% !important;
+        width: fit-content;
+        margin: 0 auto;
+    }
 }
 /* Ticket Modal Styles */
 .ticket-modal-overlay {
