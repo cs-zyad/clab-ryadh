@@ -3951,9 +3951,14 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
         grid-template-columns: 1fr;
     }
     .modal-poster-side {
-        height: 220px;
+        height: 350px;
         border-left: none;
         border-bottom: 1px solid rgba(255,255,255,0.05);
+        background: #000;
+    }
+    .modal-poster-side img {
+        object-fit: contain !important;
+        opacity: 1 !important;
     }
     .modal-content-side {
         padding: 30px 20px;
