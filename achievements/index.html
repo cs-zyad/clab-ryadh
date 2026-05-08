@@ -34,269 +34,184 @@
 
     <main class="achievements-page">
         <!-- Premium Hero Section -->
-        <section class="achievements-hero-v2">
-            <div class="container text-center">
-                <div class="hero-badge">سجل الفخر</div>
-                <h1 class="hero-main-title">مسيرة <span class="text-gold">الإنجاز</span></h1>
-                <p class="hero-sub-text">نستعرض معكم محطات التميز والنجاح التي سطرها نادي ريادة الأعمال بجامعة الملك عبدالعزيز، رؤية تتحقق وأهداف تتجاوز التوقعات.</p>
+                <section class="page-hero" style="background: linear-gradient(135deg, #110e2d 0%, var(--primary-navy) 100%); color: var(--white); text-align: center; border-radius: 0 0 50px 50px; padding: 80px 0 60px 0; position: relative; overflow: hidden; box-shadow: 0 15px 30px rgba(17, 14, 45, 0.15);">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(rgba(255,255,255,0.05) 2px, transparent 2px); background-size: 30px 30px; opacity: 0.6;"></div>
+            <div class="container" style="position: relative; z-index: 2;">
+                <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 20px; background: rgba(236, 176, 46, 0.08); color: var(--accent-gold); border-radius: 50px; font-weight: 700; margin-bottom: 20px; border: 1px solid rgba(236, 176, 46, 0.2); backdrop-filter: blur(5px); font-size: 0.9rem;">
+                    <i data-lucide="award" style="width: 16px; height: 16px;"></i> مسيرة التألق
+                </div>
+                <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; margin-bottom: 15px; color: var(--accent-gold);">إنجازات النادي</h1>
+                <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.8); line-height: 1.8;">سجل حافل بالعطاء والتميز، نكتب فيه قصة نجاح ريادية مستدامة.</p>
             </div>
-            <div class="hero-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
+            <div style="position: absolute; top: -100px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(236, 176, 46, 0.15) 0%, transparent 70%); border-radius: 50%; filter: blur(40px);"></div>
+            <div style="position: absolute; bottom: -100px; left: 10%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%); border-radius: 50%; filter: blur(40px);"></div>
+        </section>
+
+        <!-- Premium Impact Stats Section -->
+        <section class="impact-stats-premium" style="padding: 60px 0; background: linear-gradient(to bottom, rgba(248, 249, 250, 0) 0%, rgba(248, 249, 250, 1) 100%);">
+            <div class="container">
+                <style>
+                    .stat-card-ultra {
+                        background: #ffffff;
+                        padding: 45px 30px;
+                        border-radius: 35px;
+                        text-align: center;
+                        box-shadow: 0 15px 35px rgba(17, 14, 45, 0.04);
+                        border: 1px solid rgba(236, 176, 46, 0.05);
+                        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                        position: relative;
+                        overflow: hidden;
+                        z-index: 1;
+                    }
+                    .stat-card-ultra::before {
+                        content: '';
+                        position: absolute;
+                        top: 0; left: 0; right: 0; bottom: 0;
+                        background: radial-gradient(circle at center, rgba(236, 176, 46, 0.03) 0%, transparent 70%);
+                        z-index: -1;
+                        opacity: 0;
+                        transition: opacity 0.4s ease;
+                    }
+                    .stat-card-ultra:hover {
+                        transform: translateY(-12px);
+                        box-shadow: 0 25px 50px rgba(17, 14, 45, 0.08);
+                        border-color: rgba(236, 176, 46, 0.2);
+                    }
+                    .stat-card-ultra:hover::before {
+                        opacity: 1;
+                    }
+                    .stat-card-ultra:hover .stat-icon-wrapper {
+                        transform: scale(1.1);
+                        background: rgba(236, 176, 46, 0.12);
+                    }
+                    .stat-icon-wrapper {
+                        width: 70px;
+                        height: 70px;
+                        background: rgba(236, 176, 46, 0.06);
+                        border-radius: 22px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0 auto 25px;
+                        color: var(--accent-gold);
+                        transition: all 0.3s ease;
+                    }
+                </style>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; align-items: stretch;">
+                    
+                    <!-- Stat Item 4 (Right-most in screenshot: 100+) -->
+                    <div class="stat-card-ultra">
+                        <div class="stat-icon-wrapper">
+                            <i data-lucide="calendar" style="width: 32px; height: 32px; stroke-width: 1.5;"></i>
+                        </div>
+                        <div style="font-size: 3rem; font-weight: 900; color: var(--primary-navy); margin-bottom: 8px; line-height: 1; display: flex; align-items: center; justify-content: center; gap: 4px;" dir="ltr">
+                            <span style="color: var(--accent-gold); font-size: 2.2rem; margin-top: 4px;">+</span>100
+                        </div>
+                        <div style="color: #777; font-weight: 700; font-size: 1.05rem;">فعالية ونشاط</div>
+                    </div>
+
+                    <!-- Stat Item 3 (300+) -->
+                    <div class="stat-card-ultra">
+                        <div class="stat-icon-wrapper">
+                            <i data-lucide="lightbulb" style="width: 32px; height: 32px; stroke-width: 1.5;"></i>
+                        </div>
+                        <div style="font-size: 3rem; font-weight: 900; color: var(--primary-navy); margin-bottom: 8px; line-height: 1; display: flex; align-items: center; justify-content: center; gap: 4px;" dir="ltr">
+                            <span style="color: var(--accent-gold); font-size: 2.2rem; margin-top: 4px;">+</span>300
+                        </div>
+                        <div style="color: #777; font-weight: 700; font-size: 1.05rem;">فكرة ومشروع</div>
+                    </div>
+
+                    <!-- Stat Item 2 (15K+) -->
+                    <div class="stat-card-ultra">
+                        <div class="stat-icon-wrapper">
+                            <i data-lucide="users" style="width: 32px; height: 32px; stroke-width: 1.5;"></i>
+                        </div>
+                        <div style="font-size: 3rem; font-weight: 900; color: var(--primary-navy); margin-bottom: 8px; line-height: 1; display: flex; align-items: center; justify-content: center; gap: 4px;" dir="ltr">
+                            <span style="color: var(--accent-gold); font-size: 2.2rem; margin-top: 4px;">+</span>15K
+                        </div>
+                        <div style="color: #777; font-weight: 700; font-size: 1.05rem;">صديق ومتابع</div>
+                    </div>
+
+                    <!-- Stat Item 1 (Left-most in screenshot: 3M+) -->
+                    <div class="stat-card-ultra">
+                        <div class="stat-icon-wrapper">
+                            <i data-lucide="eye" style="width: 32px; height: 32px; stroke-width: 1.5;"></i>
+                        </div>
+                        <div style="font-size: 3rem; font-weight: 900; color: var(--primary-navy); margin-bottom: 8px; line-height: 1; display: flex; align-items: center; justify-content: center; gap: 4px;" dir="ltr">
+                            <span style="color: var(--accent-gold); font-size: 2.2rem; margin-top: 4px;">+</span>3M
+                        </div>
+                        <div style="color: #777; font-weight: 700; font-size: 1.05rem;">ظهور في المنصات</div>
+                    </div>
+
+                </div>
             </div>
         </section>
 
         <!-- Achievements Timeline Section -->
         <section class="timeline-section py-100">
-            <div class="container">
-                <div class="main-timeline">
+            <div class="container" style="max-width: 900px;">
+                <div class="elite-timeline">
                     
-                    <!-- 2025-2026: The Vision Continues -->
-                    <div class="timeline-block">
-                        <div class="timeline-year-label" style="font-size: 1rem; flex-direction: column;"><span>2025</span><span>2026</span></div>
-                        <div class="timeline-content-wrapper">
-                            <!-- Major Award Card (2025-2026 Placeholder) -->
-                            <div class="major-award-showcase mb-50">
-                                <div class="award-grid">
-                                    <div class="award-text">
-                                        <div class="award-header">
-                                            <div class="award-badge"><i data-lucide="award"></i> الجائزة الكبرى</div>
-                                            <h2>إنجاز عام 2025 - 2026</h2>
-                                        </div>
-                                        <div class="award-body">
-                                            <p>سيتم إضافة تفاصيل الإنجاز الكبير القادم هنا.. مسيرة النجاح مستمرة وطموحنا لا حدود له.</p>
-                                        </div>
-                                        <div class="award-footer">
-                                            <span class="location"><i data-lucide="map-pin"></i> الموقع يحدد لاحقاً</span>
-                                        </div>
-                                    </div>
-                                    <div class="award-image-placeholder">
-                                        <div class="placeholder-content">
-                                            <i data-lucide="image"></i>
-                                            <span>صورة الإنجاز قريباً</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="stats-showcase-grid">
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="calendar"></i>
-                                        <span class="stat-val">+100</span>
-                                    </div>
-                                    <p class="stat-name">نشاط مقام</p>
-                                </div>
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="lightbulb"></i>
-                                        <span class="stat-val">+300</span>
-                                    </div>
-                                    <p class="stat-name">فكرة ريادية</p>
-                                </div>
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="handshake"></i>
-                                        <span class="stat-val">+15</span>
-                                    </div>
-                                    <p class="stat-name">شريك نجاح</p>
-                                </div>
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="box"></i>
-                                        <span class="stat-val">+100</span>
-                                    </div>
-                                    <p class="stat-name">مشروع أولي</p>
-                                </div>
-                                <div class="stat-box-v2 highlight-stat">
-                                    <div class="stat-header">
-                                        <i data-lucide="heart"></i>
-                                        <span class="stat-val">+10K</span>
-                                    </div>
-                                    <p class="stat-name">صديق للنادي</p>
-                                </div>
-                                <div class="stat-box-v2 wide-stat">
-                                    <div class="stat-header">
-                                        <i data-lucide="eye"></i>
-                                        <span class="stat-val">+3M</span>
-                                    </div>
-                                    <p class="stat-name">ظهور في التواصل الاجتماعي</p>
-                                </div>
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="users"></i>
-                                        <span class="stat-val">+15K</span>
-                                    </div>
-                                    <p class="stat-name">متابع على المنصات</p>
+                    <!-- Timeline Item: 2025 -->
+                    <div class="clean-timeline-item" style="position: relative; padding-right: 70px; margin-bottom: 50px;">
+                        <div style="position: absolute; right: 28px; top: 30px; bottom: -80px; width: 2px; background: linear-gradient(to bottom, var(--accent-gold), transparent); z-index: 1;"></div>
+                        <div style="position: absolute; right: 20px; top: 0; width: 18px; height: 18px; background: var(--accent-gold); border-radius: 50%; box-shadow: 0 0 0 6px rgba(236, 176, 46, 0.2), 0 0 20px rgba(236, 176, 46, 0.6); z-index: 2;"></div>
+                        <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 20px;">
+                            <span style="font-size: 2.2rem; color: var(--primary-navy); font-weight: 900; line-height: 1;">2025</span>
+                            <span style="color: var(--accent-gold); font-weight: 700; font-size: 1.1rem; background: rgba(236, 176, 46, 0.1); padding: 4px 12px; border-radius: 20px;">القادم أعظم</span>
+                        </div>
+                        <div class="timeline-card" style="background: var(--white); padding: 40px; border-radius: 24px; box-shadow: 0 15px 50px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.02); position: relative; overflow: hidden;">
+                            <div style="display: flex; align-items: center; justify-content: center; height: 150px; border: 2px dashed rgba(236, 176, 46, 0.3); border-radius: 16px; background: rgba(236, 176, 46, 0.02); margin-bottom: 20px;">
+                                <div style="text-align: center; color: rgba(17, 14, 45, 0.5);">
+                                    <i data-lucide="sparkles" style="width: 32px; height: 32px; margin-bottom: 10px; color: var(--accent-gold);"></i>
+                                    <h4 style="font-weight: 700; font-size: 1.1rem;">مساحة مخصصة للإنجاز القادم</h4>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 2024: Year of Impact -->
-                    <div class="timeline-block">
-                        <div class="timeline-year-label">2024</div>
-                        <div class="timeline-content-wrapper">
+                    <!-- Timeline Item: 2024 -->
+                    <div class="clean-timeline-item" style="position: relative; padding-right: 70px; margin-bottom: 50px;">
+                        <div style="position: absolute; right: 28px; top: 30px; bottom: -80px; width: 2px; background: linear-gradient(to bottom, #ccc, transparent); z-index: 1;"></div>
+                        <div style="position: absolute; right: 23px; top: 5px; width: 12px; height: 12px; background: var(--primary-navy); border-radius: 50%; box-shadow: 0 0 0 4px rgba(17, 14, 45, 0.1); z-index: 2;"></div>
+                        <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 15px;">
+                            <span style="font-size: 1.8rem; color: var(--primary-navy); font-weight: 900; line-height: 1;">2024</span>
+                            <span style="color: #888; font-weight: 600; font-size: 1rem;">عام التأثير</span>
+                        </div>
+                        <div class="timeline-card" style="background: var(--white); padding: 35px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.03); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;">
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                                <div style="background: linear-gradient(135deg, rgba(236, 176, 46, 0.1), rgba(236, 176, 46, 0.2)); color: var(--accent-gold); padding: 12px; border-radius: 12px;"><i data-lucide="award" style="width: 28px; height: 28px; stroke-width: 1.5;"></i></div>
+                                <h3 style="font-size: 1.6rem; color: var(--primary-navy); margin: 0; font-weight: 800;">النادي الأعلى تأثيراً</h3>
+                            </div>
+                            <p style="color: #666; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem;">تقديراً للدور الريادي والجهود الاستثنائية، توج النادي بجائزة المركز الأول كأكثر الأندية الطلابية تأثيراً في ملتقى بييان السنوي، بجامعة الملك عبدالعزيز.</p>
                             
-                            <!-- Major Award Card -->
-                            <div class="major-award-showcase">
-                                <div class="award-grid">
-                                    <div class="award-text">
-                                        <div class="award-header">
-                                            <div class="award-badge"><i data-lucide="award"></i> الجائزة الكبرى</div>
-                                            <h2>النادي الأعلى تأثيراً في بييان 2024</h2>
-                                        </div>
-                                        <div class="award-body">
-                                            <p>تقديراً للدور الريادي والجهود الاستثنائية، توج النادي بجائزة المركز الأول كأكثر الأندية الطلابية تأثيراً في ملتقى بييان السنوي، مما يؤكد مكانة النادي كمنصة رائدة لصناعة المستقبل.</p>
-                                        </div>
-                                        <div class="award-footer">
-                                            <span class="location"><i data-lucide="map-pin"></i> جامعة الملك عبدالعزيز - جدة</span>
-                                        </div>
-                                    </div>
-                                    <div class="award-image-placeholder">
-                                        <div class="placeholder-content">
-                                            <i data-lucide="image"></i>
-                                            <span>سيتم إضافة الصورة قريباً</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 2024 Numbers Grid -->
-                            <div class="stats-showcase-grid mt-50">
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="calendar"></i>
-                                        <span class="stat-val">+65</span>
-                                    </div>
-                                    <p class="stat-name">نشاط مقام</p>
-                                </div>
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="lightbulb"></i>
-                                        <span class="stat-val">+180</span>
-                                    </div>
-                                    <p class="stat-name">فكرة ريادية</p>
-                                </div>
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="handshake"></i>
-                                        <span class="stat-val">+8</span>
-                                    </div>
-                                    <p class="stat-name">شريك نجاح</p>
-                                </div>
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="box"></i>
-                                        <span class="stat-val">+55</span>
-                                    </div>
-                                    <p class="stat-name">مشروع أولي</p>
-                                </div>
-                                <div class="stat-box-v2 highlight-stat">
-                                    <div class="stat-header">
-                                        <i data-lucide="heart"></i>
-                                        <span class="stat-val">+6K</span>
-                                    </div>
-                                    <p class="stat-name">صديق للنادي</p>
-                                </div>
-                                <div class="stat-box-v2 wide-stat">
-                                    <div class="stat-header">
-                                        <i data-lucide="eye"></i>
-                                        <span class="stat-val">+1.2M</span>
-                                    </div>
-                                    <p class="stat-name">ظهور في التواصل الاجتماعي</p>
-                                </div>
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="users"></i>
-                                        <span class="stat-val">+9K</span>
-                                    </div>
-                                    <p class="stat-name">متابع على المنصات</p>
-                                </div>
+                            <!-- مساحة الصورة -->
+                            <div class="image-placeholder-container" style="margin-top: 20px; border-radius: 16px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
+                                <!-- ضع مسار صورتك هنا -->
                             </div>
                         </div>
                     </div>
 
-                    <!-- 2023: Foundation & Growth -->
-                    <div class="timeline-block">
-                        <div class="timeline-year-label">2023</div>
-                        <div class="timeline-content-wrapper">
-                            <!-- Major Award Card (2023 Placeholder) -->
-                            <div class="major-award-showcase mb-50">
-                                <div class="award-grid">
-                                    <div class="award-text">
-                                        <div class="award-header">
-                                            <div class="award-badge"><i data-lucide="award"></i> الجائزة الكبرى</div>
-                                            <h2>إنجاز عام 2023</h2>
-                                        </div>
-                                        <div class="award-body">
-                                            <p>بداية صناعة الأثر.. سيتم إضافة تفاصيل أول إنجاز رئيسي للنادي في سنة التأسيس هنا.</p>
-                                        </div>
-                                        <div class="award-footer">
-                                            <span class="location"><i data-lucide="map-pin"></i> الموقع يحدد لاحقاً</span>
-                                        </div>
-                                    </div>
-                                    <div class="award-image-placeholder">
-                                        <div class="placeholder-content">
-                                            <i data-lucide="image"></i>
-                                            <span>صورة الإنجاز قريباً</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="stats-showcase-grid">
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="calendar"></i>
-                                        <span class="stat-val">0</span>
-                                    </div>
-                                    <p class="stat-name">نشاط مقام</p>
-                                </div>
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="lightbulb"></i>
-                                        <span class="stat-val">0</span>
-                                    </div>
-                                    <p class="stat-name">فكرة ريادية</p>
-                                </div>
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="handshake"></i>
-                                        <span class="stat-val">0</span>
-                                    </div>
-                                    <p class="stat-name">شريك نجاح</p>
-                                </div>
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="box"></i>
-                                        <span class="stat-val">0</span>
-                                    </div>
-                                    <p class="stat-name">مشروع أولي</p>
-                                </div>
-                                <div class="stat-box-v2 highlight-stat">
-                                    <div class="stat-header">
-                                        <i data-lucide="heart"></i>
-                                        <span class="stat-val">0</span>
-                                    </div>
-                                    <p class="stat-name">صديق للنادي</p>
-                                </div>
-                                <div class="stat-box-v2 wide-stat">
-                                    <div class="stat-header">
-                                        <i data-lucide="eye"></i>
-                                        <span class="stat-val">0</span>
-                                    </div>
-                                    <p class="stat-name">ظهور في التواصل الاجتماعي</p>
-                                </div>
-                                <div class="stat-box-v2">
-                                    <div class="stat-header">
-                                        <i data-lucide="users"></i>
-                                        <span class="stat-val">0</span>
-                                    </div>
-                                    <p class="stat-name">متابع على المنصات</p>
-                                </div>
+                    <!-- Timeline Item: 2023 -->
+                    <div class="clean-timeline-item" style="position: relative; padding-right: 70px; margin-bottom: 0;">
+                        <!-- Simple Dot -->
+                        <div style="position: absolute; right: 23px; top: 5px; width: 12px; height: 12px; background: #ccc; border-radius: 50%; box-shadow: 0 0 0 4px var(--white); z-index: 2;"></div>
+                        
+                        <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 15px;">
+                            <span style="font-size: 1.5rem; color: #999; font-weight: 900; line-height: 1;">2023</span>
+                            <span style="color: #aaa; font-weight: 600; font-size: 1rem;">التأسيس</span>
+                        </div>
+                        
+                        <div class="timeline-card" style="background: transparent; padding: 25px 35px; border-radius: 20px; border: 1px dashed rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <h3 style="font-size: 1.4rem; color: #555; margin-bottom: 10px; font-weight: 800;">بداية الرحلة</h3>
+                            <p style="color: #888; line-height: 1.8; margin-bottom: 0; font-size: 1.05rem;">بداية صناعة الأثر وإطلاق البرامج التأسيسية التي مهدت الطريق للنجاحات الحالية في نشر ثقافة ريادة الأعمال.</p>
+                            
+                            <!-- مساحة الصورة -->
+                            <div class="image-placeholder-container" style="margin-top: 20px; border-radius: 16px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
+                                <!-- ضع مسار صورتك هنا -->
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -338,48 +253,39 @@
         </section>
     </main>
 
-    <footer class="main-footer">
-        <div class="container footer-grid">
-            <!-- Column 1: Entrepreneurship Info -->
+            <footer class="footer-section" style="background: var(--primary-navy); color: var(--white); padding: 80px 0 30px 0; position: relative; margin-top: 50px;">
+        <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: right;">
             <div class="footer-col">
-                <h3 class="footer-title">رائد الأعمال</h3>
-                <ul class="footer-list">
-                    <li><i data-lucide="lightbulb"></i> يلهم</li>
-                    <li><i data-lucide="settings"></i> يمكن</li>
-                    <li><i data-lucide="book-open"></i> يثقف</li>
-                    <li><i data-lucide="users"></i> منصة الحالمين</li>
-                    <li><i data-lucide="award"></i> النادي الأكثر تأثيراً</li>
+                <img src="../assets/logo/logo-footer.png" alt="شعار النادي" style="height: 90px; margin-bottom: 20px;">
+                <p style="color: rgba(255,255,255,0.7); line-height: 1.8; font-size: 1rem; max-width: 280px;">نادي ريادة الأعمال، منصة الحالمين وصناع المستقبل. نهدف لتمكين الطلبة وبناء شخصية ريادية طموحة.</p>
+            </div>
+            <div class="footer-col">
+                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; color: var(--accent-gold); position: relative; padding-bottom: 10px; border-bottom: 2px solid rgba(236,176,46,0.3); display: inline-block;">روابط سريعة</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
+                    <li><a href="../index.html" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">الرئيسية</a></li>
+                    <li><a href="../activities/" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">الأنشطة والفعاليات</a></li>
+                    <li><a href="../about/" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">من نحن</a></li>
+                    <li><a href="../members/" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">أعضاء النادي</a></li>
                 </ul>
             </div>
-
-            <!-- Column 2: Contact Info -->
             <div class="footer-col">
-                <h3 class="footer-title">تواصل معنا</h3>
-                <ul class="footer-list">
-                    <li><i data-lucide="mail"></i> البريد الإلكتروني</li>
-                    <li><i data-lucide="map-pin"></i> الموقع</li>
+                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; color: var(--accent-gold); position: relative; padding-bottom: 10px; border-bottom: 2px solid rgba(236,176,46,0.3); display: inline-block;">تواصل معنا</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
+                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8);"><i data-lucide="mail" style="width: 18px; color: var(--accent-gold);"></i> info@entclub.com</li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8);"><i data-lucide="map-pin" style="width: 18px; color: var(--accent-gold);"></i> جامعة الملك عبدالعزيز</li>
                 </ul>
             </div>
-
-            <!-- Column 3: Social & Logo -->
             <div class="footer-col">
-                <h3 class="footer-title">منصات التواصل الاجتماعي</h3>
-                <div class="social-icons">
-                    <a href="#"><i data-lucide="twitter"></i></a>
-                    <a href="#"><i data-lucide="message-circle"></i></a>
-                    <a href="#"><i data-lucide="linkedin"></i></a>
-                    <a href="#"><i data-lucide="instagram"></i></a>
+                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; color: var(--accent-gold); position: relative; padding-bottom: 10px; border-bottom: 2px solid rgba(236,176,46,0.3); display: inline-block;">منصاتنا</h3>
+                <div style="display: flex; gap: 15px;">
+                    <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); transition: background 0.3s;"><i data-lucide="twitter" style="width: 18px;"></i></a>
+                    <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); transition: background 0.3s;"><i data-lucide="instagram" style="width: 18px;"></i></a>
+                    <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); transition: background 0.3s;"><i data-lucide="linkedin" style="width: 18px;"></i></a>
                 </div>
             </div>
-
-            <!-- Logo Area -->
-            <div class="footer-logo-col">
-                <img src="../assets/image copy 2.png" alt="شعار النادي" class="footer-logo-img">
-            </div>
         </div>
-        
-        <div class="footer-bottom">
-            <p>© 2025 جميع الحقوق محفوظة | نادي ريادة الأعمال</p>
+        <div style="margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; color: rgba(255,255,255,0.5); font-size: 0.95rem;">
+            <p style="margin: 0;">© 2025 جميع الحقوق محفوظة | نادي ريادة الأعمال</p>
         </div>
     </footer>
 
