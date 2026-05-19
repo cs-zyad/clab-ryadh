@@ -73,3 +73,30 @@ setInterval(() => {
         updateSlider();
     }
 }, 5000);
+
+// Radial Hub Interaction Logic
+const hubNodes = document.querySelectorAll('.hub-node-item');
+const infoBlocks = document.querySelectorAll('.info-block');
+
+hubNodes.forEach(node => {
+    node.addEventListener('click', () => {
+        // Deactivate all nodes
+        hubNodes.forEach(n => n.classList.remove('active'));
+        // Activate current node
+        node.classList.add('active');
+        
+        const targetId = node.getAttribute('data-target');
+        
+        // Hide all info blocks with a transition
+        infoBlocks.forEach(block => {
+            block.classList.remove('active');
+        });
+        
+        // Find and show target block
+        const targetBlock = document.getElementById(targetId);
+        if (targetBlock) {
+            targetBlock.classList.add('active');
+        }
+    });
+});
+

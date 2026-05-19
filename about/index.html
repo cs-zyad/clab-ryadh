@@ -63,38 +63,106 @@
         </div>
     </section>
 
-    <!-- 3. نبذة عن النادي (نظام الكروت من الصفحة الرئيسية) -->
+    <!-- 3. نبذة عن النادي (نظام الكروت التفاعلي الفخم) -->
     <section class="about-simple-section py-100">
         <div class="container">
             <h2 class="section-title text-center">نبذة عن النادي</h2>
             
-            <div class="about-grid">
-                <!-- Who we are -->
-                <div class="about-card">
-                    <div class="card-icon"><i data-lucide="info"></i></div>
-                    <h3>من نحن؟</h3>
-                    <p>كيان طلابي بجامعة الملك عبدالعزيز يعزز وينشر مفهوم ريادة الأعمال من خلال برامج وأنشطة إبداعية.</p>
+            <div class="radial-hub-grid">
+                <!-- Column 1: Interactive Radial Hub -->
+                <div class="radial-hub-visual-area">
+                    <div class="hub-system-wrapper">
+                        <!-- Center logo with glowing effect -->
+                        <div class="hub-center-logo">
+                            <img src="../assets/image.png" alt="شعار النادي" class="hub-logo-img">
+                            <div class="hub-glow"></div>
+                        </div>
+                        
+                        <!-- Orbiting Ring lines -->
+                        <div class="orbit-line line-inner"></div>
+                        <div class="orbit-line line-outer"></div>
+                        
+                        <!-- Interactive Nodes -->
+                        <!-- Node 1: Who We Are -->
+                        <div class="hub-node-item node-1 active" data-target="who-we-are">
+                            <div class="node-pulse"></div>
+                            <div class="node-btn">
+                                <i data-lucide="info"></i>
+                            </div>
+                            <span class="node-label">من نحن؟</span>
+                        </div>
+                        
+                        <!-- Node 2: Our Vision -->
+                        <div class="hub-node-item node-2" data-target="our-vision">
+                            <div class="node-pulse"></div>
+                            <div class="node-btn">
+                                <i data-lucide="eye"></i>
+                            </div>
+                            <span class="node-label">رؤيتنا</span>
+                        </div>
+                        
+                        <!-- Node 3: Our Mission -->
+                        <div class="hub-node-item node-3" data-target="our-mission">
+                            <div class="node-pulse"></div>
+                            <div class="node-btn">
+                                <i data-lucide="target"></i>
+                            </div>
+                            <span class="node-label">رسالتنا</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Click Instruction Hint Badge -->
+                    <div class="hub-instruction-hint">
+                        <i data-lucide="mouse-pointer-click"></i>
+                        <span>انقر على الأيقونات للاستكشاف</span>
+                    </div>
                 </div>
-
-                <!-- Vision -->
-                <div class="about-card highlight">
-                    <div class="card-icon"><i data-lucide="eye"></i></div>
-                    <h3>رؤيتنا</h3>
-                    <p>الالريادة في خلق مجتمع طلابي ريادي طموح في الأعمال الريادية.</p>
-                </div>
-
-                <!-- Mission -->
-                <div class="about-card">
-                    <div class="card-icon"><i data-lucide="target"></i></div>
-                    <h3>رسالتنا</h3>
-                    <p>تطوير الجانب الريادي لدى الطلبة لبناء شخصية ريادية تتسم بالمسؤولية والطموح.</p>
+                
+                <!-- Column 2: Sleek Interactive Info Panel -->
+                <div class="radial-hub-info-panel">
+                    <div class="info-panel-glow"></div>
+                    <div class="info-panel-container">
+                        <!-- Info content blocks -->
+                        <div class="info-block active" id="who-we-are">
+                            <div class="info-header">
+                                <div class="info-badge"><i data-lucide="info"></i> تعريف عام</div>
+                                <h3>من نحن؟</h3>
+                            </div>
+                            <p class="info-desc">كيان طلابي بجامعة الملك عبدالعزيز يعزز وينشر مفهوم ريادة الأعمال من خلال برامج وأنشطة إبداعية ملهمة تصنع قادة الغد.</p>
+                            <div class="info-action-row">
+                                <a href="#goals" class="premium-hub-link">استكشف أهدافنا الاستراتيجية <i data-lucide="arrow-left"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="info-block" id="our-vision">
+                            <div class="info-header">
+                                <div class="info-badge"><i data-lucide="eye"></i> تطلع مستقبلي</div>
+                                <h3>رؤيتنا</h3>
+                            </div>
+                            <p class="info-desc">الالريادة في خلق مجتمع طلابي ريادي طموح في الأعمال الريادية والابتكار على مستوى المملكة والمنطقة.</p>
+                            <div class="info-action-row">
+                                <a href="#goals" class="premium-hub-link">رؤية 2030 والريادة <i data-lucide="arrow-left"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="info-block" id="our-mission">
+                            <div class="info-header">
+                                <div class="info-badge"><i data-lucide="target"></i> خارطة الطريق</div>
+                                <h3>رسالتنا</h3>
+                            </div>
+                            <p class="info-desc">تطوير الجانب الريادي والمهاري لدى الطلبة لبناء شخصية ريادية تتسم بالمسؤولية الكاملة، المبادرة، والطموح اللامحدود.</p>
+                            <div class="info-action-row">
+                                <a href="#goals" class="premium-hub-link">خارطة طريق التميز <i data-lucide="arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 4. قائمة الأهداف الرسمية الفاخرة (Typographic List) -->
-    <section class="premium-goals py-100 bg-light">
+    <section id="goals" class="premium-goals py-100 bg-light">
         <div class="container">
             <h2 class="premium-section-title text-center">أهدافنا الاستراتيجية</h2>
             <div class="goals-elegant-list">
