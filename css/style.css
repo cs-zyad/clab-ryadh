@@ -1485,11 +1485,9 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     }
 
     .main-header {
-        padding: 0.6rem 0; /* ط¸â€‍ط¸â€¦ط·آ³ط·آ© ط·آ¨ط·آ³ط¸ظ¹ط·آ·ط·آ© ط¸â€‍ط¸ظ¹ط·آ¹ط·آ·ط¸ظ¹ ط¸â€¦ط·آ³ط·آ§ط·آ­ط·آ© ط¸â€‍ط¸â€‍ط·آ´ط·آ¹ط·آ§ط·آ± ط·آ§ط¸â€‍ط·آ£ط¸ئ’ط·آ¨ط·آ± */
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(0,0,0,0.05);
+        padding: 0.6rem 0; /* لمسة بسيطة ليعطي مساحة للشعار الأكبر */
+        background: #f8f4eb; /* Solid Polished Beige - ensures mix-blend-mode works 100% on all mobile devices */
+        border-bottom: 1px solid rgba(236, 176, 46, 0.15);
     }
 
     .nav-menu {
@@ -1531,8 +1529,9 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     }
 
     .club-logo {
-        height: 60px; /* ط·ع¾ط¸ئ’ط·آ¨ط¸ظ¹ط·آ± ط·آ§ط¸â€‍ط·آ´ط·آ¹ط·آ§ط·آ± ط¸â€‍ط¸ظ¹ط¸ئ’ط¸ث†ط¸â€  ط¸ث†ط·آ§ط·آ¶ط·آ­ط·آ§ط¸â€¹ ط¸ث†ط¸â€¦ط¸â€،ط¸ظ¹ط·آ¨ط·آ§ط¸â€¹ */
+        height: 60px; /* تكبير الشعار ليكون واضحاً ومهيباً */
         object-fit: contain;
+        mix-blend-mode: multiply !important;
     }
 
     .slider {
