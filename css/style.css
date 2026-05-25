@@ -823,7 +823,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 }
 
 .program-logo {
-    width: 100px; /* ط·ع¾ط·آµط·ط›ط¸ظ¹ط·آ± ط·آ­ط·آ§ط¸ث†ط¸ظ¹ط·آ© ط·آ§ط¸â€‍ط·آ´ط·آ¹ط·آ§ط·آ± */
+    width: 100px;
     height: 100px;
     margin-bottom: 1.5rem;
     display: flex;
@@ -839,7 +839,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    mix-blend-mode: multiply; 
+    mix-blend-mode: multiply;
 }
 
 .program-name {
@@ -5016,6 +5016,64 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     50% { transform: scale(1.15); opacity: 0.8; }
 }
 
+/* =========================================================================
+   MOBILE INTERACTIVE HUB - Keyframes only (visibility handled by JS)
+   ========================================================================= */
 
+/* Hide back button by default - JS will show it when needed */
+.hub-back-btn {
+    display: none;
+}
+
+@keyframes premiumCardEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.96) translateY(25px);
+        filter: blur(6px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes fadeInSoft {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Hub Back Button */
+.hub-back-btn {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-navy) 0%, #34307a 100%);
+    color: var(--white);
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(35, 32, 85, 0.2);
+    transition: var(--transition);
+}
+
+.hub-back-btn:hover {
+    background: linear-gradient(135deg, #34307a 0%, var(--primary-navy) 100%);
+    box-shadow: 0 8px 25px rgba(35, 32, 85, 0.3);
+    transform: translateY(-2px);
+}
 
 

@@ -74,29 +74,101 @@ setInterval(() => {
     }
 }, 5000);
 
-// Radial Hub Interaction Logic
+// =============================================
+// Radial Hub Interaction Logic (Mobile-aware)
+// =============================================
 const hubNodes = document.querySelectorAll('.hub-node-item');
 const infoBlocks = document.querySelectorAll('.info-block');
+const hubGrid = document.getElementById('radial-hub-grid') || document.querySelector('.radial-hub-grid');
+const hubVisual = document.querySelector('.radial-hub-visual-area');
+const hubPanel = document.querySelector('.radial-hub-info-panel');
 
+function isMobile() {
+    return window.innerWidth <= 992;
+}
+
+function showCard(targetId) {
+    // Update nodes active state
+    hubNodes.forEach(n => n.classList.remove('active'));
+    document.querySelector(`[data-target="${targetId}"]`)?.classList.add('active');
+
+    // Update info blocks
+    infoBlocks.forEach(block => {
+        block.classList.remove('active');
+        // Hide all back buttons
+        const btn = block.querySelector('.hub-back-btn');
+        if (btn) btn.style.display = 'none';
+    });
+
+    const targetBlock = document.getElementById(targetId);
+    if (targetBlock) {
+        targetBlock.classList.add('active');
+        if (isMobile()) {
+            const backBtn = targetBlock.querySelector('.hub-back-btn');
+            if (backBtn) backBtn.style.display = 'flex';
+        }
+    }
+
+    // Mobile: swap panels
+    if (isMobile() && hubVisual && hubPanel) {
+        hubVisual.style.display = 'none';
+        hubPanel.style.display = 'flex';
+        // Trigger animation
+        hubPanel.style.animation = 'none';
+        hubPanel.offsetHeight; // reflow
+        hubPanel.style.animation = 'premiumCardEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+    }
+}
+
+function showOrbit() {
+    // Restore orbit view
+    if (isMobile() && hubVisual && hubPanel) {
+        hubPanel.style.display = 'none';
+        hubVisual.style.display = '';
+        hubVisual.style.animation = 'fadeInSoft 0.4s ease forwards';
+    }
+    // Hide all back buttons
+    infoBlocks.forEach(block => {
+        const btn = block.querySelector('.hub-back-btn');
+        if (btn) btn.style.display = 'none';
+    });
+}
+
+// On page load: hide panel on mobile, hide all back buttons
+if (isMobile()) {
+    if (hubPanel) hubPanel.style.display = 'none';
+}
+infoBlocks.forEach(block => {
+    const btn = block.querySelector('.hub-back-btn');
+    if (btn) btn.style.display = 'none';
+});
+
+// Node click
 hubNodes.forEach(node => {
     node.addEventListener('click', () => {
-        // Deactivate all nodes
-        hubNodes.forEach(n => n.classList.remove('active'));
-        // Activate current node
-        node.classList.add('active');
-        
         const targetId = node.getAttribute('data-target');
-        
-        // Hide all info blocks with a transition
-        infoBlocks.forEach(block => {
-            block.classList.remove('active');
-        });
-        
-        // Find and show target block
-        const targetBlock = document.getElementById(targetId);
-        if (targetBlock) {
-            targetBlock.classList.add('active');
-        }
+        showCard(targetId);
     });
 });
+
+// Back button click (delegated on document to avoid issues)
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.hub-back-btn')) {
+        e.stopPropagation();
+        showOrbit();
+    }
+});
+
+// On resize: reset to desktop state if screen grows
+window.addEventListener('resize', () => {
+    if (!isMobile()) {
+        if (hubVisual) hubVisual.style.display = '';
+        if (hubPanel) hubPanel.style.display = '';
+        infoBlocks.forEach(block => {
+            const btn = block.querySelector('.hub-back-btn');
+            if (btn) btn.style.display = 'none';
+        });
+    }
+});
+
 

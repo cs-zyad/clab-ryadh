@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css?v=1.4">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
@@ -68,7 +68,7 @@
         <div class="container">
             <h2 class="section-title text-center">نبذة عن النادي</h2>
             
-            <div class="radial-hub-grid">
+            <div class="radial-hub-grid" id="radial-hub-grid">
                 <!-- Column 1: Interactive Radial Hub -->
                 <div class="radial-hub-visual-area">
                     <div class="hub-system-wrapper">
@@ -132,19 +132,21 @@
                             <div class="info-action-row">
                                 <a href="#goals" class="premium-hub-link">استكشف أهدافنا الاستراتيجية <i data-lucide="arrow-left"></i></a>
                             </div>
+                            <button class="hub-back-btn"><i data-lucide="chevron-right"></i> رجوع</button>
                         </div>
-                        
+
                         <div class="info-block" id="our-vision">
                             <div class="info-header">
                                 <div class="info-badge"><i data-lucide="eye"></i> تطلع مستقبلي</div>
                                 <h3>رؤيتنا</h3>
                             </div>
-                            <p class="info-desc">الالريادة في خلق مجتمع طلابي ريادي طموح في الأعمال الريادية والابتكار على مستوى المملكة والمنطقة.</p>
+                            <p class="info-desc">الريادة في خلق مجتمع طلابي ريادي طموح في الأعمال الريادية والابتكار على مستوى المملكة والمنطقة.</p>
                             <div class="info-action-row">
                                 <a href="#goals" class="premium-hub-link">رؤية 2030 والريادة <i data-lucide="arrow-left"></i></a>
                             </div>
+                            <button class="hub-back-btn"><i data-lucide="chevron-right"></i> رجوع</button>
                         </div>
-                        
+
                         <div class="info-block" id="our-mission">
                             <div class="info-header">
                                 <div class="info-badge"><i data-lucide="target"></i> خارطة الطريق</div>
@@ -154,6 +156,7 @@
                             <div class="info-action-row">
                                 <a href="#goals" class="premium-hub-link">خارطة طريق التميز <i data-lucide="arrow-left"></i></a>
                             </div>
+                            <button class="hub-back-btn"><i data-lucide="chevron-right"></i> رجوع</button>
                         </div>
                     </div>
                 </div>
@@ -275,7 +278,7 @@
         </div>
     </footer>
 
-    <script src="../js/main.js"></script>
+    <script src="../js/main.js?v=1.4"></script>
     <script>lucide.createIcons();</script>
 </body>
 </html>
