@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الميديا | نادي ريادة الأعمال</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --navy: #232055;
+            --gold: #ecb02e;
+            --white: #ffffff;
+            --bg: #f0f2f8;
+            --card: #ffffff;
+            --text-light: #6b7280;
+            --border: rgba(35,32,85,0.08);
+            --green: #10b981;
+            --red: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+
+        body { background: var(--bg); color: var(--navy); min-height: 100vh; }
+
+        /* ===== LOGIN ===== */
+        .login-wrap {
+            display: flex; align-items: center; justify-content: center;
+            min-height: 100vh;
+        }
+        .login-box {
+            background: var(--white); border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(35,32,85,0.12);
+            padding: 50px 45px; width: 100%; max-width: 420px; text-align: center;
+        }
+        .login-icon {
+            width: 80px; height: 80px; background: var(--navy);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; color: var(--gold); margin: 0 auto 24px;
+        }
+        .login-box h2 { font-size: 1.6rem; font-weight: 900; margin-bottom: 8px; }
+        .login-box p { color: var(--text-light); margin-bottom: 30px; font-size: 0.95rem; }
+        .input-group { text-align: right; margin-bottom: 18px; }
+        .input-group label { display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 8px; }
+        .input-field {
+            width: 100%; padding: 13px 16px; border: 1.5px solid var(--border);
+            border-radius: 12px; font-size: 1rem; font-family: 'Cairo', sans-serif;
+            outline: none; transition: all 0.3s; background: #fafafa;
+        }
+        .input-field:focus { border-color: var(--gold); background: var(--white); box-shadow: 0 0 0 4px rgba(236,176,46,0.12); }
+        .btn-login {
+            width: 100%; padding: 14px; background: var(--navy); color: var(--white);
+            border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 800;
+            cursor: pointer; margin-top: 8px; transition: all 0.3s; font-family: 'Cairo', sans-serif;
+        }
+        .btn-login:hover { background: #1a1744; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(35,32,85,0.2); }
+        .login-error { color: var(--red); font-size: 0.85rem; margin-top: 12px; display: none; }
+
+        /* ===== APP LAYOUT ===== */
+        .app { display: none; min-height: 100vh; }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed; top: 0; right: 0; width: 260px; height: 100vh;
+            background: var(--navy); display: flex; flex-direction: column;
+            z-index: 100; box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+        }
+        .sidebar-brand {
+            padding: 28px 24px; border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex; align-items: center; gap: 14px;
+        }
+        .brand-logo { width: 44px; height: 44px; background: var(--gold); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; color: var(--navy); flex-shrink: 0;
+        }
+        .brand-text h3 { color: var(--white); font-size: 1rem; font-weight: 800; }
+        .brand-text p { color: rgba(255,255,255,0.5); font-size: 0.78rem; }
+
+        .sidebar-nav { flex: 1; padding: 20px 16px; display: flex; flex-direction: column; gap: 6px; }
+        .nav-item {
+            display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+            border-radius: 12px; color: rgba(255,255,255,0.6); text-decoration: none;
+            font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; border: none;
+            background: none; width: 100%; text-align: right;
+        }
+        .nav-item:hover { background: rgba(255,255,255,0.06); color: var(--white); }
+        .nav-item.active { background: rgba(236,176,46,0.15); color: var(--gold); }
+        .nav-item i { width: 20px; height: 20px; flex-shrink: 0; }
+
+        .sidebar-footer { padding: 16px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .btn-logout {
+            width: 100%; display: flex; align-items: center; gap: 10px; padding: 12px 16px;
+            border-radius: 12px; color: rgba(255,255,255,0.5); background: none;
+            border: 1px solid rgba(255,255,255,0.1); cursor: pointer; font-weight: 600;
+            font-size: 0.9rem; transition: all 0.2s; font-family: 'Cairo', sans-serif;
+        }
+        .btn-logout:hover { background: rgba(239,68,68,0.15); color: #fca5a5; border-color: rgba(239,68,68,0.3); }
+
+        /* Main */
+        .main { margin-right: 260px; padding: 32px; }
+
+        /* Top bar */
+        .topbar {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 32px;
+        }
+        .topbar-title h1 { font-size: 1.6rem; font-weight: 900; }
+        .topbar-title p { color: var(--text-light); font-size: 0.9rem; margin-top: 4px; }
+        .topbar-badge {
+            display: flex; align-items: center; gap: 8px; padding: 8px 18px;
+            background: rgba(16,185,129,0.1); color: var(--green);
+            border-radius: 50px; font-weight: 700; font-size: 0.85rem;
+            border: 1px solid rgba(16,185,129,0.2);
+        }
+        .topbar-badge span { width: 8px; height: 8px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+        /* Stats Row */
+        .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 32px; }
+        .stat-card {
+            background: var(--card); border-radius: 18px; padding: 24px;
+            box-shadow: 0 2px 12px rgba(35,32,85,0.06); display: flex;
+            align-items: center; gap: 18px;
+        }
+        .stat-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .stat-icon.blue { background: rgba(59,130,246,0.1); color: #3b82f6; }
+        .stat-icon.gold { background: rgba(236,176,46,0.1); color: var(--gold); }
+        .stat-icon.green { background: rgba(16,185,129,0.1); color: var(--green); }
+        .stat-num { font-size: 1.8rem; font-weight: 900; line-height: 1; }
+        .stat-label { color: var(--text-light); font-size: 0.85rem; margin-top: 4px; }
+
+        /* Content Grid */
+        .content-grid { display: grid; grid-template-columns: 1fr 380px; gap: 24px; }
+
+        /* Card */
+        .card {
+            background: var(--card); border-radius: 20px;
+            box-shadow: 0 2px 12px rgba(35,32,85,0.06); overflow: hidden;
+        }
+        .card-header {
+            padding: 20px 24px; border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; gap: 12px;
+        }
+        .card-header-icon {
+            width: 38px; height: 38px; border-radius: 10px;
+            background: rgba(236,176,46,0.1); color: var(--gold);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .card-header h3 { font-size: 1.05rem; font-weight: 800; }
+        .card-header p { color: var(--text-light); font-size: 0.82rem; }
+        .card-body { padding: 24px; }
+
+        /* Form */
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-group { margin-bottom: 18px; }
+        .form-group.full { grid-column: 1/-1; }
+        .form-group label { display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 8px; color: var(--navy); }
+        .form-group label span { color: var(--red); margin-right: 3px; }
+
+        textarea.input-field { resize: vertical; min-height: 110px; line-height: 1.7; }
+
+        .char-count { font-size: 0.78rem; color: var(--text-light); text-align: left; margin-top: 5px; }
+        .char-count.warn { color: #f59e0b; }
+        .char-count.over { color: var(--red); }
+
+        /* Image Upload */
+        .upload-zone {
+            border: 2px dashed rgba(35,32,85,0.15); border-radius: 14px;
+            padding: 28px 20px; text-align: center; cursor: pointer;
+            transition: all 0.3s; background: #fafafa; position: relative;
+        }
+        .upload-zone:hover { border-color: var(--gold); background: rgba(236,176,46,0.03); }
+        .upload-zone.has-image { border-color: var(--green); background: rgba(16,185,129,0.03); }
+        .upload-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+        .upload-icon { color: var(--gold); margin-bottom: 10px; }
+        .upload-text { font-weight: 700; font-size: 0.9rem; }
+        .upload-hint { color: var(--text-light); font-size: 0.8rem; margin-top: 4px; }
+        .upload-preview { max-width: 100%; max-height: 160px; border-radius: 10px; margin-top: 12px; display: none; object-fit: cover; }
+
+        /* Type Selector */
+        .type-selector { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+        .type-option { display: none; }
+        .type-label {
+            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            padding: 14px 10px; border: 2px solid var(--border); border-radius: 14px;
+            cursor: pointer; transition: all 0.2s; font-size: 0.82rem; font-weight: 700;
+            color: var(--text-light); text-align: center;
+        }
+        .type-label i { width: 22px; height: 22px; }
+        .type-option:checked + .type-label { border-color: var(--gold); color: var(--navy); background: rgba(236,176,46,0.08); }
+
+        /* Publish Btn */
+        .btn-publish {
+            width: 100%; padding: 16px; background: var(--navy); color: var(--white);
+            border: none; border-radius: 14px; font-size: 1.05rem; font-weight: 800;
+            cursor: pointer; transition: all 0.3s; font-family: 'Cairo', sans-serif;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .btn-publish:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(236,176,46,0.3); }
+        .btn-publish i { width: 20px; height: 20px; }
+
+        /* Preview Card */
+        .preview-card {
+            border: 1.5px solid var(--border); border-radius: 16px; padding: 18px;
+            background: #fafafa;
+        }
+        .preview-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .preview-avatar {
+            width: 46px; height: 46px; border-radius: 50%; background: var(--navy);
+            display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;
+        }
+        .preview-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .preview-name { font-weight: 800; font-size: 0.95rem; }
+        .preview-handle { color: var(--text-light); font-size: 0.82rem; }
+        .preview-text { font-size: 0.95rem; line-height: 1.7; color: var(--navy); min-height: 40px; margin-bottom: 14px; white-space: pre-wrap; }
+        .preview-text.empty { color: var(--text-light); font-style: italic; }
+        .preview-image { width: 100%; border-radius: 12px; max-height: 200px; object-fit: cover; display: none; margin-bottom: 14px; }
+        .preview-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid var(--border); }
+        .preview-date { color: var(--text-light); font-size: 0.8rem; }
+        .preview-type-badge { padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; }
+        .badge-tweet { background: rgba(29,161,242,0.1); color: #1da1f2; }
+        .badge-photo { background: rgba(168,85,247,0.1); color: #a855f7; }
+        .badge-event { background: rgba(236,176,46,0.1); color: #d97706; }
+
+        /* Posts Feed */
+        .posts-section { margin-top: 28px; }
+        .posts-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+        .posts-header h3 { font-size: 1.05rem; font-weight: 800; }
+        .filter-tabs { display: flex; gap: 8px; }
+        .filter-tab {
+            padding: 6px 16px; border-radius: 20px; font-size: 0.82rem; font-weight: 700;
+            cursor: pointer; border: 1.5px solid var(--border); background: none;
+            color: var(--text-light); transition: all 0.2s; font-family: 'Cairo', sans-serif;
+        }
+        .filter-tab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+        .posts-list { display: flex; flex-direction: column; gap: 14px; }
+        .post-item {
+            background: var(--card); border-radius: 16px; padding: 18px 20px;
+            box-shadow: 0 2px 10px rgba(35,32,85,0.05); display: flex;
+            gap: 16px; align-items: flex-start; transition: all 0.2s;
+            border: 1.5px solid transparent;
+        }
+        .post-item:hover { border-color: rgba(236,176,46,0.2); transform: translateY(-1px); }
+        .post-thumb {
+            width: 60px; height: 60px; border-radius: 12px; object-fit: cover;
+            flex-shrink: 0; background: var(--bg); display: flex;
+            align-items: center; justify-content: center; color: var(--text-light);
+        }
+        .post-thumb img { width: 100%; height: 100%; border-radius: 12px; object-fit: cover; }
+        .post-info { flex: 1; min-width: 0; }
+        .post-type-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .post-text { font-size: 0.9rem; color: var(--navy); line-height: 1.5;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .post-meta { color: var(--text-light); font-size: 0.78rem; margin-top: 6px; }
+        .post-actions { display: flex; gap: 6px; flex-shrink: 0; }
+        .icon-btn {
+            width: 34px; height: 34px; border-radius: 8px; border: 1.5px solid var(--border);
+            background: none; cursor: pointer; display: flex; align-items: center;
+            justify-content: center; transition: all 0.2s;
+        }
+        .icon-btn:hover { background: #fee2e2; border-color: var(--red); color: var(--red); }
+        .icon-btn i { width: 16px; height: 16px; }
+
+        .empty-state { text-align: center; padding: 50px 20px; color: var(--text-light); }
+        .empty-state i { width: 48px; height: 48px; margin-bottom: 16px; opacity: 0.3; }
+        .empty-state p { font-size: 0.95rem; }
+
+        /* Toast */
+        .toast {
+            position: fixed; bottom: 30px; left: 30px;
+            background: var(--navy); color: var(--white);
+            padding: 14px 22px; border-radius: 14px; font-weight: 700;
+            font-size: 0.9rem; display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform: translateY(80px);
+            opacity: 0; transition: all 0.4s cubic-bezier(0.4,0,0.2,1); z-index: 999;
+        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast i { width: 20px; height: 20px; color: var(--gold); }
+
+        @media (max-width: 1100px) {
+            .content-grid { grid-template-columns: 1fr; }
+            .sidebar { width: 220px; }
+            .main { margin-right: 220px; }
+        }
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main { margin-right: 0; padding: 20px; }
+            .stats-row { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== APP ===== -->
+<div class="app" id="app" style="display:block;">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-logo">
+                <i data-lucide="camera" style="width:22px;height:22px;"></i>
+            </div>
+            <div class="brand-text">
+                <h3>لوحة الميديا</h3>
+                <p>نادي ريادة الأعمال</p>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <button class="nav-item active" onclick="showTab('add')">
+                <i data-lucide="plus-circle"></i> إضافة منشور جديد
+            </button>
+            <button class="nav-item" onclick="showTab('posts')">
+                <i data-lucide="layout-list"></i> المنشورات المضافة
+            </button>
+            <a href="../index.html" target="_blank" class="nav-item">
+                <i data-lucide="globe"></i> معاينة الموقع
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="btn-logout" id="logoutBtn">
+                <i data-lucide="log-out" style="width:18px;height:18px;"></i>
+                تسجيل خروج
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="topbar-title">
+                <h1>إضافة منشور جديد</h1>
+                <p>أضف المحتوى ليظهر فوراً في قسم أحدث الأخبار</p>
+            </div>
+            <div class="topbar-badge">
+                <span></span> فريق الميديا
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-row" id="statsRow">
+            <div class="stat-card">
+                <div class="stat-icon blue"><i data-lucide="file-text" style="width:24px;height:24px;"></i></div>
+                <div>
+                    <div class="stat-num" id="statTotal">0</div>
+                    <div class="stat-label">إجمالي المنشورات</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon gold"><i data-lucide="twitter" style="width:24px;height:24px;"></i></div>
+                <div>
+                    <div class="stat-num" id="statTweets">0</div>
+                    <div class="stat-label">تغريدات</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green"><i data-lucide="image" style="width:24px;height:24px;"></i></div>
+                <div>
+                    <div class="stat-num" id="statPhotos">0</div>
+                    <div class="stat-label">صور وإعلانات</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid" id="addTab">
+
+            <!-- Form -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header-icon"><i data-lucide="edit-3" style="width:18px;height:18px;"></i></div>
+                    <div>
+                        <h3>تفاصيل المنشور</h3>
+                        <p>اكتب المحتوى واضغط نشر</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form id="postForm">
+                        <!-- Type -->
+                        <div class="form-group">
+                            <label>نوع المنشور <span>*</span></label>
+                            <div class="type-selector">
+                                <input type="radio" name="postType" id="typeTweet" value="tweet" class="type-option" checked>
+                                <label for="typeTweet" class="type-label">
+                                    <i data-lucide="twitter"></i> تغريدة
+                                </label>
+                                <input type="radio" name="postType" id="typePhoto" value="photo" class="type-option">
+                                <label for="typePhoto" class="type-label">
+                                    <i data-lucide="image"></i> صورة / إعلان
+                                </label>
+                                <input type="radio" name="postType" id="typeEvent" value="event" class="type-option">
+                                <label for="typeEvent" class="type-label">
+                                    <i data-lucide="calendar"></i> فعالية
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <!-- Text -->
+                            <div class="form-group full">
+                                <label>النص <span>*</span></label>
+                                <textarea class="input-field" id="postText" placeholder="اكتب نص التغريدة أو المنشور هنا..." oninput="updatePreview(); updateCharCount(this)"></textarea>
+                                <div class="char-count" id="charCount">0 / 280</div>
+                            </div>
+
+                            <!-- Image -->
+                            <div class="form-group full">
+                                <label>صورة (اختياري)</label>
+                                <div class="upload-zone" id="uploadZone">
+                                    <input type="file" accept="image/*" id="imageInput" onchange="handleImage(this)">
+                                    <i data-lucide="upload-cloud" style="width:36px;height:36px;" class="upload-icon"></i>
+                                    <div class="upload-text" id="uploadText">اضغط لرفع صورة</div>
+                                    <div class="upload-hint">PNG، JPG — حجم أقصى 5MB</div>
+                                    <img id="uploadPreview" class="upload-preview" alt="معاينة">
+                                </div>
+                            </div>
+
+                            <!-- Tweet Link -->
+                            <div class="form-group full" id="tweetLinkGroup">
+                                <label>رابط التغريدة على X (اختياري)</label>
+                                <input type="url" class="input-field" id="tweetLink" placeholder="https://x.com/EntrClub_KAU/status/...">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-publish">
+                            <i data-lucide="send"></i> نشر الآن
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Preview -->
+            <div>
+                <div class="card" style="position: sticky; top: 24px;">
+                    <div class="card-header">
+                        <div class="card-header-icon"><i data-lucide="eye" style="width:18px;height:18px;"></i></div>
+                        <div>
+                            <h3>معاينة مباشرة</h3>
+                            <p>كيف سيبدو المنشور</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="preview-card">
+                            <div class="preview-header">
+                                <div class="preview-avatar">
+                                    <img src="../assets/image.png" alt="شعار النادي" onerror="this.style.display='none'">
+                                </div>
+                                <div>
+                                    <div class="preview-name">نادي ريادة الأعمال</div>
+                                    <div class="preview-handle">@EntrClub_KAU</div>
+                                </div>
+                            </div>
+                            <div class="preview-text empty" id="previewText">سيظهر نص المنشور هنا...</div>
+                            <img id="previewImage" class="preview-image" alt="صورة المنشور">
+                            <div class="preview-footer">
+                                <span class="preview-date" id="previewDate">—</span>
+                                <span class="preview-type-badge badge-tweet" id="previewBadge">تغريدة</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Posts Tab -->
+        <div id="postsTab" style="display:none;">
+            <div class="card">
+                <div class="card-body">
+                    <div class="posts-header">
+                        <h3>جميع المنشورات</h3>
+                        <div class="filter-tabs">
+                            <button class="filter-tab active" onclick="filterPosts('all', this)">الكل</button>
+                            <button class="filter-tab" onclick="filterPosts('tweet', this)">تغريدات</button>
+                            <button class="filter-tab" onclick="filterPosts('photo', this)">صور</button>
+                            <button class="filter-tab" onclick="filterPosts('event', this)">فعاليات</button>
+                        </div>
+                    </div>
+                    <div class="posts-list" id="postsList"></div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+    <i data-lucide="check-circle"></i>
+    <span id="toastMsg">تم النشر بنجاح!</span>
+</div>
+
+<script>
+lucide.createIcons();
+
+const PASS = 'media2025';
+const KEY  = 'media_posts';
+
+
+
+/* ===== Tabs ===== */
+function showTab(tab) {
+    document.getElementById('addTab').style.display   = tab === 'add'   ? 'grid' : 'none';
+    document.getElementById('postsTab').style.display = tab === 'posts' ? 'block': 'none';
+    document.querySelectorAll('.nav-item').forEach((el,i) => {
+        el.classList.toggle('active', (tab === 'add' && i === 0) || (tab === 'posts' && i === 1));
+    });
+    const titles = { add: 'إضافة منشور جديد', posts: 'المنشورات المضافة' };
+    document.querySelector('.topbar-title h1').textContent = titles[tab];
+    if (tab === 'posts') renderPosts();
+}
+
+/* ===== Storage ===== */
+function getPosts() { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
+function savePosts(p) { localStorage.setItem(KEY, JSON.stringify(p)); }
+
+/* ===== Post Form ===== */
+let imageData = null;
+
+function handleImage(input) {
+    if (!input.files[0]) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+        imageData = e.target.result;
+        document.getElementById('uploadPreview').src = imageData;
+        document.getElementById('uploadPreview').style.display = 'block';
+        document.getElementById('uploadText').textContent = input.files[0].name;
+        document.getElementById('uploadZone').classList.add('has-image');
+        document.getElementById('previewImage').src = imageData;
+        document.getElementById('previewImage').style.display = 'block';
+        lucide.createIcons();
+    };
+    reader.readAsDataURL(input.files[0]);
+}
+
+function updateCharCount(el) {
+    const len = el.value.length;
+    const counter = document.getElementById('charCount');
+    counter.textContent = `${len} / 280`;
+    counter.className = 'char-count' + (len > 280 ? ' over' : len > 240 ? ' warn' : '');
+}
+
+function updatePreview() {
+    const text = document.getElementById('postText').value;
+    const el = document.getElementById('previewText');
+    el.textContent = text || 'سيظهر نص المنشور هنا...';
+    el.classList.toggle('empty', !text);
+
+    const type = document.querySelector('input[name="postType"]:checked').value;
+    const badge = document.getElementById('previewBadge');
+    const labels = { tweet: ['تغريدة','badge-tweet'], photo: ['صورة','badge-photo'], event: ['فعالية','badge-event'] };
+    badge.textContent = labels[type][0];
+    badge.className = `preview-type-badge ${labels[type][1]}`;
+
+    const now = new Date();
+    document.getElementById('previewDate').textContent =
+        now.toLocaleDateString('ar-SA', { year:'numeric', month:'long', day:'numeric' });
+}
+
+document.querySelectorAll('input[name="postType"]').forEach(r => r.addEventListener('change', updatePreview));
+
+document.getElementById('postForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const text = document.getElementById('postText').value.trim();
+    if (!text) return;
+
+    const type = document.querySelector('input[name="postType"]:checked').value;
+    const post = {
+        id: Date.now().toString(),
+        type,
+        text,
+        image: imageData || null,
+        link: document.getElementById('tweetLink').value || null,
+        date: new Date().toISOString()
+    };
+
+    const posts = getPosts();
+    posts.unshift(post);
+    savePosts(posts);
+    updateStats();
+
+    // Reset
+    document.getElementById('postForm').reset();
+    document.getElementById('postText').value = '';
+    document.getElementById('uploadPreview').style.display = 'none';
+    document.getElementById('uploadText').textContent = 'اضغط لرفع صورة';
+    document.getElementById('uploadZone').classList.remove('has-image');
+    document.getElementById('previewImage').style.display = 'none';
+    document.getElementById('charCount').textContent = '0 / 280';
+    imageData = null;
+    updatePreview();
+
+    showToast('✅ تم النشر بنجاح!');
+    lucide.createIcons();
+});
+
+/* ===== Render Posts ===== */
+let currentFilter = 'all';
+
+function filterPosts(type, btn) {
+    currentFilter = type;
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    renderPosts();
+}
+
+function renderPosts() {
+    const posts = getPosts().filter(p => currentFilter === 'all' || p.type === currentFilter);
+    const list = document.getElementById('postsList');
+
+    if (posts.length === 0) {
+        list.innerHTML = `<div class="empty-state">
+            <i data-lucide="inbox" style="width:48px;height:48px;display:block;margin:0 auto 16px;opacity:0.3;"></i>
+            <p>لا توجد منشورات حتى الآن</p>
+        </div>`;
+        lucide.createIcons(); return;
+    }
+
+    const typeLabel = { tweet: 'تغريدة', photo: 'صورة', event: 'فعالية' };
+    const typeBadge = { tweet: 'badge-tweet', photo: 'badge-photo', event: 'badge-event' };
+
+    list.innerHTML = posts.map(p => `
+        <div class="post-item" id="post-${p.id}">
+            <div class="post-thumb">
+                ${p.image
+                    ? `<img src="${p.image}" alt="صورة">`
+                    : `<i data-lucide="file-text" style="width:24px;height:24px;"></i>`}
+            </div>
+            <div class="post-info">
+                <div class="post-type-row">
+                    <span class="preview-type-badge ${typeBadge[p.type]}">${typeLabel[p.type]}</span>
+                </div>
+                <div class="post-text">${p.text}</div>
+                <div class="post-meta">${new Date(p.date).toLocaleDateString('ar-SA', {year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'})}</div>
+            </div>
+            <div class="post-actions">
+                ${p.link ? `<a href="${p.link}" target="_blank" class="icon-btn" title="فتح الرابط" style="color:var(--navy);"><i data-lucide="external-link"></i></a>` : ''}
+                <button class="icon-btn" title="حذف" onclick="deletePost('${p.id}')">
+                    <i data-lucide="trash-2"></i>
+                </button>
+            </div>
+        </div>
+    `).join('');
+    lucide.createIcons();
+}
+
+function deletePost(id) {
+    if (!confirm('حذف هذا المنشور؟')) return;
+    savePosts(getPosts().filter(p => p.id !== id));
+    updateStats(); renderPosts();
+    showToast('تم الحذف');
+}
+
+/* ===== Stats ===== */
+function updateStats() {
+    const posts = getPosts();
+    document.getElementById('statTotal').textContent  = posts.length;
+    document.getElementById('statTweets').textContent = posts.filter(p => p.type === 'tweet').length;
+    document.getElementById('statPhotos').textContent = posts.filter(p => p.type === 'photo').length;
+}
+
+/* ===== Toast ===== */
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+updatePreview();
+</script>
+</body>
+</html>
