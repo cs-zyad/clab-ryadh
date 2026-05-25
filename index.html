@@ -55,23 +55,177 @@
             </div>
         </section>
 
-        <!-- Twitter Feed Section -->
+        <!-- News Feed Section -->
         <section class="gallery-section py-100">
             <div class="container text-center">
                 <h2 class="section-title">أحدث الأخبار</h2>
-                <div style="max-width: 1000px; margin: 0 auto; background: var(--white); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; min-height: 500px;">
-                    <a class="twitter-timeline"
-                       href="https://twitter.com/EntrClub_KAU?ref_src=twsrc%5Etfw"
-                       data-tweet-limit="1"
-                       data-chrome="noheader nofooter noborders"
-                       data-lang="ar"
-                       data-dnt="true">
-                        جاري تحميل تغريدات نادي ريادة الأعمال...
-                    </a>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <div id="newsFeed" style="max-width:1000px; margin:0 auto; display:flex; flex-direction:column; gap:24px; text-align:right;"></div>
+                <div id="newsEmpty" style="max-width:1000px; margin:0 auto; background:var(--white); border-radius:24px; box-shadow:var(--shadow); padding:80px 20px; display:none;">
+                    <i data-lucide="inbox" style="width:52px;height:52px;color:#ccc;margin-bottom:16px;"></i>
+                    <p style="color:#aaa;font-size:1rem;">لا توجد منشورات حتى الآن</p>
                 </div>
             </div>
         </section>
+
+        <style>
+        .news-card {
+            --nc-navy: var(--primary-navy);
+            --nc-gold: var(--accent-gold);
+            --nc-ink: #2b2960;
+            --nc-muted: #8a88a8;
+            --nc-radius: 22px;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            direction: rtl;
+            align-items: stretch;
+            min-height: 250px;
+            background: linear-gradient(135deg, #ffffff 0%, #fcfcff 55%, #f6f7fc 100%);
+            border: 1px solid rgba(35,32,85,0.06);
+            border-radius: var(--nc-radius);
+            overflow: hidden;
+            isolation: isolate;
+            box-shadow:
+                0 1px 2px rgba(35,32,85,0.04),
+                0 8px 24px rgba(35,32,85,0.07),
+                0 24px 48px -16px rgba(35,32,85,0.11);
+            transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s cubic-bezier(0.22,1,0.36,1), border-color 0.45s ease;
+        }
+        .news-card.no-image { grid-template-columns: 1fr; }
+
+        /* خط ذهبي متدرج */
+        .news-card::before {
+            content:""; position:absolute; top:0; right:0; bottom:0; width:5px; z-index:3;
+            background: linear-gradient(180deg, var(--nc-gold) 0%, #f6cf6a 35%, #d99a1f 100%);
+            box-shadow: 0 0 18px rgba(236,176,46,0.45);
+            transition: width 0.45s cubic-bezier(0.22,1,0.36,1);
+        }
+        /* وهج ذهبي عند hover */
+        .news-card::after {
+            content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+            background: radial-gradient(120% 80% at 100% 0%, rgba(236,176,46,0.10) 0%, transparent 55%);
+            opacity:0; transition:opacity 0.45s ease; z-index:2;
+        }
+        .news-card:hover { transform:translateY(-6px); border-color:rgba(236,176,46,0.25);
+            box-shadow: 0 2px 4px rgba(35,32,85,0.05), 0 14px 32px rgba(35,32,85,0.10), 0 40px 70px -24px rgba(35,32,85,0.22); }
+        .news-card:hover::before { width:7px; }
+        .news-card:hover::after  { opacity:1; }
+
+        .news-body {
+            position:relative; z-index:4; padding:30px 34px;
+            display:flex; flex-direction:column; gap:16px; justify-content:space-between;
+        }
+        .news-card-header { display:flex; align-items:center; gap:13px; }
+        .news-avatar {
+            width:52px; height:52px; border-radius:50%; flex-shrink:0;
+            background:linear-gradient(135deg, var(--nc-navy), #3a3680);
+            border:2px solid #fff;
+            box-shadow: 0 0 0 2px var(--nc-gold), 0 6px 16px rgba(35,32,85,0.18);
+            display:flex; align-items:center; justify-content:center; overflow:hidden;
+        }
+        .news-avatar img { width:100%; height:100%; object-fit:cover; }
+        .news-name { font-weight:800; font-size:1.06rem; color:var(--nc-navy); letter-spacing:-0.2px; }
+        .news-handle { display:block; margin-top:2px; font-size:0.84rem; font-weight:600; color:var(--nc-muted); }
+        .news-text {
+            font-size:1.05rem; line-height:1.85; font-weight:500; color:var(--nc-ink);
+            display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; flex:1;
+        }
+        .news-footer {
+            display:flex; align-items:center; justify-content:space-between;
+            padding-top:16px; border-top:1px solid rgba(35,32,85,0.07);
+        }
+        .news-date { font-size:0.82rem; font-weight:600; color:var(--nc-muted); }
+        .news-badge {
+            padding:7px 15px; border-radius:999px; font-size:0.78rem; font-weight:800;
+            color:var(--nc-navy);
+            background:linear-gradient(135deg, #fbe7a8 0%, var(--nc-gold) 100%);
+            border:1px solid rgba(217,154,31,0.4);
+            box-shadow: 0 2px 8px rgba(236,176,46,0.30), inset 0 1px 0 rgba(255,255,255,0.5);
+        }
+        /* لا حاجة لهذه — الـ badge دائماً ذهبي */
+        .badge-tweet,.badge-photo,.badge-event {}
+
+        .news-img-wrap { position:relative; overflow:hidden; z-index:1; }
+        .news-img-wrap img {
+            width:100%; height:100%; object-fit:cover; display:block;
+            transition:transform 0.7s cubic-bezier(0.22,1,0.36,1);
+        }
+        /* overlay navy + تعتيم سفلي */
+        .news-img-wrap::before {
+            content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+            background:
+                linear-gradient(90deg, rgba(35,32,85,0.28) 0%, rgba(35,32,85,0.05) 35%, transparent 70%),
+                linear-gradient(180deg, transparent 55%, rgba(35,32,85,0.22) 100%);
+        }
+        /* لمعة ذهبية عند حد التقاء الصورة بالنص */
+        .news-img-wrap::after {
+            content:""; position:absolute; top:0; bottom:0; right:0; width:1px; z-index:3;
+            background:linear-gradient(180deg, transparent, rgba(236,176,46,0.55), transparent);
+        }
+        .news-card:hover .news-img-wrap img { transform:scale(1.06); }
+
+        @media (max-width:700px) {
+            .news-card { grid-template-columns:1fr !important; }
+            .news-card::before { width:100%; height:4px; bottom:auto; top:0; }
+            .news-card:hover::before { width:100%; height:5px; }
+            .news-img-wrap { order:-1; height:210px; }
+            .news-body { padding:22px; }
+        }
+        @media (prefers-reduced-motion:reduce) {
+            .news-card,.news-card::before,.news-img-wrap img { transition:none; }
+            .news-card:hover { transform:none; }
+        }
+        </style>
+
+        <script>
+        (function(){
+            const KEY = 'media_posts';
+            const feed  = document.getElementById('newsFeed');
+            const empty = document.getElementById('newsEmpty');
+            const posts  = JSON.parse(localStorage.getItem(KEY) || '[]');
+            const latest = posts.slice(0, 5);
+
+            if (latest.length === 0) {
+                empty.style.display = 'block';
+                lucide.createIcons();
+                return;
+            }
+
+            const typeLabel = { tweet:'تغريدة', photo:'صورة', event:'فعالية' };
+            const typeBadge = { tweet:'badge-tweet', photo:'badge-photo', event:'badge-event' };
+
+            latest.forEach(p => {
+                const date = new Date(p.date).toLocaleDateString('ar-SA',{year:'numeric',month:'long',day:'numeric'});
+                const card = document.createElement('div');
+                card.className = 'news-card' + (p.image ? '' : ' no-image');
+
+                card.innerHTML = `
+                    <div class="news-body">
+                        <div>
+                            <div class="news-card-header">
+                                <div class="news-avatar">
+                                    <img src="assets/image.png" alt="شعار" onerror="this.style.display='none'">
+                                </div>
+                                <div>
+                                    <div class="news-name">نادي ريادة الأعمال</div>
+                                    <div class="news-handle">@EntrClub_KAU</div>
+                                </div>
+                            </div>
+                            <div class="news-text">${p.text}</div>
+                        </div>
+                        <div class="news-footer">
+                            <span class="news-date">${date}</span>
+                            <span class="news-badge ${typeBadge[p.type]||'badge-tweet'}">${typeLabel[p.type]||'منشور'}</span>
+                        </div>
+                    </div>
+                    ${p.image ? `<div class="news-img-wrap"><img src="${p.image}" alt="صورة المنشور"></div>` : ''}
+                `;
+
+                if (p.link) { card.style.cursor='pointer'; card.onclick=()=>window.open(p.link,'_blank'); }
+                feed.appendChild(card);
+            });
+        })();
+        </script>
 
         <!-- Minimal About Section -->
         <section class="about-simple-section py-100">
