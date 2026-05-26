@@ -205,7 +205,7 @@
                 // Clear existing feed
                 feed.innerHTML = '';
                 
-                const latest = posts.slice(0, 5);
+                const latest = posts.slice(0, 1);
 
                 if (latest.length === 0) {
                     empty.style.display = 'block';
@@ -255,7 +255,7 @@
 
             // Real-time synchronization
             if (useFirebase) {
-                const q = query(collection(db, "posts"), orderBy("date", "desc"), limit(5));
+                const q = query(collection(db, "posts"), orderBy("date", "desc"), limit(1));
                 onSnapshot(q, (snapshot) => {
                     const posts = [];
                     snapshot.forEach((doc) => {
