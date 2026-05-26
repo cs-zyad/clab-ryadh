@@ -15,7 +15,7 @@
             --white: #ffffff;
             --bg-color: #f4f4f7;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -81,6 +81,7 @@
             font-size: 1rem;
             outline: none;
             transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
         }
 
         .form-control:focus {
@@ -100,6 +101,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 10px;
+            font-family: 'Cairo', sans-serif;
         }
 
         .btn-submit:hover {
@@ -115,11 +117,11 @@
             display: none;
         }
 
-        /* Dashboard Screen (Hidden initially) */
+        /* Dashboard Screen */
         .dashboard-container {
             display: none;
             width: 100%;
-            max-width: 800px;
+            max-width: 860px;
             background: var(--white);
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(35, 32, 85, 0.08);
@@ -149,6 +151,7 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
         }
 
         .logout-btn:hover {
@@ -178,7 +181,6 @@
             grid-column: 1 / -1;
         }
 
-        /* Events Management List */
         .manage-section {
             margin-top: 50px;
             border-top: 2px solid #eee;
@@ -214,9 +216,9 @@
             font-weight: 700;
         }
 
-        .status-open { background: #dcfce7; color: #166534; }
-        .status-soon { background: #fef9c3; color: #854d0e; }
-        .status-ended { background: #fee2e2; color: #991b1b; }
+        .status-open   { background: #dcfce7; color: #166534; }
+        .status-soon   { background: #fef9c3; color: #854d0e; }
+        .status-ended  { background: #fee2e2; color: #991b1b; }
 
         .action-btns {
             display: flex;
@@ -235,17 +237,37 @@
             justify-content: center;
         }
 
-        .action-btn i {
-            width: 18px;
-            height: 18px;
-        }
+        .action-btn i { width: 18px; height: 18px; }
 
-        .edit-btn { color: #2563eb; }
-        .edit-btn:hover { background: #dbeafe; }
-
+        .edit-btn   { color: #2563eb; }
+        .edit-btn:hover   { background: #dbeafe; }
         .delete-btn { color: #dc2626; }
         .delete-btn:hover { background: #fee2e2; }
 
+        /* Loading / toast */
+        .toast {
+            position: fixed; bottom: 30px; left: 30px;
+            background: var(--primary-navy); color: var(--white);
+            padding: 14px 22px; border-radius: 14px; font-weight: 700;
+            font-size: 0.9rem; display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(80px); opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1); z-index: 999;
+        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+
+        .firebase-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 4px 12px; background: rgba(16,185,129,0.1);
+            color: #059669; border-radius: 20px; font-size: 0.8rem;
+            font-weight: 700; border: 1px solid rgba(16,185,129,0.2);
+            margin-bottom: 20px;
+        }
+        .firebase-badge span {
+            width: 7px; height: 7px; background: #10b981;
+            border-radius: 50%; animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
     </style>
 </head>
 <body>
@@ -256,7 +278,7 @@
             <i data-lucide="shield-check" style="width: 40px; height: 40px;"></i>
         </div>
         <h1 class="login-title">تسجيل دخول الإدارة</h1>
-        
+
         <form id="loginForm">
             <div class="form-group">
                 <label>البريد الإلكتروني</label>
@@ -278,15 +300,20 @@
             <button class="logout-btn" id="logoutBtn">تسجيل خروج</button>
         </div>
         <div class="dashboard-body">
-            <h3>إضافة فعالية جديدة</h3>
+
+            <div class="firebase-badge">
+                <span></span> متصل بـ Firebase — البيانات حية
+            </div>
+
+            <h3 id="formTitle">إضافة فعالية جديدة</h3>
             <form id="addEventForm" class="grid-form">
                 <div class="form-group">
                     <label>عنوان الفعالية</label>
-                    <input type="text" class="form-control" required placeholder="مثال: معسكر رواد الأعمال">
+                    <input type="text" id="f_title" class="form-control" required placeholder="مثال: معسكر رواد الأعمال">
                 </div>
                 <div class="form-group">
                     <label>التصنيف</label>
-                    <select class="form-control" required>
+                    <select id="f_category" class="form-control" required>
                         <option value="meeting">لقاءات</option>
                         <option value="program">برامج</option>
                         <option value="competition">مسابقات</option>
@@ -294,45 +321,51 @@
                 </div>
                 <div class="form-group">
                     <label>التاريخ</label>
-                    <input type="date" class="form-control" required>
+                    <input type="date" id="f_date" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>الوقت</label>
-                    <input type="time" class="form-control" required>
+                    <input type="time" id="f_time" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>مكان اللقاء</label>
-                    <input type="text" class="form-control" required placeholder="مثال: مقر النادي - مبنى 4">
+                    <input type="text" id="f_location" class="form-control" required placeholder="مثال: مقر النادي - مبنى 4">
                 </div>
                 <div class="form-group">
                     <label>حالة التسجيل</label>
-                    <select class="form-control" required id="eventStatus">
+                    <select id="f_status" class="form-control" required>
                         <option value="open">مفتوح للتسجيل</option>
                         <option value="soon">قريباً</option>
                         <option value="ended">انتهى</option>
                     </select>
                 </div>
-                <div class="form-group full-width" id="registrationLinkGroup">
+                <div class="form-group full-width">
                     <label>رابط زر التسجيل (مثال: رابط Google Form)</label>
-                    <input type="url" class="form-control" placeholder="https://forms.gle/...">
+                    <input type="url" id="f_regLink" class="form-control" placeholder="https://forms.gle/...">
                 </div>
                 <div class="form-group full-width">
                     <label>وصف مختصر</label>
-                    <textarea class="form-control" rows="3" required placeholder="اكتب نبذة عن الفعالية..."></textarea>
+                    <textarea id="f_desc" class="form-control" rows="3" required placeholder="اكتب نبذة عن الفعالية..."></textarea>
                 </div>
                 <div class="form-group full-width">
                     <label>صورة البوستر (رفع من الجهاز)</label>
-                    <div style="border: 2px dashed rgba(0,0,0,0.1); padding: 20px; text-align: center; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; background: #fafafa;" onclick="document.getElementById('posterUpload').click()" onmouseover="this.style.borderColor='var(--accent-gold)'" onmouseout="this.style.borderColor='rgba(0,0,0,0.1)'">
+                    <div style="border: 2px dashed rgba(0,0,0,0.1); padding: 20px; text-align: center; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; background: #fafafa;"
+                         onclick="document.getElementById('posterUpload').click()"
+                         onmouseover="this.style.borderColor='var(--accent-gold)'"
+                         onmouseout="this.style.borderColor='rgba(0,0,0,0.1)'">
                         <i data-lucide="upload-cloud" style="width: 32px; height: 32px; color: var(--accent-gold); margin-bottom: 10px;"></i>
                         <p style="color: #666; font-size: 0.9rem; font-weight: 600;" id="uploadText">اضغط هنا لاختيار صورة من جهازك</p>
-                        <input type="file" id="posterUpload" class="form-control" accept="image/*" style="display: none;" onchange="document.getElementById('uploadText').innerText = this.files[0] ? this.files[0].name : 'اضغط هنا لاختيار صورة من جهازك'; document.getElementById('uploadText').style.color = 'var(--primary-navy)';">
+                        <input type="file" id="posterUpload" accept="image/*" style="display: none;"
+                               onchange="document.getElementById('uploadText').innerText = this.files[0] ? this.files[0].name : 'اضغط هنا لاختيار صورة من جهازك';">
                     </div>
                 </div>
                 <div class="form-group full-width">
-                    <button type="submit" class="btn-submit" style="background: var(--accent-gold); color: var(--primary-navy); font-size: 1.2rem;">إضافة الفعالية للموقع</button>
+                    <button type="submit" id="submitBtn" class="btn-submit" style="background: var(--accent-gold); color: var(--primary-navy); font-size: 1.1rem;">
+                        إضافة الفعالية للموقع
+                    </button>
                 </div>
             </form>
-            
+
             <!-- Management Section -->
             <div class="manage-section">
                 <h3>إدارة الفعاليات المضافة</h3>
@@ -347,217 +380,231 @@
                             </tr>
                         </thead>
                         <tbody id="eventsList">
-                            <!-- Mock Data Row 1 -->
-                            <tr>
-                                <td style="font-weight: 600;">لقاء ريادي مع مغني</td>
-                                <td>لقاءات</td>
-                                <td><span class="status-badge status-open">مفتوح</span></td>
-                                <td>
-                                    <div class="action-btns">
-                                        <button class="action-btn edit-btn" title="تعديل"><i data-lucide="edit-3"></i></button>
-                                        <button class="action-btn delete-btn" title="حذف"><i data-lucide="trash-2"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!-- Mock Data Row 2 -->
-                            <tr>
-                                <td style="font-weight: 600;">معسكر التصميم الابتكاري</td>
-                                <td>برامج</td>
-                                <td><span class="status-badge status-soon">قريباً</span></td>
-                                <td>
-                                    <div class="action-btns">
-                                        <button class="action-btn edit-btn" title="تعديل"><i data-lucide="edit-3"></i></button>
-                                        <button class="action-btn delete-btn" title="حذف"><i data-lucide="trash-2"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
+                            <tr><td colspan="4" style="text-align:center; padding:30px; color:#999;">جاري التحميل...</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-
-            <p style="margin-top: 30px; font-size: 0.9rem; color: #666; text-align: center;">
-                <i data-lucide="info" style="width: 16px; height: 16px; vertical-align: middle;"></i> 
-                ملاحظة: هذه الواجهة جاهزة لربطها بقاعدة البيانات (Firebase) لاحقاً لتنفيذ التعديل والحذف الفعلي.
-            </p>
         </div>
     </div>
 
-    <script>
-        lucide.createIcons();
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i data-lucide="check-circle" style="width:18px;height:18px;color:var(--accent-gold);"></i>
+        <span id="toastMsg"></span>
+    </div>
 
-        // Admin Login Logic
-        const loginForm = document.getElementById('loginForm');
-        const loginScreen = document.getElementById('loginScreen');
-        const dashboardScreen = document.getElementById('dashboardScreen');
-        const loginError = document.getElementById('loginError');
-        const logoutBtn = document.getElementById('logoutBtn');
+<script type="module">
+import { initializeApp }           from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, addDoc, doc, updateDoc, deleteDoc, onSnapshot, orderBy, query }
+                                    from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { firebaseConfig }          from "../js/firebase-config.js";
 
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('adminEmail').value;
-            const password = document.getElementById('adminPassword').value;
+lucide.createIcons();
 
-            if(email === 'admin@admin.com' && password === '123456') {
-                loginScreen.style.display = 'none';
-                dashboardScreen.style.display = 'block';
-                document.body.style.alignItems = 'flex-start';
-                document.body.style.padding = '40px 20px';
+// ─── Firebase init ────────────────────────────────────────────────
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+// ─── Auth (simple hardcoded — يمكن ترقيتها لاحقاً) ───────────────
+const ADMIN_EMAIL = 'admin@admin.com';
+const ADMIN_PASS  = '123456';
+
+const loginScreen    = document.getElementById('loginScreen');
+const dashboardScreen= document.getElementById('dashboardScreen');
+const loginError     = document.getElementById('loginError');
+
+document.getElementById('loginForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const email = document.getElementById('adminEmail').value;
+    const pass  = document.getElementById('adminPassword').value;
+    if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
+        loginScreen.style.display    = 'none';
+        dashboardScreen.style.display= 'block';
+        document.body.style.alignItems = 'flex-start';
+        document.body.style.padding    = '40px 20px';
+        startRealtimeListener();
+    } else {
+        loginError.style.display = 'block';
+    }
+});
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+    dashboardScreen.style.display= 'none';
+    loginScreen.style.display    = 'block';
+    document.body.style.alignItems = 'center';
+    document.body.style.padding    = '0';
+    document.getElementById('loginForm').reset();
+    loginError.style.display = 'none';
+    if (unsubscribe) unsubscribe();
+});
+
+// ─── Real-time listener ───────────────────────────────────────────
+let unsubscribe = null;
+
+function startRealtimeListener() {
+    const q = query(collection(db, 'events'), orderBy('createdAt', 'desc'));
+    unsubscribe = onSnapshot(q, snapshot => {
+        const events = [];
+        snapshot.forEach(d => events.push({ id: d.id, ...d.data() }));
+        renderEvents(events);
+    });
+}
+
+// ─── Render table ─────────────────────────────────────────────────
+function renderEvents(events) {
+    const tbody = document.getElementById('eventsList');
+    if (events.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:30px;color:#999;">لا توجد فعاليات مضافة حالياً</td></tr>';
+        return;
+    }
+    const catLabel = { meeting:'لقاءات', program:'برامج', competition:'مسابقات' };
+    tbody.innerHTML = events.map(ev => {
+        const statusMap = {
+            open:  ['status-open',  'مفتوح'],
+            soon:  ['status-soon',  'قريباً'],
+            ended: ['status-ended', 'انتهى'],
+        };
+        const [cls, lbl] = statusMap[ev.status] || ['status-soon','—'];
+        return `
+        <tr>
+            <td style="font-weight:600;">${ev.title}</td>
+            <td>${catLabel[ev.category] || ev.category}</td>
+            <td><span class="status-badge ${cls}">${lbl}</span></td>
+            <td>
+                <div class="action-btns">
+                    <button class="action-btn edit-btn"   title="تعديل" onclick="editEvent('${ev.id}')">
+                        <i data-lucide="edit-3"></i>
+                    </button>
+                    <button class="action-btn delete-btn" title="حذف"   onclick="deleteEvent('${ev.id}')">
+                        <i data-lucide="trash-2"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>`;
+    }).join('');
+    lucide.createIcons();
+}
+
+// ─── Add / Edit form ──────────────────────────────────────────────
+let editingId   = null;
+let editingImage= null; // base64 of existing image when editing
+
+const addEventForm = document.getElementById('addEventForm');
+
+addEventForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'جاري الحفظ...';
+
+    const fileInput = document.getElementById('posterUpload');
+
+    const doSave = async (imageData) => {
+        const data = {
+            title:    document.getElementById('f_title').value.trim(),
+            category: document.getElementById('f_category').value,
+            date:     document.getElementById('f_date').value,
+            time:     document.getElementById('f_time').value,
+            location: document.getElementById('f_location').value.trim(),
+            status:   document.getElementById('f_status').value,
+            regLink:  document.getElementById('f_regLink').value.trim(),
+            desc:     document.getElementById('f_desc').value.trim(),
+            image:    imageData,
+        };
+
+        try {
+            if (editingId) {
+                await updateDoc(doc(db, 'events', editingId), data);
+                showToast('✅ تم تحديث الفعالية!');
+                cancelEdit();
             } else {
-                loginError.style.display = 'block';
+                data.createdAt = new Date().toISOString();
+                await addDoc(collection(db, 'events'), data);
+                showToast('✅ تمت إضافة الفعالية!');
             }
-        });
-
-        logoutBtn.addEventListener('click', () => {
-            dashboardScreen.style.display = 'none';
-            loginScreen.style.display = 'block';
-            document.body.style.alignItems = 'center';
-            document.body.style.padding = '0';
-            loginForm.reset();
-            loginError.style.display = 'none';
-        });
-
-        // Storage Logic for Mock Dashboard
-        const STORAGE_KEY = 'club_events';
-        let currentEditId = null;
-
-        function getEvents() {
-            const events = localStorage.getItem(STORAGE_KEY);
-            return events ? JSON.parse(events) : [];
+            addEventForm.reset();
+            document.getElementById('uploadText').innerText = 'اضغط هنا لاختيار صورة من جهازك';
+        } catch (err) {
+            console.error(err);
+            showToast('❌ حدث خطأ، حاول مجدداً');
         }
+        btn.disabled = false;
+        btn.textContent = editingId ? 'تحديث بيانات الفعالية' : 'إضافة الفعالية للموقع';
+    };
 
-        function saveEvent(event) {
-            const events = getEvents();
-            if (currentEditId) {
-                const index = events.findIndex(e => e.id === currentEditId);
-                if (index !== -1) events[index] = event;
-                currentEditId = null;
-                document.querySelector('.btn-submit').innerText = 'إضافة الفعالية للموقع';
-                document.querySelector('.btn-submit').style.background = 'var(--accent-gold)';
-                document.querySelector('.dashboard-body h3').innerText = 'إضافة فعالية جديدة';
-            } else {
-                events.push(event);
-            }
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(events));
-            renderEventsList();
-        }
+    if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = ev => doSave(ev.target.result);
+        reader.readAsDataURL(fileInput.files[0]);
+    } else {
+        doSave(editingImage || null);
+    }
+});
 
-        window.editEvent = function(id) {
-            const events = getEvents();
-            const event = events.find(e => e.id === id);
-            if (!event) return;
+// ─── Edit ─────────────────────────────────────────────────────────
+window.editEvent = async function(id) {
+    // جيب البيانات من الـ snapshot المخزّن
+    const row = document.querySelector(`[onclick="editEvent('${id}')"]`)?.closest('tr');
+    if (!row) return;
 
-            currentEditId = id;
-            
-            // Populate Form
-            addEventForm.querySelector('input[placeholder*="مثال: معسكر"]').value = event.title;
-            addEventForm.querySelector('select').value = event.category;
-            addEventForm.querySelector('input[type="date"]').value = event.date;
-            addEventForm.querySelector('input[type="time"]').value = event.time;
-            addEventForm.querySelector('input[placeholder*="مبنى 4"]').value = event.location;
-            document.getElementById('eventStatus').value = event.status;
-            document.getElementById('registrationLinkGroup').querySelector('input').value = event.regLink;
-            addEventForm.querySelector('textarea').value = event.desc;
-            
-            if (event.image) {
-                document.getElementById('uploadText').innerText = 'تم تحميل الصورة مسبقاً (اضغط لتغييرها)';
-                document.getElementById('uploadText').style.color = 'var(--primary-navy)';
-            }
+    // نجيب البيانات من Firestore مباشرة
+    const { getDoc } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
+    const snap = await getDoc(doc(db, 'events', id));
+    if (!snap.exists()) return;
+    const ev = snap.data();
 
-            // Change UI to Edit Mode
-            document.querySelector('.btn-submit').innerText = 'تحديث بيانات الفعالية';
-            document.querySelector('.btn-submit').style.background = '#4ade80';
-            document.querySelector('.dashboard-body h3').innerText = 'تعديل الفعالية الحالية';
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+    editingId    = id;
+    editingImage = ev.image || null;
 
-        window.deleteEvent = function(id) {
-            if(confirm('هل أنت متأكد من حذف هذه الفعالية؟')) {
-                let events = getEvents();
-                events = events.filter(e => e.id !== id);
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(events));
-                renderEventsList();
-            }
-        }
+    document.getElementById('f_title').value    = ev.title    || '';
+    document.getElementById('f_category').value = ev.category || 'meeting';
+    document.getElementById('f_date').value     = ev.date     || '';
+    document.getElementById('f_time').value     = ev.time     || '';
+    document.getElementById('f_location').value = ev.location || '';
+    document.getElementById('f_status').value   = ev.status   || 'open';
+    document.getElementById('f_regLink').value  = ev.regLink  || '';
+    document.getElementById('f_desc').value     = ev.desc     || '';
+    if (ev.image) document.getElementById('uploadText').innerText = 'صورة محفوظة (اضغط لتغييرها)';
 
-        function renderEventsList() {
-            const eventsList = document.getElementById('eventsList');
-            const events = getEvents();
-            
-            eventsList.innerHTML = '';
-            
-            if(events.length === 0) {
-                eventsList.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 30px; color: #999;">لا توجد فعاليات مضافة حالياً</td></tr>';
-                return;
-            }
+    document.getElementById('formTitle').innerText  = 'تعديل الفعالية الحالية';
+    const btn = document.getElementById('submitBtn');
+    btn.textContent       = 'تحديث بيانات الفعالية';
+    btn.style.background  = '#4ade80';
+    btn.style.color       = '#fff';
 
-            events.forEach(event => {
-                const tr = document.createElement('tr');
-                let statusClass = 'status-open';
-                let statusText = 'مفتوح';
-                
-                if(event.status === 'soon') { statusClass = 'status-soon'; statusText = 'قريباً'; }
-                else if(event.status === 'ended') { statusClass = 'status-ended'; statusText = 'انتهى'; }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 
-                tr.innerHTML = `
-                    <td style="font-weight: 600;">${event.title}</td>
-                    <td>${event.category === 'meeting' ? 'لقاءات' : event.category === 'program' ? 'برامج' : 'مسابقات'}</td>
-                    <td><span class="status-badge ${statusClass}">${statusText}</span></td>
-                    <td>
-                        <div class="action-btns">
-                            <button class="action-btn edit-btn" title="تعديل" onclick="editEvent('${event.id}')"><i data-lucide="edit-3"></i></button>
-                            <button class="action-btn delete-btn" title="حذف" onclick="deleteEvent('${event.id}')"><i data-lucide="trash-2"></i></button>
-                        </div>
-                    </td>
-                `;
-                eventsList.appendChild(tr);
-            });
-            lucide.createIcons();
-        }
+function cancelEdit() {
+    editingId    = null;
+    editingImage = null;
+    document.getElementById('formTitle').innerText = 'إضافة فعالية جديدة';
+    const btn = document.getElementById('submitBtn');
+    btn.textContent      = 'إضافة الفعالية للموقع';
+    btn.style.background = 'var(--accent-gold)';
+    btn.style.color      = 'var(--primary-navy)';
+}
 
-        // Initialize List on Load
-        renderEventsList();
+// ─── Delete ───────────────────────────────────────────────────────
+window.deleteEvent = async function(id) {
+    if (!confirm('هل أنت متأكد من حذف هذه الفعالية؟')) return;
+    try {
+        await deleteDoc(doc(db, 'events', id));
+        showToast('🗑️ تم حذف الفعالية');
+    } catch (err) {
+        console.error(err);
+        showToast('❌ فشل الحذف');
+    }
+};
 
-        // Handle Add Event Form
-        const addEventForm = document.getElementById('addEventForm');
-        addEventForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const fileInput = document.getElementById('posterUpload');
-            
-            const processSave = (imageData) => {
-                const events = getEvents();
-                const existingEvent = currentEditId ? events.find(ev => ev.id === currentEditId) : null;
-
-                const eventData = {
-                    id: currentEditId || Date.now().toString(),
-                    title: addEventForm.querySelector('input[placeholder*="مثال: معسكر"]').value,
-                    category: addEventForm.querySelector('select').value,
-                    date: addEventForm.querySelector('input[type="date"]').value,
-                    time: addEventForm.querySelector('input[type="time"]').value,
-                    location: addEventForm.querySelector('input[placeholder*="مبنى 4"]').value,
-                    status: document.getElementById('eventStatus').value,
-                    regLink: document.getElementById('registrationLinkGroup').querySelector('input').value,
-                    desc: addEventForm.querySelector('textarea').value,
-                    image: imageData || (existingEvent ? existingEvent.image : null)
-                };
-                
-                saveEvent(eventData);
-                alert(currentEditId ? 'تم تحديث الفعالية بنجاح!' : 'تمت إضافة الفعالية بنجاح!');
-                addEventForm.reset();
-                document.getElementById('uploadText').innerText = 'اضغط هنا لاختيار صورة من جهازك';
-                document.getElementById('uploadText').style.color = '#666';
-            };
-
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = (e) => processSave(e.target.result);
-                reader.readAsDataURL(fileInput.files[0]);
-            } else {
-                processSave(null);
-            }
-        });
-    </script>
+// ─── Toast ────────────────────────────────────────────────────────
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
 </body>
 </html>

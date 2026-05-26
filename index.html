@@ -177,53 +177,98 @@
         }
         </style>
 
-        <script>
+        <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { firebaseConfig } from "./js/firebase-config.js";
+
         (function(){
             const KEY = 'media_posts';
             const feed  = document.getElementById('newsFeed');
             const empty = document.getElementById('newsEmpty');
-            const posts  = JSON.parse(localStorage.getItem(KEY) || '[]');
-            const latest = posts.slice(0, 5);
 
-            if (latest.length === 0) {
-                empty.style.display = 'block';
-                lucide.createIcons();
-                return;
+            let db = null;
+            let useFirebase = false;
+
+            if (firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY") {
+                try {
+                    const app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    useFirebase = true;
+                    console.log("Firebase initialized for homepage feed.");
+                } catch (e) {
+                    console.error("Firebase connection error: ", e);
+                }
             }
 
-            const typeLabel = { tweet:'تغريدة', photo:'صورة', event:'فعالية' };
-            const typeBadge = { tweet:'badge-tweet', photo:'badge-photo', event:'badge-event' };
+            function displayPosts(posts) {
+                // Clear existing feed
+                feed.innerHTML = '';
+                
+                const latest = posts.slice(0, 5);
 
-            latest.forEach(p => {
-                const date = new Date(p.date).toLocaleDateString('ar-SA',{year:'numeric',month:'long',day:'numeric'});
-                const card = document.createElement('div');
-                card.className = 'news-card' + (p.image ? '' : ' no-image');
+                if (latest.length === 0) {
+                    empty.style.display = 'block';
+                    feed.style.display = 'none';
+                    lucide.createIcons();
+                    return;
+                }
 
-                card.innerHTML = `
-                    <div class="news-body">
-                        <div>
-                            <div class="news-card-header">
-                                <div class="news-avatar">
-                                    <img src="assets/image.png" alt="شعار" onerror="this.style.display='none'">
+                empty.style.display = 'none';
+                feed.style.display = 'flex';
+
+                const typeLabel = { tweet:'تغريدة', photo:'صورة', event:'فعالية' };
+                const typeBadge = { tweet:'badge-tweet', photo:'badge-photo', event:'badge-event' };
+
+                latest.forEach(p => {
+                    const date = new Date(p.date).toLocaleDateString('ar-SA',{year:'numeric',month:'long',day:'numeric'});
+                    const card = document.createElement('div');
+                    card.className = 'news-card' + (p.image ? '' : ' no-image');
+
+                    card.innerHTML = `
+                        <div class="news-body">
+                            <div>
+                                <div class="news-card-header">
+                                    <div class="news-avatar">
+                                        <img src="assets/image.png" alt="شعار" onerror="this.style.display='none'">
+                                    </div>
+                                    <div>
+                                        <div class="news-name">نادي ريادة الأعمال</div>
+                                        <div class="news-handle">@EntrClub_KAU</div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <div class="news-name">نادي ريادة الأعمال</div>
-                                    <div class="news-handle">@EntrClub_KAU</div>
-                                </div>
+                                <div class="news-text">${p.text}</div>
                             </div>
-                            <div class="news-text">${p.text}</div>
+                            <div class="news-footer">
+                                <span class="news-date">${date}</span>
+                                <span class="news-badge ${typeBadge[p.type]||'badge-tweet'}">${typeLabel[p.type]||'منشور'}</span>
+                            </div>
                         </div>
-                        <div class="news-footer">
-                            <span class="news-date">${date}</span>
-                            <span class="news-badge ${typeBadge[p.type]||'badge-tweet'}">${typeLabel[p.type]||'منشور'}</span>
-                        </div>
-                    </div>
-                    ${p.image ? `<div class="news-img-wrap"><img src="${p.image}" alt="صورة المنشور"></div>` : ''}
-                `;
+                        ${p.image ? `<div class="news-img-wrap"><img src="${p.image}" alt="صورة المنشور"></div>` : ''}
+                    `;
 
-                if (p.link) { card.style.cursor='pointer'; card.onclick=()=>window.open(p.link,'_blank'); }
-                feed.appendChild(card);
-            });
+                    if (p.link) { card.style.cursor='pointer'; card.onclick=()=>window.open(p.link,'_blank'); }
+                    feed.appendChild(card);
+                });
+                lucide.createIcons();
+            }
+
+            // Real-time synchronization
+            if (useFirebase) {
+                const q = query(collection(db, "posts"), orderBy("date", "desc"), limit(5));
+                onSnapshot(q, (snapshot) => {
+                    const posts = [];
+                    snapshot.forEach((doc) => {
+                        posts.push({ id: doc.id, ...doc.data() });
+                    });
+                    displayPosts(posts);
+                }, (error) => {
+                    console.error("Error fetching live posts: ", error);
+                    displayPosts(JSON.parse(localStorage.getItem(KEY) || '[]'));
+                });
+            } else {
+                displayPosts(JSON.parse(localStorage.getItem(KEY) || '[]'));
+            }
         })();
         </script>
 

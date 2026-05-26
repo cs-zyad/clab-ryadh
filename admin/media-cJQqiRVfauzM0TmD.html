@@ -497,13 +497,32 @@
     <span id="toastMsg">تم النشر بنجاح!</span>
 </div>
 
-<script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, addDoc, doc, deleteDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { firebaseConfig } from "../js/firebase-config.js";
+
 lucide.createIcons();
 
 const PASS = 'media2025';
 const KEY  = 'media_posts';
 
+// Initialize Firebase
+let db = null;
+let useFirebase = false;
 
+if (firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY") {
+    try {
+        const app = initializeApp(firebaseConfig);
+        db = getFirestore(app);
+        useFirebase = true;
+        console.log("Firebase connected successfully!");
+    } catch (e) {
+        console.error("Firebase connection error: ", e);
+    }
+} else {
+    console.log("Using LocalStorage fallback. Please configure Firebase in js/firebase-config.js to enable the live database.");
+}
 
 /* ===== Tabs ===== */
 function showTab(tab) {
@@ -566,14 +585,13 @@ function updatePreview() {
 
 document.querySelectorAll('input[name="postType"]').forEach(r => r.addEventListener('change', updatePreview));
 
-document.getElementById('postForm').addEventListener('submit', e => {
+document.getElementById('postForm').addEventListener('submit', async e => {
     e.preventDefault();
     const text = document.getElementById('postText').value.trim();
     if (!text) return;
 
     const type = document.querySelector('input[name="postType"]:checked').value;
     const post = {
-        id: Date.now().toString(),
         type,
         text,
         image: imageData || null,
@@ -581,10 +599,31 @@ document.getElementById('postForm').addEventListener('submit', e => {
         date: new Date().toISOString()
     };
 
-    const posts = getPosts();
-    posts.unshift(post);
-    savePosts(posts);
-    updateStats();
+    if (useFirebase) {
+        try {
+            const btn = document.querySelector('.btn-publish');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = 'جاري النشر...';
+
+            await addDoc(collection(db, "posts"), post);
+            
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+            showToast('✅ تم النشر بنجاح!');
+        } catch (e) {
+            console.error("Error adding document: ", e);
+            showToast('❌ فشل النشر');
+            return;
+        }
+    } else {
+        post.id = Date.now().toString();
+        const posts = getPosts();
+        posts.unshift(post);
+        savePosts(posts);
+        updateStats();
+        showToast('✅ تم النشر محلياً!');
+    }
 
     // Reset
     document.getElementById('postForm').reset();
@@ -596,8 +635,6 @@ document.getElementById('postForm').addEventListener('submit', e => {
     document.getElementById('charCount').textContent = '0 / 280';
     imageData = null;
     updatePreview();
-
-    showToast('✅ تم النشر بنجاح!');
     lucide.createIcons();
 });
 
@@ -611,11 +648,22 @@ function filterPosts(type, btn) {
     renderPosts();
 }
 
+let activePosts = []; // Holds currently loaded posts from database/fallback
+
 function renderPosts() {
-    const posts = getPosts().filter(p => currentFilter === 'all' || p.type === currentFilter);
+    if (useFirebase) {
+        renderPostsList(activePosts);
+    } else {
+        activePosts = getPosts();
+        renderPostsList(activePosts);
+    }
+}
+
+function renderPostsList(posts) {
+    const filtered = posts.filter(p => currentFilter === 'all' || p.type === currentFilter);
     const list = document.getElementById('postsList');
 
-    if (posts.length === 0) {
+    if (filtered.length === 0) {
         list.innerHTML = `<div class="empty-state">
             <i data-lucide="inbox" style="width:48px;height:48px;display:block;margin:0 auto 16px;opacity:0.3;"></i>
             <p>لا توجد منشورات حتى الآن</p>
@@ -626,7 +674,7 @@ function renderPosts() {
     const typeLabel = { tweet: 'تغريدة', photo: 'صورة', event: 'فعالية' };
     const typeBadge = { tweet: 'badge-tweet', photo: 'badge-photo', event: 'badge-event' };
 
-    list.innerHTML = posts.map(p => `
+    list.innerHTML = filtered.map(p => `
         <div class="post-item" id="post-${p.id}">
             <div class="post-thumb">
                 ${p.image
@@ -651,16 +699,33 @@ function renderPosts() {
     lucide.createIcons();
 }
 
-function deletePost(id) {
+async function deletePost(id) {
     if (!confirm('حذف هذا المنشور؟')) return;
-    savePosts(getPosts().filter(p => p.id !== id));
-    updateStats(); renderPosts();
-    showToast('تم الحذف');
+    if (useFirebase) {
+        try {
+            await deleteDoc(doc(db, "posts", id));
+            showToast('تم الحذف بنجاح!');
+        } catch (e) {
+            console.error("Error deleting document: ", e);
+            showToast('❌ فشل الحذف');
+        }
+    } else {
+        savePosts(getPosts().filter(p => p.id !== id));
+        updateStats(); renderPosts();
+        showToast('تم الحذف محلياً');
+    }
 }
 
 /* ===== Stats ===== */
 function updateStats() {
-    const posts = getPosts();
+    if (useFirebase) {
+        updateStatsCount(activePosts);
+    } else {
+        updateStatsCount(getPosts());
+    }
+}
+
+function updateStatsCount(posts) {
     document.getElementById('statTotal').textContent  = posts.length;
     document.getElementById('statTweets').textContent = posts.filter(p => p.type === 'tweet').length;
     document.getElementById('statPhotos').textContent = posts.filter(p => p.type === 'photo').length;
@@ -672,6 +737,31 @@ function showToast(msg) {
     document.getElementById('toastMsg').textContent = msg;
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// Attach functions to window to keep them globally accessible from HTML inline handlers
+window.showTab = showTab;
+window.handleImage = handleImage;
+window.updateCharCount = updateCharCount;
+window.updatePreview = updatePreview;
+window.filterPosts = filterPosts;
+window.deletePost = deletePost;
+
+// Load real-time data if Firebase is active
+if (useFirebase) {
+    const q = query(collection(db, "posts"), orderBy("date", "desc"));
+    onSnapshot(q, (snapshot) => {
+        activePosts = [];
+        snapshot.forEach((doc) => {
+            activePosts.push({ id: doc.id, ...doc.data() });
+        });
+        updateStats();
+        if (document.getElementById('postsTab').style.display === 'block') {
+            renderPosts();
+        }
+    });
+} else {
+    updateStats();
 }
 
 updatePreview();
