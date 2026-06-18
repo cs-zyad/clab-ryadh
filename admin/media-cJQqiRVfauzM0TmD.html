@@ -294,6 +294,11 @@
             .form-row { grid-template-columns: 1fr; }
         }
     </style>
+    <script>
+        if (sessionStorage.getItem('admin_logged_in') !== 'true') {
+            window.location.href = 'index.html';
+        }
+    </script>
 </head>
 <body>
 
@@ -318,6 +323,9 @@
             <button class="nav-item" onclick="showTab('posts')">
                 <i data-lucide="layout-list"></i> المنشورات المضافة
             </button>
+            <a href="index.html" class="nav-item">
+                <i data-lucide="arrow-left-circle"></i> لوحة الاختيار
+            </a>
             <a href="../index.html" target="_blank" class="nav-item">
                 <i data-lucide="globe"></i> معاينة الموقع
             </a>
@@ -763,6 +771,11 @@ if (useFirebase) {
 } else {
     updateStats();
 }
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+    sessionStorage.removeItem('admin_logged_in');
+    window.location.href = 'index.html';
+});
 
 updatePreview();
 </script>

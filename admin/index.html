@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة التحكم | نادى ريادة الأعمال</title>
+    <title>بوابة الإدارة | نادي ريادة الأعمال</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --primary-navy: #232055;
-            --accent-gold: #ecb02e;
+            --navy: #232055;
+            --navy-light: #34307a;
+            --gold: #ecb02e;
+            --gold-light: #fbe7a8;
             --white: #ffffff;
-            --bg-color: #f4f4f7;
+            --bg-color: #0c0a22;
         }
 
         * {
@@ -25,586 +27,442 @@
 
         body {
             background-color: var(--bg-color);
-            color: var(--primary-navy);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(236, 176, 46, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(35, 32, 85, 0.5) 0%, transparent 50%);
+            color: var(--white);
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* Login Screen */
-        .login-container {
-            background: var(--white);
-            padding: 40px 50px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(35, 32, 85, 0.08);
+        /* Ambient Glow Objects */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .orb-1 {
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(236, 176, 46, 0.15) 0%, transparent 70%);
+        }
+        .orb-2 {
+            bottom: -100px;
+            left: -100px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(35, 32, 85, 0.4) 0%, transparent 70%);
+        }
+
+        /* Container Main */
+        .portal-wrapper {
             width: 100%;
-            max-width: 400px;
+            max-width: 900px;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ===== LOGIN STYLE ===== */
+        .login-card {
+            background: rgba(35, 32, 85, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            padding: 50px;
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
             text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.6s ease-out;
         }
 
         .login-logo {
-            width: 80px;
-            height: 80px;
-            background: var(--primary-navy);
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border: 2px solid rgba(236, 176, 46, 0.3);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-gold);
-            margin: 0 auto 20px;
+            color: var(--gold);
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 25px rgba(236, 176, 46, 0.15);
         }
 
         .login-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 30px;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .login-subtitle {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 35px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             text-align: right;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .form-control {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 10px;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1.5px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
             font-size: 1rem;
+            color: var(--white);
             outline: none;
             transition: all 0.3s ease;
             font-family: 'Cairo', sans-serif;
         }
 
         .form-control:focus {
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 0 3px rgba(236, 176, 46, 0.2);
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 4px rgba(236, 176, 46, 0.15);
         }
 
         .btn-submit {
             width: 100%;
-            padding: 12px;
-            background: var(--primary-navy);
-            color: var(--white);
+            padding: 14px;
+            background: linear-gradient(135deg, var(--gold) 0%, #d99a1f 100%);
+            color: var(--navy);
             border: none;
-            border-radius: 10px;
+            border-radius: 14px;
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 10px;
+            margin-top: 15px;
             font-family: 'Cairo', sans-serif;
+            box-shadow: 0 5px 15px rgba(236, 176, 46, 0.2);
         }
 
         .btn-submit:hover {
-            background: #1a1744;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(35, 32, 85, 0.2);
+            box-shadow: 0 8px 25px rgba(236, 176, 46, 0.35);
+            background: linear-gradient(135deg, #f6cf6a 0%, var(--gold) 100%);
         }
 
         .error-message {
-            color: #dc3545;
-            font-size: 0.85rem;
-            margin-top: 10px;
+            color: #ff4d4d;
+            font-size: 0.88rem;
+            margin-top: 15px;
             display: none;
-        }
-
-        /* Dashboard Screen */
-        .dashboard-container {
-            display: none;
-            width: 100%;
-            max-width: 860px;
-            background: var(--white);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(35, 32, 85, 0.08);
-            overflow: hidden;
-        }
-
-        .dashboard-header {
-            background: var(--primary-navy);
-            color: var(--white);
-            padding: 20px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .dashboard-header h2 {
-            font-size: 1.5rem;
-            font-weight: 800;
-        }
-
-        .logout-btn {
-            background: transparent;
-            color: var(--accent-gold);
-            border: 1px solid var(--accent-gold);
-            padding: 6px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        .logout-btn:hover {
-            background: var(--accent-gold);
-            color: var(--primary-navy);
-        }
-
-        .dashboard-body {
-            padding: 40px;
-        }
-
-        .dashboard-body h3 {
-            margin-bottom: 25px;
-            color: var(--primary-navy);
-            border-bottom: 2px solid rgba(236, 176, 46, 0.3);
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .grid-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .full-width {
-            grid-column: 1 / -1;
-        }
-
-        .manage-section {
-            margin-top: 50px;
-            border-top: 2px solid #eee;
-            padding-top: 30px;
-        }
-
-        .events-table-wrapper {
-            overflow-x: auto;
-            margin-top: 20px;
-        }
-
-        .events-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: right;
-        }
-
-        .events-table th, .events-table td {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .events-table th {
-            background: #f8fafc;
-            color: var(--primary-navy);
-            font-weight: 800;
-        }
-
-        .status-badge {
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
             font-weight: 700;
         }
 
-        .status-open   { background: #dcfce7; color: #166534; }
-        .status-soon   { background: #fef9c3; color: #854d0e; }
-        .status-ended  { background: #fee2e2; color: #991b1b; }
-
-        .action-btns {
-            display: flex;
-            gap: 10px;
+        /* ===== CHOOSER STYLE ===== */
+        .chooser-container {
+            display: none;
+            animation: fadeIn 0.6s ease-out;
         }
 
-        .action-btn {
-            border: none;
-            background: none;
+        .chooser-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .logout-top-btn {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 10px;
             cursor: pointer;
-            padding: 5px;
-            border-radius: 5px;
-            transition: all 0.2s;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logout-top-btn:hover {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ff8080;
+            border-color: rgba(239, 68, 68, 0.2);
+        }
+
+        .chooser-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 10px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .chooser-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .chooser-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .chooser-card {
+            background: rgba(35, 32, 85, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .chooser-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at top, rgba(236, 176, 46, 0.06) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .chooser-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(236, 176, 46, 0.25);
+            box-shadow: 0 20px 40px rgba(236, 176, 46, 0.1);
+        }
+
+        .chooser-card:hover::before {
+            opacity: 1;
+        }
+
+        .chooser-card:hover .icon-box {
+            transform: scale(1.1);
+            background: rgba(236, 176, 46, 0.15);
+            color: var(--gold);
+            border-color: rgba(236, 176, 46, 0.4);
+        }
+
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1.5px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
         }
 
-        .action-btn i { width: 18px; height: 18px; }
-
-        .edit-btn   { color: #2563eb; }
-        .edit-btn:hover   { background: #dbeafe; }
-        .delete-btn { color: #dc2626; }
-        .delete-btn:hover { background: #fee2e2; }
-
-        /* Loading / toast */
-        .toast {
-            position: fixed; bottom: 30px; left: 30px;
-            background: var(--primary-navy); color: var(--white);
-            padding: 14px 22px; border-radius: 14px; font-weight: 700;
-            font-size: 0.9rem; display: flex; align-items: center; gap: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transform: translateY(80px); opacity: 0;
-            transition: all 0.4s cubic-bezier(0.4,0,0.2,1); z-index: 999;
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 15px;
         }
-        .toast.show { transform: translateY(0); opacity: 1; }
 
-        .firebase-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 4px 12px; background: rgba(16,185,129,0.1);
-            color: #059669; border-radius: 20px; font-size: 0.8rem;
-            font-weight: 700; border: 1px solid rgba(16,185,129,0.2);
-            margin-bottom: 20px;
+        .card-desc {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            flex-grow: 1;
         }
-        .firebase-badge span {
-            width: 7px; height: 7px; background: #10b981;
-            border-radius: 50%; animation: pulse 2s infinite;
+
+        .card-btn {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
         }
-        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+        .chooser-card:hover .card-btn {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+            box-shadow: 0 5px 15px rgba(236, 176, 46, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .chooser-grid {
+                grid-template-columns: 1fr;
+            }
+            .chooser-header {
+                padding-top: 40px;
+            }
+            .logout-top-btn {
+                top: -30px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Login Screen -->
-    <div class="login-container" id="loginScreen">
-        <div class="login-logo">
-            <i data-lucide="shield-check" style="width: 40px; height: 40px;"></i>
-        </div>
-        <h1 class="login-title">تسجيل دخول الإدارة</h1>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
 
-        <form id="loginForm">
-            <div class="form-group">
-                <label>البريد الإلكتروني</label>
-                <input type="email" id="adminEmail" class="form-control" required placeholder="admin@example.com">
+    <div class="portal-wrapper">
+        
+        <!-- Login Card -->
+        <div class="login-card" id="loginArea">
+            <div class="login-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </div>
-            <div class="form-group">
-                <label>كلمة المرور</label>
-                <input type="password" id="adminPassword" class="form-control" required placeholder="••••••••">
-            </div>
-            <button type="submit" class="btn-submit">دخول</button>
-            <p class="error-message" id="loginError">بيانات الدخول غير صحيحة.</p>
-        </form>
-    </div>
+            <h1 class="login-title">تسجيل دخول الإدارة</h1>
+            <p class="login-subtitle">بوابة التحكم في محتوى نادي ريادة الأعمال</p>
 
-    <!-- Dashboard Screen -->
-    <div class="dashboard-container" id="dashboardScreen">
-        <div class="dashboard-header">
-            <h2>لوحة التحكم | إدارة الفعاليات</h2>
-            <button class="logout-btn" id="logoutBtn">تسجيل خروج</button>
-        </div>
-        <div class="dashboard-body">
-
-            <div class="firebase-badge">
-                <span></span> متصل بـ Firebase — البيانات حية
-            </div>
-
-            <h3 id="formTitle">إضافة فعالية جديدة</h3>
-            <form id="addEventForm" class="grid-form">
+            <form id="portalLoginForm">
                 <div class="form-group">
-                    <label>عنوان الفعالية</label>
-                    <input type="text" id="f_title" class="form-control" required placeholder="مثال: معسكر رواد الأعمال">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" id="emailInput" class="form-control" required placeholder="admin@admin.com">
                 </div>
                 <div class="form-group">
-                    <label>التصنيف</label>
-                    <select id="f_category" class="form-control" required>
-                        <option value="meeting">لقاءات</option>
-                        <option value="program">برامج</option>
-                        <option value="competition">مسابقات</option>
-                    </select>
+                    <label>كلمة المرور</label>
+                    <input type="password" id="passwordInput" class="form-control" required placeholder="••••••••">
                 </div>
-                <div class="form-group">
-                    <label>التاريخ</label>
-                    <input type="date" id="f_date" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>الوقت</label>
-                    <input type="time" id="f_time" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>مكان اللقاء</label>
-                    <input type="text" id="f_location" class="form-control" required placeholder="مثال: مقر النادي - مبنى 4">
-                </div>
-                <div class="form-group">
-                    <label>حالة التسجيل</label>
-                    <select id="f_status" class="form-control" required>
-                        <option value="open">مفتوح للتسجيل</option>
-                        <option value="soon">قريباً</option>
-                        <option value="ended">انتهى</option>
-                    </select>
-                </div>
-                <div class="form-group full-width">
-                    <label>رابط زر التسجيل (مثال: رابط Google Form)</label>
-                    <input type="url" id="f_regLink" class="form-control" placeholder="https://forms.gle/...">
-                </div>
-                <div class="form-group full-width">
-                    <label>وصف مختصر</label>
-                    <textarea id="f_desc" class="form-control" rows="3" required placeholder="اكتب نبذة عن الفعالية..."></textarea>
-                </div>
-                <div class="form-group full-width">
-                    <label>صورة البوستر (رفع من الجهاز)</label>
-                    <div style="border: 2px dashed rgba(0,0,0,0.1); padding: 20px; text-align: center; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; background: #fafafa;"
-                         onclick="document.getElementById('posterUpload').click()"
-                         onmouseover="this.style.borderColor='var(--accent-gold)'"
-                         onmouseout="this.style.borderColor='rgba(0,0,0,0.1)'">
-                        <i data-lucide="upload-cloud" style="width: 32px; height: 32px; color: var(--accent-gold); margin-bottom: 10px;"></i>
-                        <p style="color: #666; font-size: 0.9rem; font-weight: 600;" id="uploadText">اضغط هنا لاختيار صورة من جهازك</p>
-                        <input type="file" id="posterUpload" accept="image/*" style="display: none;"
-                               onchange="document.getElementById('uploadText').innerText = this.files[0] ? this.files[0].name : 'اضغط هنا لاختيار صورة من جهازك';">
-                    </div>
-                </div>
-                <div class="form-group full-width">
-                    <button type="submit" id="submitBtn" class="btn-submit" style="background: var(--accent-gold); color: var(--primary-navy); font-size: 1.1rem;">
-                        إضافة الفعالية للموقع
-                    </button>
-                </div>
+                <button type="submit" class="btn-submit">تسجيل الدخول</button>
+                <p class="error-message" id="loginErrorMsg">البريد الإلكتروني أو كلمة المرور غير صحيحة.</p>
             </form>
+        </div>
 
-            <!-- Management Section -->
-            <div class="manage-section">
-                <h3>إدارة الفعاليات المضافة</h3>
-                <div class="events-table-wrapper">
-                    <table class="events-table">
-                        <thead>
-                            <tr>
-                                <th>اسم الفعالية</th>
-                                <th>التصنيف</th>
-                                <th>الحالة</th>
-                                <th>الإجراءات</th>
-                            </tr>
-                        </thead>
-                        <tbody id="eventsList">
-                            <tr><td colspan="4" style="text-align:center; padding:30px; color:#999;">جاري التحميل...</td></tr>
-                        </tbody>
-                    </table>
+        <!-- Chooser Area -->
+        <div class="chooser-container" id="chooserArea">
+            <div class="chooser-header">
+                <button class="logout-top-btn" id="logoutBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                    تسجيل الخروج
+                </button>
+                <h1 class="chooser-title">بوابة إدارة المحتوى</h1>
+                <p class="chooser-subtitle">مرحباً بك! اختر النظام الذي ترغب في استخدامه وتحديث بياناته:</p>
+            </div>
+
+            <div class="chooser-grid">
+                <!-- Option 1: Events -->
+                <div class="chooser-card" onclick="window.location.href='events.html'">
+                    <div class="icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                    </div>
+                    <h3 class="card-title">إدارة الفعاليات والأنشطة</h3>
+                    <p class="card-desc">إضافة الفعاليات واللقاءات الجديدة، وتعديل تفاصيلها (البوستر، التاريخ، الوقت، مكان اللقاء، حالة التسجيل، ورابط التسجيل) أو حذف الفعاليات الحالية.</p>
+                    <a href="events.html" class="card-btn">
+                        <span>الدخول للنظام</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Option 2: Media/Tweets -->
+                <div class="chooser-card" onclick="window.location.href='media-cJQqiRVfauzM0TmD.html'">
+                    <div class="icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                    </div>
+                    <h3 class="card-title">إدارة الأخبار والمنشورات</h3>
+                    <p class="card-desc">نشر الأخبار الجديدة والتغريدات وصور الإعلانات لتظهر فوراً ومباشرة في شريط أحدث الأخبار التفاعلي في الصفحة الرئيسية للموقع.</p>
+                    <a href="media-cJQqiRVfauzM0TmD.html" class="card-btn">
+                        <span>الدخول للنظام</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
+
     </div>
 
-    <!-- Toast -->
-    <div class="toast" id="toast">
-        <i data-lucide="check-circle" style="width:18px;height:18px;color:var(--accent-gold);"></i>
-        <span id="toastMsg"></span>
-    </div>
+    <script>
+        // Credentials configuration
+        const VALID_EMAIL = 'admin@admin.com';
+        const VALID_PASSWORDS = ['media2025', '123456'];
 
-<script type="module">
-import { initializeApp }           from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, addDoc, doc, updateDoc, deleteDoc, onSnapshot, orderBy, query }
-                                    from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-import { firebaseConfig }          from "../js/firebase-config.js";
+        const loginArea = document.getElementById('loginArea');
+        const chooserArea = document.getElementById('chooserArea');
+        const loginForm = document.getElementById('portalLoginForm');
+        const errorMsg = document.getElementById('loginErrorMsg');
+        const logoutBtn = document.getElementById('logoutBtn');
 
-lucide.createIcons();
-
-// ─── Firebase init ────────────────────────────────────────────────
-const app = initializeApp(firebaseConfig);
-const db  = getFirestore(app);
-
-// ─── Auth (simple hardcoded — يمكن ترقيتها لاحقاً) ───────────────
-const ADMIN_EMAIL = 'admin@admin.com';
-const ADMIN_PASS  = '123456';
-
-const loginScreen    = document.getElementById('loginScreen');
-const dashboardScreen= document.getElementById('dashboardScreen');
-const loginError     = document.getElementById('loginError');
-
-document.getElementById('loginForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const email = document.getElementById('adminEmail').value;
-    const pass  = document.getElementById('adminPassword').value;
-    if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
-        loginScreen.style.display    = 'none';
-        dashboardScreen.style.display= 'block';
-        document.body.style.alignItems = 'flex-start';
-        document.body.style.padding    = '40px 20px';
-        startRealtimeListener();
-    } else {
-        loginError.style.display = 'block';
-    }
-});
-
-document.getElementById('logoutBtn').addEventListener('click', () => {
-    dashboardScreen.style.display= 'none';
-    loginScreen.style.display    = 'block';
-    document.body.style.alignItems = 'center';
-    document.body.style.padding    = '0';
-    document.getElementById('loginForm').reset();
-    loginError.style.display = 'none';
-    if (unsubscribe) unsubscribe();
-});
-
-// ─── Real-time listener ───────────────────────────────────────────
-let unsubscribe = null;
-
-function startRealtimeListener() {
-    const q = query(collection(db, 'events'), orderBy('createdAt', 'desc'));
-    unsubscribe = onSnapshot(q, snapshot => {
-        const events = [];
-        snapshot.forEach(d => events.push({ id: d.id, ...d.data() }));
-        renderEvents(events);
-    });
-}
-
-// ─── Render table ─────────────────────────────────────────────────
-function renderEvents(events) {
-    const tbody = document.getElementById('eventsList');
-    if (events.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:30px;color:#999;">لا توجد فعاليات مضافة حالياً</td></tr>';
-        return;
-    }
-    const catLabel = { meeting:'لقاءات', program:'برامج', competition:'مسابقات' };
-    tbody.innerHTML = events.map(ev => {
-        const statusMap = {
-            open:  ['status-open',  'مفتوح'],
-            soon:  ['status-soon',  'قريباً'],
-            ended: ['status-ended', 'انتهى'],
-        };
-        const [cls, lbl] = statusMap[ev.status] || ['status-soon','—'];
-        return `
-        <tr>
-            <td style="font-weight:600;">${ev.title}</td>
-            <td>${catLabel[ev.category] || ev.category}</td>
-            <td><span class="status-badge ${cls}">${lbl}</span></td>
-            <td>
-                <div class="action-btns">
-                    <button class="action-btn edit-btn"   title="تعديل" onclick="editEvent('${ev.id}')">
-                        <i data-lucide="edit-3"></i>
-                    </button>
-                    <button class="action-btn delete-btn" title="حذف"   onclick="deleteEvent('${ev.id}')">
-                        <i data-lucide="trash-2"></i>
-                    </button>
-                </div>
-            </td>
-        </tr>`;
-    }).join('');
-    lucide.createIcons();
-}
-
-// ─── Add / Edit form ──────────────────────────────────────────────
-let editingId   = null;
-let editingImage= null; // base64 of existing image when editing
-
-const addEventForm = document.getElementById('addEventForm');
-
-addEventForm.addEventListener('submit', async e => {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.textContent = 'جاري الحفظ...';
-
-    const fileInput = document.getElementById('posterUpload');
-
-    const doSave = async (imageData) => {
-        const data = {
-            title:    document.getElementById('f_title').value.trim(),
-            category: document.getElementById('f_category').value,
-            date:     document.getElementById('f_date').value,
-            time:     document.getElementById('f_time').value,
-            location: document.getElementById('f_location').value.trim(),
-            status:   document.getElementById('f_status').value,
-            regLink:  document.getElementById('f_regLink').value.trim(),
-            desc:     document.getElementById('f_desc').value.trim(),
-            image:    imageData,
-        };
-
-        try {
-            if (editingId) {
-                await updateDoc(doc(db, 'events', editingId), data);
-                showToast('✅ تم تحديث الفعالية!');
-                cancelEdit();
-            } else {
-                data.createdAt = new Date().toISOString();
-                await addDoc(collection(db, 'events'), data);
-                showToast('✅ تمت إضافة الفعالية!');
-            }
-            addEventForm.reset();
-            document.getElementById('uploadText').innerText = 'اضغط هنا لاختيار صورة من جهازك';
-        } catch (err) {
-            console.error(err);
-            showToast('❌ حدث خطأ، حاول مجدداً');
+        // Check if already logged in
+        if (sessionStorage.getItem('admin_logged_in') === 'true') {
+            showChooser();
         }
-        btn.disabled = false;
-        btn.textContent = editingId ? 'تحديث بيانات الفعالية' : 'إضافة الفعالية للموقع';
-    };
 
-    if (fileInput.files && fileInput.files[0]) {
-        const reader = new FileReader();
-        reader.onload = ev => doSave(ev.target.result);
-        reader.readAsDataURL(fileInput.files[0]);
-    } else {
-        doSave(editingImage || null);
-    }
-});
+        function showChooser() {
+            loginArea.style.display = 'none';
+            chooserArea.style.display = 'block';
+        }
 
-// ─── Edit ─────────────────────────────────────────────────────────
-window.editEvent = async function(id) {
-    // جيب البيانات من الـ snapshot المخزّن
-    const row = document.querySelector(`[onclick="editEvent('${id}')"]`)?.closest('tr');
-    if (!row) return;
+        // Login Submit Handling
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value.trim();
+            const pass = document.getElementById('passwordInput').value;
 
-    // نجيب البيانات من Firestore مباشرة
-    const { getDoc } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
-    const snap = await getDoc(doc(db, 'events', id));
-    if (!snap.exists()) return;
-    const ev = snap.data();
+            if (email === VALID_EMAIL && VALID_PASSWORDS.includes(pass)) {
+                sessionStorage.setItem('admin_logged_in', 'true');
+                errorMsg.style.display = 'none';
+                showChooser();
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        });
 
-    editingId    = id;
-    editingImage = ev.image || null;
-
-    document.getElementById('f_title').value    = ev.title    || '';
-    document.getElementById('f_category').value = ev.category || 'meeting';
-    document.getElementById('f_date').value     = ev.date     || '';
-    document.getElementById('f_time').value     = ev.time     || '';
-    document.getElementById('f_location').value = ev.location || '';
-    document.getElementById('f_status').value   = ev.status   || 'open';
-    document.getElementById('f_regLink').value  = ev.regLink  || '';
-    document.getElementById('f_desc').value     = ev.desc     || '';
-    if (ev.image) document.getElementById('uploadText').innerText = 'صورة محفوظة (اضغط لتغييرها)';
-
-    document.getElementById('formTitle').innerText  = 'تعديل الفعالية الحالية';
-    const btn = document.getElementById('submitBtn');
-    btn.textContent       = 'تحديث بيانات الفعالية';
-    btn.style.background  = '#4ade80';
-    btn.style.color       = '#fff';
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-};
-
-function cancelEdit() {
-    editingId    = null;
-    editingImage = null;
-    document.getElementById('formTitle').innerText = 'إضافة فعالية جديدة';
-    const btn = document.getElementById('submitBtn');
-    btn.textContent      = 'إضافة الفعالية للموقع';
-    btn.style.background = 'var(--accent-gold)';
-    btn.style.color      = 'var(--primary-navy)';
-}
-
-// ─── Delete ───────────────────────────────────────────────────────
-window.deleteEvent = async function(id) {
-    if (!confirm('هل أنت متأكد من حذف هذه الفعالية؟')) return;
-    try {
-        await deleteDoc(doc(db, 'events', id));
-        showToast('🗑️ تم حذف الفعالية');
-    } catch (err) {
-        console.error(err);
-        showToast('❌ فشل الحذف');
-    }
-};
-
-// ─── Toast ────────────────────────────────────────────────────────
-function showToast(msg) {
-    const t = document.getElementById('toast');
-    document.getElementById('toastMsg').textContent = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 3000);
-}
-</script>
+        // Logout Handling
+        logoutBtn.addEventListener('click', () => {
+            sessionStorage.removeItem('admin_logged_in');
+            loginForm.reset();
+            errorMsg.style.display = 'none';
+            chooserArea.style.display = 'none';
+            loginArea.style.display = 'block';
+        });
+    </script>
 </body>
 </html>
