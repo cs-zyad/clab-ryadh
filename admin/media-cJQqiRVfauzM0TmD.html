@@ -548,23 +548,41 @@ function showTab(tab) {
 function getPosts() { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
 function savePosts(p) { localStorage.setItem(KEY, JSON.stringify(p)); }
 
+/* ===== Compress image ===== */
+function compressImage(file, maxWidth = 800, quality = 0.6) {
+    return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                let w = img.width, h = img.height;
+                if (w > maxWidth) { h = (maxWidth / w) * h; w = maxWidth; }
+                canvas.width = w;
+                canvas.height = h;
+                canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                resolve(canvas.toDataURL('image/jpeg', quality));
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
 /* ===== Post Form ===== */
 let imageData = null;
 
-function handleImage(input) {
+async function handleImage(input) {
     if (!input.files[0]) return;
-    const reader = new FileReader();
-    reader.onload = e => {
-        imageData = e.target.result;
-        document.getElementById('uploadPreview').src = imageData;
-        document.getElementById('uploadPreview').style.display = 'block';
-        document.getElementById('uploadText').textContent = input.files[0].name;
-        document.getElementById('uploadZone').classList.add('has-image');
-        document.getElementById('previewImage').src = imageData;
-        document.getElementById('previewImage').style.display = 'block';
-        lucide.createIcons();
-    };
-    reader.readAsDataURL(input.files[0]);
+    const compressed = await compressImage(input.files[0]);
+    imageData = compressed;
+    document.getElementById('uploadPreview').src = imageData;
+    document.getElementById('uploadPreview').style.display = 'block';
+    document.getElementById('uploadText').textContent = input.files[0].name;
+    document.getElementById('uploadZone').classList.add('has-image');
+    document.getElementById('previewImage').src = imageData;
+    document.getElementById('previewImage').style.display = 'block';
+    lucide.createIcons();
 }
 
 function updateCharCount(el) {

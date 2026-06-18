@@ -441,9 +441,30 @@ function renderEvents(events) {
     lucide.createIcons();
 }
 
+// ─── Compress image to fit Firestore 1MB limit ──────────────────
+function compressImage(file, maxWidth = 800, quality = 0.6) {
+    return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                let w = img.width, h = img.height;
+                if (w > maxWidth) { h = (maxWidth / w) * h; w = maxWidth; }
+                canvas.width = w;
+                canvas.height = h;
+                canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                resolve(canvas.toDataURL('image/jpeg', quality));
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
 // ─── Add / Edit form ──────────────────────────────────────────────
 let editingId   = null;
-let editingImage= null; // base64 of existing image when editing
+let editingImage= null;
 
 const addEventForm = document.getElementById('addEventForm');
 
@@ -489,9 +510,8 @@ addEventForm.addEventListener('submit', async e => {
     };
 
     if (fileInput.files && fileInput.files[0]) {
-        const reader = new FileReader();
-        reader.onload = ev => doSave(ev.target.result);
-        reader.readAsDataURL(fileInput.files[0]);
+        const compressed = await compressImage(fileInput.files[0]);
+        doSave(compressed);
     } else {
         doSave(editingImage || null);
     }
