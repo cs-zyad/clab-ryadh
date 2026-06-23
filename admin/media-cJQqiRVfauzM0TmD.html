@@ -626,21 +626,19 @@ document.getElementById('postForm').addEventListener('submit', async e => {
     };
 
     if (useFirebase) {
+        const btn = document.querySelector('.btn-publish');
+        const originalText = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = 'جاري النشر...';
         try {
-            const btn = document.querySelector('.btn-publish');
-            const originalText = btn.innerHTML;
-            btn.disabled = true;
-            btn.innerHTML = 'جاري النشر...';
-
             await addDoc(collection(db, "posts"), post);
-            
-            btn.disabled = false;
-            btn.innerHTML = originalText;
             showToast('✅ تم النشر بنجاح!');
         } catch (e) {
             console.error("Error adding document: ", e);
-            showToast('❌ فشل النشر');
-            return;
+            showToast('❌ فشل النشر: ' + e.message);
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
         }
     } else {
         post.id = Date.now().toString();
