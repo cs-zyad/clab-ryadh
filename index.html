@@ -179,7 +179,7 @@
 
         <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, query, orderBy, limit, onSnapshot, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
         import { firebaseConfig } from "./js/firebase-config.js";
 
         (function(){
@@ -253,27 +253,6 @@
                 lucide.createIcons();
             }
 
-            // CLEANUP: Delete all old test posts from Firestore
-            if (useFirebase) {
-                (async () => {
-                    try {
-                        const allQ = query(collection(db, "posts"));
-                        const snapshot = await getDocs(allQ);
-                        const deletePromises = [];
-                        snapshot.forEach((d) => {
-                            deletePromises.push(deleteDoc(doc(db, "posts", d.id)));
-                        });
-                        await Promise.all(deletePromises);
-                        console.log('Cleaned up old test posts from Firestore');
-                    } catch (e) {
-                        console.error('Cleanup error:', e);
-                    }
-                })();
-            }
-
-            // Clear localStorage too
-            localStorage.removeItem(KEY);
-
             // Real-time synchronization
             if (useFirebase) {
                 const q = query(collection(db, "posts"), orderBy("date", "desc"), limit(1));
@@ -288,7 +267,7 @@
                     displayPosts([]);
                 });
             } else {
-                displayPosts([]);
+                displayPosts(JSON.parse(localStorage.getItem(KEY) || '[]'));
             }
         })();
         </script>
