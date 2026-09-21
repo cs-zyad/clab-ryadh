@@ -3745,7 +3745,8 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .modal-container {
     background: var(--primary-navy);
     width: 100%;
-    max-width: 1000px;
+    max-width: 1150px;
+    max-height: 88vh;
     border-radius: 40px;
     border: 1px solid rgba(236, 176, 46, 0.4);
     position: relative;
@@ -3766,7 +3767,8 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     padding: 0; /* Removing padding to allow image/content split */
     position: relative;
     display: grid;
-    grid-template-columns: 350px 1fr; /* Image on one side, text on other */
+    grid-template-columns: 380px minmax(0, 1fr); /* Image on one side, text on other */
+    min-height: 0;
 }
 
 .modal-poster-side {
@@ -3780,19 +3782,21 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .modal-poster-side img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    opacity: 0.8;
+    object-fit: contain;
+    opacity: 1;
 }
 
 .modal-content-side {
-    padding: 50px;
+    padding: 45px 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-width: 0;
+    overflow-y: auto;
 }
 
 .modal-side-piece {
-    flex: 1;
+    flex: 0 0 200px;
     background: linear-gradient(to bottom, rgba(255,255,255,0.02), rgba(255,255,255,0.05));
     border-right: 2px dashed rgba(236, 176, 46, 0.3);
     padding: 60px 20px;
@@ -3870,7 +3874,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 }
 
 .modal-title-full {
-    font-size: 3.5rem;
+    font-size: 2.6rem;
     color: var(--accent-gold);
     font-weight: 900;
     line-height: 1.2;
@@ -3878,21 +3882,22 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 }
 
 .modal-desc-full {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
     color: rgba(255,255,255,0.7);
-    line-height: 1.8;
-    margin-bottom: 40px;
+    line-height: 1.9;
+    margin-bottom: 30px;
+    white-space: pre-line;
 }
 
 .modal-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 25px;
+    gap: 15px;
 }
 
 .modal-info-box {
     background: rgba(255,255,255,0.03);
-    padding: 20px;
+    padding: 16px 18px;
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -3902,12 +3907,15 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 .modal-info-box i {
     color: var(--accent-gold);
-    font-size: 1.5rem;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
 }
 
 .modal-info-box span {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--white);
+    line-height: 1.5;
 }
 
 .modal-id-vertical {

@@ -264,7 +264,7 @@
                         </div>
                         <div class="modal-info-box">
                             <i data-lucide="map-pin"></i>
-                            <span>مقر النادي - مبنى 4</span>
+                            <span id="modalLocation">مقر النادي - مبنى 4</span>
                         </div>
                         <div class="modal-info-box">
                             <i data-lucide="users"></i>
@@ -308,6 +308,8 @@
                 ticket.className = 'ticket-card';
                 if (event.status === 'ended') ticket.classList.add('separated');
                 ticket.setAttribute('data-category', event.category);
+                ticket.setAttribute('data-location', event.location || '');
+                ticket.setAttribute('data-desc', event.desc || '');
 
                 let statusLabel = '<div style="background:rgba(236,176,46,0.2);color:var(--accent-gold);display:inline-block;padding:4px 12px;border-radius:20px;font-size:0.85rem;margin-bottom:12px;font-weight:bold;">التسجيل متاح</div>';
                 let statusText = 'متاح الآن';
@@ -439,10 +441,12 @@
                     const isSoon = ticket.innerText.includes('قريباً');
 
                     document.getElementById('modalTitle').innerText = title;
-                    document.getElementById('modalDesc').innerText = desc;
+                    document.getElementById('modalDesc').innerText = ticket.getAttribute('data-desc') || desc;
                     document.getElementById('modalDate').innerText = dateEl ? dateEl.parentElement.innerText : 'قريباً';
                     document.getElementById('modalTime').innerText = timeEl ? timeEl.parentElement.innerText : '--:--';
                     document.getElementById('modalId').innerText = idEl ? idEl.innerText : 'TR-0000';
+                    const eventLocation = ticket.getAttribute('data-location');
+                    document.getElementById('modalLocation').innerText = eventLocation && eventLocation.trim() ? eventLocation : 'مقر النادي - مبنى 4';
 
                     regBtnModal.classList.remove('disabled', 'soon');
                     regBtnModal.href = customRegLink || '#';
