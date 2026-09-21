@@ -3946,75 +3946,118 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 }
 
 @media (max-width: 900px) {
+    /* ── Event modal on phones: a full-screen sheet, not a shrunken ticket ── */
+    .event-modal {
+        padding: 0;
+        align-items: flex-end;
+    }
     .modal-container {
         flex-direction: column;
-        max-height: 92vh;
-        width: 95%;
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        max-height: 100%;
+        border: none;
+        border-radius: 0;
+        overflow: hidden; /* the body scrolls, the button stays put */
+    }
+    .modal-container::after { display: none; }
+    .event-modal .modal-container { transform: translateY(40px); }
+    .event-modal.active .modal-container { transform: translateY(0); }
+
+    /* Scrollable body: poster + text */
+    .modal-main-piece {
+        flex: 1 1 auto;
+        display: block;
+        min-height: 0;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        border-radius: 30px;
-    }
-    /* The whole ticket scrolls as one piece; nothing shrinks or clips */
-    .modal-main-piece,
-    .modal-side-piece {
-        flex: 0 0 auto;
-    }
-    .modal-main-piece {
-        grid-template-columns: 1fr;
-        min-height: auto;
-    }
-    .modal-content-side {
-        overflow: visible;
-        justify-content: flex-start;
     }
     .modal-poster-side {
-        height: 350px;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        max-height: 44vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border-left: none;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        background: #000;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        background: #05070f;
     }
     .modal-poster-side img {
         object-fit: contain !important;
         opacity: 1 !important;
     }
     .modal-content-side {
-        padding: 30px 20px;
+        padding: 24px 20px 30px;
         text-align: center;
+        overflow: visible;
+        justify-content: flex-start;
     }
     .modal-title-full {
-        font-size: 1.8rem;
-        margin-bottom: 15px;
+        font-size: 1.65rem;
+        margin-bottom: 12px;
     }
     .modal-desc-full {
-        font-size: 1.05rem;
-        margin-bottom: 25px;
+        font-size: 1rem;
+        line-height: 1.85;
+        margin-bottom: 22px;
     }
+    /* Two compact tiles per row instead of one tall column */
     .modal-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
     }
     .modal-info-box {
-        padding: 15px;
+        flex-direction: column;
+        gap: 8px;
+        padding: 14px 10px;
+        text-align: center;
         justify-content: center;
     }
-    .modal-side-piece {
-        border-right: none;
-        border-top: 2px dashed rgba(236, 176, 46, 0.3);
-        flex-direction: column-reverse;
-        gap: 20px;
-        padding: 30px 20px;
+    .modal-info-box span {
+        font-size: 0.9rem;
     }
+
+    /* Register button pinned to the bottom of the screen */
+    .modal-side-piece {
+        flex: 0 0 auto;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 20px calc(14px + env(safe-area-inset-bottom));
+        border-right: none;
+        border-top: 1px dashed rgba(236, 176, 46, 0.3);
+        background: rgba(6, 10, 26, 0.97);
+        backdrop-filter: blur(10px);
+    }
+    .modal-side-piece::before,
+    .modal-side-piece::after { display: none; }
     .modal-id-vertical {
         writing-mode: horizontal-tb;
         margin-bottom: 0;
-        opacity: 0.3;
-        font-size: 1rem;
+        opacity: 0.35;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        flex-shrink: 0;
     }
+    .modal-reg-btn {
+        flex: 1;
+        width: auto;
+        padding: 16px;
+        font-size: 1.05rem;
+        border-radius: 14px;
+    }
+    .modal-reg-btn:hover { transform: none; }
+
+    /* Close button floats above the sheet, never scrolls away */
     .modal-close {
-        top: 15px;
-        right: 15px;
+        position: fixed;
+        top: 14px;
+        right: 14px;
         font-size: 1.8rem;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0,0,0,0.55);
         width: 40px;
         height: 40px;
         border-radius: 50%;
@@ -4022,6 +4065,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
         align-items: center;
         justify-content: center;
         backdrop-filter: blur(5px);
+        z-index: 20;
     }
 }
 
