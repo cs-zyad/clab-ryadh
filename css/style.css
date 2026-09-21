@@ -3948,13 +3948,24 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 @media (max-width: 900px) {
     .modal-container {
         flex-direction: column;
-        max-height: 95vh;
+        max-height: 92vh;
         width: 95%;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         border-radius: 30px;
+    }
+    /* The whole ticket scrolls as one piece; nothing shrinks or clips */
+    .modal-main-piece,
+    .modal-side-piece {
+        flex: 0 0 auto;
     }
     .modal-main-piece {
         grid-template-columns: 1fr;
+        min-height: auto;
+    }
+    .modal-content-side {
+        overflow: visible;
+        justify-content: flex-start;
     }
     .modal-poster-side {
         height: 350px;
