@@ -12,6 +12,10 @@ Public pages load styles in this order:
 
 About and development use only the first two files; they have no additional embedded page rules.
 
+All public pages also load `i18n.css` last for language controls and direction-specific
+adjustments. Directional spacing, alignment, borders and positioning use logical CSS
+properties so Arabic uses RTL and English uses LTR. Geometric centering stays physical.
+
 Add shared presentation to `public-shared.css`, and page-specific presentation to the
 matching page file. Use descriptive classes in HTML rather than `style` attributes
 or embedded `<style>` blocks. Keep stylesheet links after `style.css` in `<head>`.

@@ -2,26 +2,25 @@
 const mobileToggle = document.getElementById('mobile-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
-mobileToggle?.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    
-    // Toggle Icon (Optional: change menu to x)
-    const icon = mobileToggle.querySelector('i');
-    if (navMenu.classList.contains('active')) {
-        icon.setAttribute('data-lucide', 'x');
-    } else {
-        icon.setAttribute('data-lucide', 'menu');
+function setMenuOpen(open) {
+    navMenu?.classList.toggle('active', open);
+    mobileToggle?.setAttribute('aria-expanded', String(open));
+    // Lucide replaces the original <i> with an SVG after initial rendering.
+    const currentIcon = mobileToggle?.querySelector('[data-lucide]');
+    if (currentIcon) {
+        const icon = document.createElement('i');
+        icon.setAttribute('data-lucide', open ? 'x' : 'menu');
+        currentIcon.replaceWith(icon);
+        window.lucide?.createIcons();
     }
-    lucide.createIcons();
-});
+}
+
+mobileToggle?.addEventListener('click', () => setMenuOpen(!navMenu?.classList.contains('active')));
 
 // Close menu when clicking links
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        const icon = mobileToggle.querySelector('i');
-        icon.setAttribute('data-lucide', 'menu');
-        lucide.createIcons();
+        setMenuOpen(false);
     });
 });
 
@@ -48,13 +47,16 @@ let currentIndex = 0;
 
 function updateSlider() {
     if (!slider) return;
-    slider.style.transform = `translateX(${currentIndex * 100}%)`;
+    const direction = document.documentElement.dir === 'rtl' ? 1 : -1;
+    slider.style.transform = `translateX(${direction * currentIndex * 100}%)`;
     
     // Update dots
     dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentIndex);
     });
 }
+
+window.addEventListener('site:languagechange', updateSlider);
 
 nextBtn?.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % slides.length;
