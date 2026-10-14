@@ -1,3 +1,26 @@
+// Refresh only copyright text, preserving links and translation spans in the footer.
+function updateCopyrightYear() {
+    const year = String(new Date().getFullYear());
+    document.querySelectorAll('.site-footer-copyright').forEach(footer => {
+        const textNodes = document.createTreeWalker(footer, NodeFilter.SHOW_TEXT);
+        while (textNodes.nextNode()) {
+            const node = textNodes.currentNode;
+            node.nodeValue = node.nodeValue.replace(/[0-9]{4}|[٠-٩]{4}/g, previous => (
+                /[٠-٩]/.test(previous)
+                    ? year.replace(/[0-9]/g, digit => '٠١٢٣٤٥٦٧٨٩'[Number(digit)])
+                    : year
+            ));
+        }
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateCopyrightYear, { once: true });
+} else {
+    updateCopyrightYear();
+}
+window.addEventListener('site:languagechange', updateCopyrightYear);
+
 // Mobile Toggle Logic
 const mobileToggle = document.getElementById('mobile-toggle');
 const navMenu = document.querySelector('.nav-menu');
