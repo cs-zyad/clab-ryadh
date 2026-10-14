@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url("../css/public-shared.css");
+    </style>
 </head>
 <body>
     <header class="main-header">
@@ -35,17 +38,17 @@
     <main>
         <!-- 1. Hero Section -->
         <!-- Unified Premium Hero Section -->
-                        <section class="page-hero" style="background: linear-gradient(135deg, #110e2d 0%, var(--primary-navy) 100%); color: var(--white); text-align: center; border-radius: 0 0 50px 50px; padding: 80px 0 60px 0; position: relative; overflow: hidden; box-shadow: 0 15px 30px rgba(17, 14, 45, 0.15);">
-            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(rgba(255,255,255,0.05) 2px, transparent 2px); background-size: 30px 30px; opacity: 0.6;"></div>
-            <div class="container" style="position: relative; z-index: 2;">
-                <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 20px; background: rgba(236, 176, 46, 0.08); color: var(--accent-gold); border-radius: 50px; font-weight: 700; margin-bottom: 20px; border: 1px solid rgba(236, 176, 46, 0.2); backdrop-filter: blur(5px); font-size: 0.9rem;">
-                    <i data-lucide="trending-up" style="width: 16px; height: 16px;"></i> التطوير المستمر
+                        <section class="page-hero page-hero-surface">
+            <div class="page-hero-pattern"></div>
+            <div class="container page-hero-content">
+                <div class="page-hero-label">
+                    <i class="icon-small" data-lucide="trending-up"></i> التطوير المستمر
                 </div>
-                <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; margin-bottom: 15px; color: var(--accent-gold);">قسم التطوير</h1>
-                <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.8); line-height: 1.8;">نصنع القادة ونطور المهارات لبناء مستقبل ريادي واعد عبر برامج تدريبية تخصصية.</p>
+                <h1 class="page-hero-heading">قسم التطوير</h1>
+                <p class="page-hero-description">نصنع القادة ونطور المهارات لبناء مستقبل ريادي واعد عبر برامج تدريبية تخصصية.</p>
             </div>
-            <div style="position: absolute; top: -100px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(236, 176, 46, 0.15) 0%, transparent 70%); border-radius: 50%; filter: blur(40px);"></div>
-            <div style="position: absolute; bottom: -100px; left: 10%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%); border-radius: 50%; filter: blur(40px);"></div>
+            <div class="page-hero-glow-gold"></div>
+            <div class="page-hero-glow-blue"></div>
         </section>
 
 <!-- 2. About Section (نبذة عن القسم) -->
@@ -314,49 +317,49 @@
         </section>
     </main>
 
-            <footer class="footer-section" style="background: var(--primary-navy); color: var(--white); padding: 80px 0 30px 0; position: relative; margin-top: 50px;">
-        <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: right;">
+            <footer class="footer-section site-footer">
+        <div class="container site-footer-grid">
             <div class="footer-col">
-                <img src="../assets/logo/logo-footer.png" alt="شعار النادي" style="height: 90px; margin-bottom: 20px;">
-                <p style="color: rgba(255,255,255,0.7); line-height: 1.8; font-size: 1rem; max-width: 280px;">نادي ريادة الأعمال، منصة الحالمين وصناع المستقبل. نهدف لتمكين الطلبة وبناء شخصية ريادية طموحة.</p>
+                <img class="site-footer-logo" src="../assets/logo/logo-footer.png" alt="شعار النادي">
+                <p class="site-footer-description">نادي ريادة الأعمال، منصة الحالمين وصناع المستقبل. نهدف لتمكين الطلبة وبناء شخصية ريادية طموحة.</p>
             </div>
             <div class="footer-col">
-                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; color: var(--accent-gold); position: relative; padding-bottom: 10px; border-bottom: 2px solid rgba(236,176,46,0.3); display: inline-block;">روابط سريعة</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
-                    <li><a href="../index.html" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">الرئيسية</a></li>
-                    <li><a href="../activities/" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">الأنشطة والفعاليات</a></li>
-                    <li><a href="../about/" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">من نحن</a></li>
-                    <li><a href="../members/" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">أعضاء النادي</a></li>
+                <h3 class="site-footer-heading">روابط سريعة</h3>
+                <ul class="site-footer-list">
+                    <li><a class="site-footer-link" href="../index.html">الرئيسية</a></li>
+                    <li><a class="site-footer-link" href="../activities/">الأنشطة والفعاليات</a></li>
+                    <li><a class="site-footer-link" href="../about/">من نحن</a></li>
+                    <li><a class="site-footer-link" href="../members/">أعضاء النادي</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; color: var(--accent-gold); position: relative; padding-bottom: 10px; border-bottom: 2px solid rgba(236,176,46,0.3); display: inline-block;">تواصل معنا</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
-                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8);">
-                        <a href="mailto:info@entclub.com" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 10px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-gold);"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> info@entclub.com
+                <h3 class="site-footer-heading">تواصل معنا</h3>
+                <ul class="site-footer-list">
+                    <li class="site-footer-contact-item">
+                        <a class="site-footer-email" href="mailto:info@entclub.com">
+                            <svg class="icon-gold" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> info@entclub.com
                         </a>
                     </li>
-                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8);"><i data-lucide="map-pin" style="width: 18px; color: var(--accent-gold);"></i> جامعة الملك عبدالعزيز</li>
+                    <li class="site-footer-contact-item"><i class="site-footer-location-icon" data-lucide="map-pin"></i> جامعة الملك عبدالعزيز</li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; color: var(--accent-gold); position: relative; padding-bottom: 10px; border-bottom: 2px solid rgba(236,176,46,0.3); display: inline-block;">منصاتنا</h3>
-                <div style="display: flex; gap: 15px;">
-                    <a href="https://x.com/EntrClub_KAU?s=20" target="_blank" rel="noopener noreferrer" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-gold); border: 1px solid rgba(236, 176, 46, 0.25); transition: all 0.3s;">
+                <h3 class="site-footer-heading">منصاتنا</h3>
+                <div class="site-footer-socials">
+                    <a class="site-footer-social-link" href="https://x.com/EntrClub_KAU?s=20" target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
                     </a>
-                    <a href="https://www.instagram.com/entrclub_kau?igsh=MW0yNWd4a21iazk3MQ==" target="_blank" rel="noopener noreferrer" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-gold); border: 1px solid rgba(236, 176, 46, 0.25); transition: all 0.3s;">
+                    <a class="site-footer-social-link" href="https://www.instagram.com/entrclub_kau?igsh=MW0yNWd4a21iazk3MQ==" target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                     </a>
-                    <a href="https://www.linkedin.com/company/kau-entrepreneurship-club/" target="_blank" rel="noopener noreferrer" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-gold); border: 1px solid rgba(236, 176, 46, 0.25); transition: all 0.3s;">
+                    <a class="site-footer-social-link" href="https://www.linkedin.com/company/kau-entrepreneurship-club/" target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                     </a>
                 </div>
             </div>
         </div>
-        <div style="margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; color: rgba(255,255,255,0.5); font-size: 0.95rem;">
-            <p style="margin: 0;">© 2025 جميع الحقوق محفوظة | نادي ريادة الأعمال</p>
+        <div class="site-footer-copyright">
+            <p class="site-footer-copyright-text">© 2025 جميع الحقوق محفوظة | نادي ريادة الأعمال</p>
         </div>
     </footer>
     <script>
