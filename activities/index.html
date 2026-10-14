@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأنشطة والفعاليات | نادي ريادة الأعمال</title>
+    <title data-i18n="activities.pageTitle">الأنشطة والفعاليات | نادي ريادة الأعمال</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..900&display=swap" rel="stylesheet">
@@ -16,20 +16,21 @@
     <header class="main-header">
         <div class="container container-flex">
             <div class="logo-area">
-                <img src="../assets/image.png" alt="شعار نادي ريادة الأعمال" class="club-logo">
+                <img src="../assets/image.png" alt="شعار نادي ريادة الأعمال" class="club-logo" data-i18n-alt="common.logo">
             </div>
             <nav class="navbar">
-                <ul class="nav-menu">
-                    <li><a href="../index.html" class="nav-link">الرئيسية</a></li>
-                    <li><a href="../activities/" class="nav-link active">الأنشطة والفعاليات</a></li>
-                    <li><a href="../about/" class="nav-link">من نحن</a></li>
-                    <li><a href="../development/" class="nav-link">قسم التطوير</a></li>
-                    <li><a href="../members/" class="nav-link">أعضاء النادي</a></li>
-                    <li><a href="../achievements/" class="nav-link">الإنجازات</a></li>
+                <ul class="nav-menu" id="primary-navigation">
+                    <li><a href="../index.html" class="nav-link" data-i18n="common.home">الرئيسية</a></li>
+                    <li><a href="../activities/" class="nav-link active" data-i18n="common.activities">الأنشطة والفعاليات</a></li>
+                    <li><a href="../about/" class="nav-link" data-i18n="common.about">من نحن</a></li>
+                    <li><a href="../development/" class="nav-link" data-i18n="common.development">قسم التطوير</a></li>
+                    <li><a href="../members/" class="nav-link" data-i18n="common.members">أعضاء النادي</a></li>
+                    <li><a href="../achievements/" class="nav-link" data-i18n="common.achievements">الإنجازات</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
-                 <button class="mobile-toggle" id="mobile-toggle"><i data-lucide="menu"></i></button>
+                <button class="language-switch" type="button" data-language-switch lang="en" dir="ltr" aria-label="التبديل إلى الإنجليزية" hidden>English</button>
+                 <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="فتح أو إغلاق قائمة التنقل" data-i18n-aria-label="common.toggleMenu" aria-expanded="false" aria-controls="primary-navigation"><i data-lucide="menu"></i></button>
             </div>
         </div>
     </header>
@@ -40,10 +41,10 @@
             <div class="page-hero-pattern"></div>
             <div class="container page-hero-content">
                 <div class="page-hero-label">
-                    <i class="icon-small" data-lucide="compass"></i> عالم من الفرص
+                    <i class="icon-small" data-lucide="compass"></i> <span data-i18n="activities.badge">عالم من الفرص</span>
                 </div>
-                <h1 class="page-hero-heading">الأنشطة والفعاليات</h1>
-                <p class="page-hero-description">اكتشف أحدث البرامج واللقاءات التي نصممها خصيصاً لتمكينك وإلهامك.</p>
+                <h1 class="page-hero-heading" data-i18n="common.activities">الأنشطة والفعاليات</h1>
+                <p class="page-hero-description" data-i18n="activities.heroDescription">اكتشف أحدث البرامج واللقاءات التي نصممها خصيصاً لتمكينك وإلهامك.</p>
             </div>
             <div class="page-hero-glow-gold"></div>
             <div class="page-hero-glow-blue"></div>
@@ -56,31 +57,31 @@
             <div class="activities-header">
                 <div class="container">
                     <div class="header-content text-center">
-                        <span class="premium-label">نادي ريادة الأعمال</span>
-                        <h2 class="main-title">مساحة <span class="gold-gradient-text">الإبداع</span> والفعاليات</h2>
-                        <p class="header-subtitle">بيئة ملهمة تجمع بين التعلم، الابتكار، والفرص الواعدة</p>
+                        <span class="premium-label" data-i18n="common.clubName">نادي ريادة الأعمال</span>
+                        <h2 class="main-title"><span data-i18n="activities.space">مساحة</span> <span class="gold-gradient-text" data-i18n="activities.creativity">الإبداع</span> <span data-i18n="activities.events">والفعاليات</span></h2>
+                        <p class="header-subtitle" data-i18n="activities.headerDescription">بيئة ملهمة تجمع بين التعلم، الابتكار، والفرص الواعدة</p>
                     </div>
 
                     <!-- Category Hub (Interactive Cards) -->
                     <div class="category-hub">
                         <button class="hub-card filter-tab active" data-filter="all">
                             <div class="hub-icon"><i data-lucide="layout-grid"></i></div>
-                            <span class="hub-label">الكل</span>
+                            <span class="hub-label" data-i18n="activities.all">الكل</span>
                             <div class="hub-indicator"></div>
                         </button>
                         <button class="hub-card filter-tab" data-filter="meeting">
                             <div class="hub-icon"><i data-lucide="users"></i></div>
-                            <span class="hub-label">لقاءات</span>
+                            <span class="hub-label" data-i18n="activities.meetings">لقاءات</span>
                             <div class="hub-indicator"></div>
                         </button>
                         <button class="hub-card filter-tab" data-filter="program">
                             <div class="hub-icon"><i data-lucide="rocket"></i></div>
-                            <span class="hub-label">برامج</span>
+                            <span class="hub-label" data-i18n="activities.programs">برامج</span>
                             <div class="hub-indicator"></div>
                         </button>
                         <button class="hub-card filter-tab" data-filter="competition">
                             <div class="hub-icon"><i data-lucide="trophy"></i></div>
-                            <span class="hub-label">مسابقات</span>
+                            <span class="hub-label" data-i18n="activities.competitions">مسابقات</span>
                             <div class="hub-indicator"></div>
                         </button>
                     </div>
@@ -92,7 +93,7 @@
                 <div class="meetings-container mt-50" id="eventsContainer">
                     <div class="events-state">
                         <i class="events-loading-icon" data-lucide="loader"></i>
-                        <p class="events-loading-text">جاري تحميل الفعاليات...</p>
+                        <p class="events-loading-text" data-i18n="activities.loading">جاري تحميل الفعاليات...</p>
 </div>
                 </div>
             </div>
@@ -102,38 +103,38 @@
         <section class="testimonials-section py-100 bg-light">
             <div class="container">
                 <div class="section-header text-center mb-60">
-                    <span class="hero-badge">قالوا عنا</span>
-                    <h2 class="section-title">قصص <span class="text-gold">نجاح</span> وتجارب ملهمة</h2>
+                    <span class="hero-badge" data-i18n="activities.testimonials">قالوا عنا</span>
+                    <h2 class="section-title"><span data-i18n="activities.stories">قصص</span> <span class="text-gold" data-i18n="activities.success">نجاح</span> <span data-i18n="activities.experiences">وتجارب ملهمة</span></h2>
                 </div>
                 
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <div class="quote-icon"><i data-lucide="quote"></i></div>
-                        <p class="testimonial-text">"كانت ورشة العمل نقطة تحول في مشروعي الخاص. الخبرات التي اكتسبتها هنا لا تقدر بثمن."</p>
+                        <p class="testimonial-text" data-i18n="activities.quoteZiyad">"كانت ورشة العمل نقطة تحول في مشروعي الخاص. الخبرات التي اكتسبتها هنا لا تقدر بثمن."</p>
                         <div class="testimonial-author">
                             <div class="author-info">
-                                <h4>زياد الغامدي</h4>
-                                <span>رائد أعمال ناشئ</span>
+                                <h4 data-i18n="activities.ziyad">زياد الغامدي</h4>
+                                <span data-i18n="activities.ziyadRole">رائد أعمال ناشئ</span>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <div class="quote-icon"><i data-lucide="quote"></i></div>
-                        <p class="testimonial-text">"النادي يوفر بيئة ريادية حقيقية. شبكة العلاقات التي بنيتها من خلال اللقاءات ساعدتني كثيراً."</p>
+                        <p class="testimonial-text" data-i18n="activities.quoteSarah">"النادي يوفر بيئة ريادية حقيقية. شبكة العلاقات التي بنيتها من خلال اللقاءات ساعدتني كثيراً."</p>
                         <div class="testimonial-author">
                             <div class="author-info">
-                                <h4>سارة القحطاني</h4>
-                                <span>مشاركة في هاكاثون الابتكار</span>
+                                <h4 data-i18n="activities.sarah">سارة القحطاني</h4>
+                                <span data-i18n="activities.sarahRole">مشاركة في هاكاثون الابتكار</span>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <div class="quote-icon"><i data-lucide="quote"></i></div>
-                        <p class="testimonial-text">"التنظيم والمحتوى في المعسكرات الريادية يتفوق على الكثير من البرامج العالمية التي حضرتها."</p>
+                        <p class="testimonial-text" data-i18n="activities.quoteFaisal">"التنظيم والمحتوى في المعسكرات الريادية يتفوق على الكثير من البرامج العالمية التي حضرتها."</p>
                         <div class="testimonial-author">
                             <div class="author-info">
-                                <h4>فيصل الراشد</h4>
-                                <span>طالب في كلية الأعمال</span>
+                                <h4 data-i18n="activities.faisal">فيصل الراشد</h4>
+                                <span data-i18n="activities.faisalRole">طالب في كلية الأعمال</span>
                             </div>
                         </div>
                     </div>
@@ -145,45 +146,45 @@
         <section class="faq-section py-100 bg-white">
             <div class="container">
                 <div class="section-header text-center mb-60">
-                    <span class="hero-badge">الاستفسارات</span>
-                    <h2 class="section-title">لديك <span class="text-gold">تساؤل؟</span> نحن هنا للإجابة</h2>
+                    <span class="hero-badge" data-i18n="activities.faq">الاستفسارات</span>
+                    <h2 class="section-title"><span data-i18n="activities.have">لديك</span> <span class="text-gold" data-i18n="activities.question">تساؤل؟</span> <span data-i18n="activities.answer">نحن هنا للإجابة</span></h2>
                 </div>
 
                 <div class="faq-container">
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>هل الفعاليات والأنشطة مجانية بالكامل؟</span>
+                            <span data-i18n="activities.faqFree">هل الفعاليات والأنشطة مجانية بالكامل؟</span>
                             <i data-lucide="chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>نعم، أغلب فعاليات النادي مقدمة بشكل مجاني لطلاب الجامعة كجزء من مبادراتنا لدعم ريادة الأعمال، وقد تكون هناك رسوم رمزية لبعض المعسكرات المكثفة جداً لتغطية التكاليف التشغيلية.</p>
+                            <p data-i18n="activities.faqFreeAnswer">نعم، أغلب فعاليات النادي مقدمة بشكل مجاني لطلاب الجامعة كجزء من مبادراتنا لدعم ريادة الأعمال، وقد تكون هناك رسوم رمزية لبعض المعسكرات المكثفة جداً لتغطية التكاليف التشغيلية.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>هل أحصل على شهادة حضور عند المشاركة؟</span>
+                            <span data-i18n="activities.faqCertificate">هل أحصل على شهادة حضور عند المشاركة؟</span>
                             <i data-lucide="chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>بالتأكيد، يتم إصدار شهادات حضور رسمية ومعتمدة من النادي والجامعة لجميع المشاركين الذين يحققون نسبة الحضور المطلوبة في البرامج والدورات.</p>
+                            <p data-i18n="activities.faqCertificateAnswer">بالتأكيد، يتم إصدار شهادات حضور رسمية ومعتمدة من النادي والجامعة لجميع المشاركين الذين يحققون نسبة الحضور المطلوبة في البرامج والدورات.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>كيف يمكنني التسجيل في الفعاليات القادمة؟</span>
+                            <span data-i18n="activities.faqRegistration">كيف يمكنني التسجيل في الفعاليات القادمة؟</span>
                             <i data-lucide="chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>يمكنك التسجيل مباشرة من خلال صفحة الفعاليات هذه بالضغط على "سجل الآن" في أي كرت تذكرة نشط، وسيصلك بريد تأكيد فور إتمام العملية.</p>
+                            <p data-i18n="activities.faqRegistrationAnswer">يمكنك التسجيل مباشرة من خلال صفحة الفعاليات هذه بالضغط على "سجل الآن" في أي كرت تذكرة نشط، وسيصلك بريد تأكيد فور إتمام العملية.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>هل يمكنني الانضمام لفريق تنظيم الفعاليات؟</span>
+                            <span data-i18n="activities.faqJoin">هل يمكنني الانضمام لفريق تنظيم الفعاليات؟</span>
                             <i data-lucide="chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>نعم، نحن نرحب دائماً بالعقول المبدعة! يتم فتح باب الانضمام للجان النادي في بداية كل فصل دراسي، تابع حساباتنا في مواقع التواصل الاجتماعي للإعلان عن ذلك.</p>
+                            <p data-i18n="activities.faqJoinAnswer">نعم، نحن نرحب دائماً بالعقول المبدعة! يتم فتح باب الانضمام للجان النادي في بداية كل فصل دراسي، تابع حساباتنا في مواقع التواصل الاجتماعي للإعلان عن ذلك.</p>
                         </div>
                     </div>
                 </div>
@@ -194,31 +195,31 @@
             <footer class="footer-section site-footer">
         <div class="container site-footer-grid">
             <div class="footer-col">
-                <img class="site-footer-logo" src="../assets/logo/logo-footer.png" alt="شعار النادي">
-                <p class="site-footer-description">نادي ريادة الأعمال، منصة الحالمين وصناع المستقبل. نهدف لتمكين الطلبة وبناء شخصية ريادية طموحة.</p>
+                <img class="site-footer-logo" src="../assets/logo/logo-footer.png" alt="شعار النادي" data-i18n-alt="common.shortLogo">
+                <p class="site-footer-description" data-i18n="common.footerDescription">نادي ريادة الأعمال، منصة الحالمين وصناع المستقبل. نهدف لتمكين الطلبة وبناء شخصية ريادية طموحة.</p>
             </div>
             <div class="footer-col">
-                <h3 class="site-footer-heading">روابط سريعة</h3>
+                <h3 class="site-footer-heading" data-i18n="common.quickLinks">روابط سريعة</h3>
                 <ul class="site-footer-list">
-                    <li><a class="site-footer-link" href="../index.html">الرئيسية</a></li>
-                    <li><a class="site-footer-link" href="../activities/">الأنشطة والفعاليات</a></li>
-                    <li><a class="site-footer-link" href="../about/">من نحن</a></li>
-                    <li><a class="site-footer-link" href="../members/">أعضاء النادي</a></li>
+                    <li><a class="site-footer-link" href="../index.html" data-i18n="common.home">الرئيسية</a></li>
+                    <li><a class="site-footer-link" href="../activities/" data-i18n="common.activities">الأنشطة والفعاليات</a></li>
+                    <li><a class="site-footer-link" href="../about/" data-i18n="common.about">من نحن</a></li>
+                    <li><a class="site-footer-link" href="../members/" data-i18n="common.members">أعضاء النادي</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3 class="site-footer-heading">تواصل معنا</h3>
+                <h3 class="site-footer-heading" data-i18n="common.contact">تواصل معنا</h3>
                 <ul class="site-footer-list">
                     <li class="site-footer-contact-item">
                         <a class="site-footer-email" href="mailto:info@entclub.com">
                             <svg class="icon-gold" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> info@entclub.com
                         </a>
                     </li>
-                    <li class="site-footer-contact-item"><i class="site-footer-location-icon" data-lucide="map-pin"></i> جامعة الملك عبدالعزيز</li>
+                    <li class="site-footer-contact-item"><i class="site-footer-location-icon" data-lucide="map-pin"></i> <span data-i18n="common.university">جامعة الملك عبدالعزيز</span></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3 class="site-footer-heading">منصاتنا</h3>
+                <h3 class="site-footer-heading" data-i18n="common.socials">منصاتنا</h3>
                 <div class="site-footer-socials">
                     <a class="site-footer-social-link" href="https://x.com/EntrClub_KAU?s=20" target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
@@ -233,7 +234,7 @@
             </div>
         </div>
         <div class="site-footer-copyright">
-            <p class="site-footer-copyright-text">© 2025 جميع الحقوق محفوظة | نادي ريادة الأعمال</p>
+            <p class="site-footer-copyright-text" data-i18n="common.copyright">© 2025 جميع الحقوق محفوظة | نادي ريادة الأعمال</p>
         </div>
     </footer>
 
@@ -243,33 +244,33 @@
             <!-- Main Content Piece -->
             <div class="modal-main-piece">
                 <div class="modal-poster-side">
-                    <img class="event-modal-poster-hidden" id="modalPoster" src="" alt="Event Poster">
+                    <img class="event-modal-poster-hidden" id="modalPoster" src="" alt="Event Poster" data-i18n-alt="common.eventPoster">
                     <div class="event-modal-poster-placeholder" id="modalPosterPlaceholder">
                         <i class="event-modal-placeholder-icon" data-lucide="image"></i>
                     </div>
                 </div>
                 
                 <div class="modal-content-side">
-                    <button class="modal-close" id="closeModal">×</button>
-                    <h2 id="modalTitle" class="modal-title-full">اسم الفعالية</h2>
-                    <p id="modalDesc" class="modal-desc-full">وصف كامل وشامل للفعالية وما سيتم تقديمه فيها من محاور وفوائد للمشاركين.</p>
+                    <button class="modal-close" id="closeModal" type="button" aria-label="إغلاق النافذة" data-i18n-aria-label="common.closeModal">×</button>
+                    <h2 id="modalTitle" class="modal-title-full" data-i18n="activities.modalTitle" data-i18n-preserve-runtime>اسم الفعالية</h2>
+                    <p id="modalDesc" class="modal-desc-full" data-i18n="activities.modalDescription" data-i18n-preserve-runtime>وصف كامل وشامل للفعالية وما سيتم تقديمه فيها من محاور وفوائد للمشاركين.</p>
                     
                     <div class="modal-grid">
                         <div class="modal-info-box">
                             <i data-lucide="calendar"></i>
-                            <span id="modalDate">15 أكتوبر 2024</span>
+                            <span id="modalDate" data-i18n="activities.modalDate" data-i18n-preserve-runtime>15 أكتوبر 2024</span>
                         </div>
                         <div class="modal-info-box">
                             <i data-lucide="clock"></i>
-                            <span id="modalTime">4:00 مساءً</span>
+                            <span id="modalTime" data-i18n="activities.modalTime" data-i18n-preserve-runtime>4:00 مساءً</span>
                         </div>
                         <div class="modal-info-box">
                             <i data-lucide="map-pin"></i>
-                            <span id="modalLocation">مقر النادي - مبنى 4</span>
+                            <span id="modalLocation" data-i18n="activities.modalLocation" data-i18n-preserve-runtime>مقر النادي - مبنى 4</span>
                         </div>
                         <div class="modal-info-box">
                             <i data-lucide="users"></i>
-                            <span>المقاعد محدودة</span>
+                            <span data-i18n="activities.limitedSeats">المقاعد محدودة</span>
                         </div>
                     </div>
                 </div>
@@ -278,7 +279,7 @@
             <!-- Side Piece (The Stub) -->
             <div class="modal-side-piece">
                 <div id="modalId" class="modal-id-vertical">TR-2024-01</div>
-                <a href="#" class="modal-reg-btn">سجل الآن</a>
+                <a href="#" class="modal-reg-btn" data-i18n="common.register">سجل الآن</a>
             </div>
         </div>
     </div>
@@ -299,8 +300,9 @@
             eventsContainer.innerHTML = '';
 
             if (events.length === 0) {
-                eventsContainer.innerHTML = '<div class="events-state"><i class="events-empty-icon" data-lucide="calendar-off"></i><p>لا توجد فعاليات حالياً</p></div>';
+                eventsContainer.innerHTML = '<div class="events-state"><i class="events-empty-icon" data-lucide="calendar-off"></i><p data-i18n="activities.empty">لا توجد فعاليات حالياً</p></div>';
                 lucide.createIcons();
+                window.siteI18n?.apply(eventsContainer);
                 return;
             }
 
@@ -309,25 +311,31 @@
                 ticket.className = 'ticket-card';
                 if (event.status === 'ended') ticket.classList.add('separated');
                 ticket.setAttribute('data-category', event.category);
+                ticket.dataset.status = event.status || 'active';
                 ticket.setAttribute('data-location', event.location || '');
                 ticket.setAttribute('data-desc', event.desc || '');
 
-                let statusLabel = '<div class="ticket-registration-label">التسجيل متاح</div>';
+                let statusLabel = '<div class="ticket-registration-label" data-i18n="common.registrationOpen">التسجيل متاح</div>';
                 let statusText = 'متاح الآن';
+                let statusKey = 'activities.available';
                 let statusClass = 'ticket-status-open';
                 let expiredStamp = '';
                 let actionText = 'التفاصيل';
+                let actionKey = 'activities.details';
 
                 if (event.status === 'soon') {
                     statusLabel = '';
                     statusText = 'قريباً';
+                    statusKey = 'activities.soon';
                     statusClass = 'ticket-status-soon';
                 } else if (event.status === 'ended') {
                     statusLabel = '';
                     statusText = 'انتهى التسجيل';
+                    statusKey = 'activities.closed';
                     statusClass = 'ticket-status-ended';
-                    expiredStamp = '<div class="expired-stamp">انتهى</div>';
+                    expiredStamp = '<div class="expired-stamp" data-i18n="activities.ended">انتهى</div>';
                     actionText = 'انتهى';
+                    actionKey = 'activities.ended';
                 }
 
                 const idShort = event.id ? event.id.slice(-4) : '0000';
@@ -347,7 +355,7 @@
                                 </div>
                             </div>
                             <div class="ticket-status-column">
-                                <span class="ticket-status-text ${statusClass}">${statusText}</span>
+                                <span class="ticket-status-text ${statusClass}" data-i18n="${statusKey}">${statusText}</span>
                                 <div class="ticket-image">
                                     ${event.image ? `<img class="ticket-poster-image" src="${event.image}">` : `<div class="ticket-poster-placeholder"><i class="ticket-placeholder-icon" data-lucide="image"></i></div>`}
                                 </div>
@@ -361,13 +369,14 @@
                     </div>
                     <div class="ticket-side">
                         <span class="ticket-id">TR-${idShort}</span>
-                        <a href="${event.regLink || '#'}" target="_blank" class="ticket-action" data-reg-link="${event.regLink || ''}">${actionText}</a>
+                        <a href="${event.regLink || '#'}" target="_blank" class="ticket-action" data-i18n="${actionKey}" data-reg-link="${event.regLink || ''}">${actionText}</a>
                     </div>
                 `;
                 eventsContainer.appendChild(ticket);
             });
 
             lucide.createIcons();
+            window.siteI18n?.apply(eventsContainer);
             initFiltering();
             initModals();
         }
@@ -380,7 +389,15 @@
             renderTickets(events);
         }, (error) => {
             console.error('Error loading events:', error);
-            eventsContainer.innerHTML = '<div class="events-state"><p>حدث خطأ في تحميل الفعاليات</p></div>';
+            eventsContainer.innerHTML = '<div class="events-state"><p data-i18n="activities.error">حدث خطأ في تحميل الفعاليات</p></div>';
+            window.siteI18n?.apply(eventsContainer);
+        });
+
+        window.addEventListener('site:languagechange', () => {
+            const location = document.getElementById('modalLocation');
+            if (location.dataset.locationFallback === 'true') {
+                location.innerText = window.siteI18n.t('activities.modalLocation');
+            }
         });
 
         // Category Filtering
@@ -438,32 +455,38 @@
                         modalPlaceholder.style.display = 'flex';
                     }
 
-                    const isExpired = ticket.classList.contains('separated') || ticket.innerText.includes('انتهى');
-                    const isSoon = ticket.innerText.includes('قريباً');
+                    const isExpired = ticket.dataset.status === 'ended' || ticket.classList.contains('separated');
+                    const isSoon = ticket.dataset.status === 'soon';
 
                     document.getElementById('modalTitle').innerText = title;
                     document.getElementById('modalDesc').innerText = ticket.getAttribute('data-desc') || desc;
-                    document.getElementById('modalDate').innerText = dateEl ? dateEl.parentElement.innerText : 'قريباً';
+                    document.getElementById('modalDate').innerText = dateEl ? dateEl.parentElement.innerText : (window.siteI18n?.t('activities.soon') || 'قريباً');
                     document.getElementById('modalTime').innerText = timeEl ? timeEl.parentElement.innerText : '--:--';
                     document.getElementById('modalId').innerText = idEl ? idEl.innerText : 'TR-0000';
                     const eventLocation = ticket.getAttribute('data-location');
-                    document.getElementById('modalLocation').innerText = eventLocation && eventLocation.trim() ? eventLocation : 'مقر النادي - مبنى 4';
+                    const modalLocation = document.getElementById('modalLocation');
+                    modalLocation.innerText = eventLocation && eventLocation.trim() ? eventLocation : (window.siteI18n?.t('activities.modalLocation') || 'مقر النادي - مبنى 4');
+                    modalLocation.dataset.locationFallback = String(!eventLocation || !eventLocation.trim());
 
                     regBtnModal.classList.remove('disabled', 'soon');
                     regBtnModal.href = customRegLink || '#';
 
                     if (isExpired) {
                         regBtnModal.innerText = 'انتهى التسجيل';
+                        regBtnModal.dataset.i18n = 'activities.closed';
                         regBtnModal.classList.add('disabled');
                         regBtnModal.href = '#';
                     } else if (isSoon) {
                         regBtnModal.innerText = 'ترقبوا الإطلاق';
+                        regBtnModal.dataset.i18n = 'activities.launch';
                         regBtnModal.classList.add('soon');
                         regBtnModal.href = '#';
                     } else {
                         regBtnModal.innerText = 'سجل الآن';
+                        regBtnModal.dataset.i18n = 'common.register';
                     }
 
+                    window.siteI18n?.apply(regBtnModal);
                     modal.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 });
