@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="../css/public-shared.css">
+    <link rel="stylesheet" href="../css/i18n.css">
+    <script src="../js/translations.js" defer></script>
+    <script src="../js/i18n.js" defer></script>
 </head>
 <body>
     <header class="main-header">
@@ -361,27 +364,9 @@
             <p class="site-footer-copyright-text" data-i18n="common.copyright">© 2025 جميع الحقوق محفوظة | نادي ريادة الأعمال</p>
         </div>
     </footer>
+    <script src="../js/main.js"></script>
     <script>
         lucide.createIcons();
-
-        // تفعيل زر القائمة في الجوال
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-
-        if(mobileToggle && navMenu) {
-            mobileToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-                
-                // تغيير الأيقونة من وإلى (قائمة / إغلاق)
-                const icon = mobileToggle.querySelector('i');
-                if (navMenu.classList.contains('active')) {
-                    icon.setAttribute('data-lucide', 'x');
-                } else {
-                    icon.setAttribute('data-lucide', 'menu');
-                }
-                lucide.createIcons(); // تحديث الأيقونة
-            });
-        }
 
         const modal = document.getElementById('ticketModal');
 
