@@ -15,7 +15,7 @@
 .stat-card-ultra::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0; inset-inline-end: 0; inset-inline-start: 0; bottom: 0;
     background: radial-gradient(circle at center, rgba(236, 176, 46, 0.03) 0%, transparent 70%);
     z-index: -1;
     opacity: 0;
@@ -94,13 +94,13 @@
 
 .achievement-timeline-item {
     position: relative;
-    padding-right: 70px;
+    padding-inline-start: 70px;
     margin-bottom: 50px;
 }
 
 .achievement-timeline-line-gold {
     position: absolute;
-    right: 28px;
+    inset-inline-start: 28px;
     top: 30px;
     bottom: -80px;
     width: 2px;
@@ -110,7 +110,7 @@
 
 .achievement-timeline-dot-gold {
     position: absolute;
-    right: 20px;
+    inset-inline-start: 20px;
     top: 0;
     width: 18px;
     height: 18px;
@@ -183,7 +183,7 @@
 
 .achievement-timeline-line-muted {
     position: absolute;
-    right: 28px;
+    inset-inline-start: 28px;
     top: 30px;
     bottom: -80px;
     width: 2px;
@@ -193,7 +193,7 @@
 
 .achievement-timeline-dot-navy {
     position: absolute;
-    right: 23px;
+    inset-inline-start: 23px;
     top: 5px;
     width: 12px;
     height: 12px;
@@ -277,13 +277,13 @@
 
 .achievement-timeline-item-last {
     position: relative;
-    padding-right: 70px;
+    padding-inline-start: 70px;
     margin-bottom: 0;
 }
 
 .achievement-timeline-dot-muted {
     position: absolute;
-    right: 23px;
+    inset-inline-start: 23px;
     top: 5px;
     width: 12px;
     height: 12px;

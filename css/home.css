@@ -9,7 +9,7 @@
     position: relative;
     display: grid;
     grid-template-columns: 1fr 320px;
-    direction: rtl;
+    direction: inherit;
     align-items: stretch;
     min-height: 250px;
     background: linear-gradient(135deg, #ffffff 0%, #fcfcff 55%, #f6f7fc 100%);
@@ -27,7 +27,7 @@
 
 /* خط ذهبي متدرج */
 .news-card::before {
-    content:""; position:absolute; top:0; right:0; bottom:0; width:5px; z-index:3;
+    content:""; position:absolute; top:0; inset-inline-start: 0; bottom:0; width:5px; z-index:3;
     background: linear-gradient(180deg, var(--nc-gold) 0%, #f6cf6a 35%, #d99a1f 100%);
     box-shadow: 0 0 18px rgba(236,176,46,0.45);
     transition: width 0.45s cubic-bezier(0.22,1,0.36,1);
@@ -91,7 +91,7 @@
 }
 /* لمعة ذهبية عند حد التقاء الصورة بالنص */
 .news-img-wrap::after {
-    content:""; position:absolute; top:0; bottom:0; right:0; width:1px; z-index:3;
+    content:""; position:absolute; top:0; bottom:0; inset-inline-start: 0; width:1px; z-index:3;
     background:linear-gradient(180deg, transparent, rgba(236,176,46,0.55), transparent);
 }
 .news-card:hover .news-img-wrap img { transform:scale(1.06); }
@@ -114,7 +114,7 @@
     display:flex;
     flex-direction:column;
     gap:24px;
-    text-align:right;
+    text-align: start;
 }
 
 .news-empty-panel {
@@ -144,7 +144,7 @@
 }
 
 .booklet-heading-align {
-    text-align: right;
+    text-align: start;
 }
 
 .booklet-cover-icon {

@@ -69,7 +69,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     content: '';
     position: absolute;
     bottom: 0;
-    right: 0;
+    inset-inline-start: 0;
     width: 60px;
     height: 4px;
     background: var(--accent-gold);
@@ -169,7 +169,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
+    inset-inline-end: 0;
     width: 0;
     height: 2px;
     background: var(--accent-gold);
@@ -378,7 +378,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .card-arrow {
     position: absolute;
     bottom: 25px;
-    left: 25px;
+    inset-inline-end: 25px;
     width: 45px;
     height: 45px;
     background: rgba(236, 176, 46, 0.1);
@@ -507,7 +507,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     content: '';
     position: absolute;
     bottom: 0;
-    right: 0;
+    inset-inline-start: 0;
     width: 60%;
     height: 2px;
     background: var(--white);
@@ -704,7 +704,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     width: 65%;
     height: 70%;
     top: 0;
-    right: 0;
+    inset-inline-start: 0;
     z-index: 2;
 }
 
@@ -712,7 +712,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     width: 55%;
     height: 60%;
     bottom: 0;
-    left: 0;
+    inset-inline-end: 0;
     z-index: 1;
 }
 
@@ -753,8 +753,8 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     gap: 2rem;
     margin-top: 3rem;
     max-width: 1100px; /* ط·ع¾ط·آ­ط·آ¯ط¸ظ¹ط·آ¯ ط·آ¹ط·آ±ط·آ¶ ط·آ§ط¸â€‍ط¸â€ڑط·آ³ط¸â€¦ ط¸â€‍ط¸ظ¹ط¸ئ’ط¸ث†ط¸â€  ط·آ£ط·آ±ط·آ´ط¸â€ڑ */
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
 }
 
 .program-card {
@@ -900,7 +900,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .ticket-glare {
     position: absolute;
     top: 0;
-    left: 0;
+    inset-inline-end: 0;
     width: 100%;
     height: 100%;
     background: radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,0.4) 0%, transparent 60%);
@@ -954,7 +954,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 .dashed-line {
     height: 100%;
-    border-left: 2px dashed rgba(255, 255, 255, 0.3);
+    border-inline-end: 2px dashed rgba(255, 255, 255, 0.3);
 }
 
 .cutout-top, .cutout-bottom {
@@ -979,7 +979,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-inline-start: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
 }
 
@@ -1037,7 +1037,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    inset-inline-end: 0;
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, transparent 60%, rgba(35, 32, 85, 0.4));
@@ -1114,7 +1114,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     .dashed-line {
         width: 100%;
         height: 2px;
-        border-left: none;
+        border-inline-end: none;
         border-top: 2px dashed rgba(35, 32, 85, 0.15);
     }
     .cutout-top, .cutout-bottom {
@@ -1123,8 +1123,8 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
         top: 50%;
         transform: translateY(-50%);
     }
-    .cutout-top { left: -15px; }
-    .cutout-bottom { right: -15px; left: auto; }
+    .cutout-top { inset-inline-end: -15px; }
+    .cutout-bottom { inset-inline-start: -15px; inset-inline-end: auto; }
     .ticket-side {
         flex-direction: row;
         writing-mode: horizontal-tb;
@@ -1132,7 +1132,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     .ticket-id {
         writing-mode: horizontal-tb;
         margin-bottom: 0;
-        margin-left: 2rem;
+        margin-inline-end: 2rem;
     }
     .ticket-content {
         flex-direction: column;
@@ -1167,7 +1167,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .ticket-modal-overlay {
     position: fixed;
     top: 0;
-    left: 0;
+    inset-inline-end: 0;
     width: 100%;
     height: 100%;
     background: rgba(35, 32, 85, 0.4);
@@ -1206,7 +1206,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .close-modal {
     position: absolute;
     top: 20px;
-    right: 20px;
+    inset-inline-start: 20px;
     background: white;
     border: none;
     width: 40px;
@@ -1240,7 +1240,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: 2px solid var(--accent-gold);
+    border-inline-end: 2px solid var(--accent-gold);
 }
 
 .modal-info-side {
@@ -1249,7 +1249,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: right;
+    text-align: start;
 }
 
 #modalTitle {
@@ -1337,8 +1337,8 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     .nav-menu {
         position: fixed;
         top: 70px;
-        left: 0;
-        right: 0;
+        inset-inline-end: 0;
+        inset-inline-start: 0;
         background: var(--white);
         flex-direction: column;
         padding: 2rem;
@@ -1363,7 +1363,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     }
     .program-card {
         grid-column: span 1 !important;
-        margin-left: 0 !important;
+        margin-inline-end: 0 !important;
         transform: none !important;
         height: 350px;
     }
@@ -1492,7 +1492,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     .nav-menu {
         position: fixed;
         top: 0;
-        left: 0;
+        inset-inline-end: 0;
         width: 100%;
         height: 100vh;
         background: rgba(35, 32, 85, 0.95); /* ط¸ئ’ط·آ­ط¸â€‍ط¸ظ¹ ط¸â€¦ط¸â€‍ط¸ئ’ط¸ظ¹ ط·آ´ط¸ظ¾ط·آ§ط¸ظ¾ */
@@ -1651,7 +1651,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     background: #f8f9fa;
     padding: 1rem 1.5rem;
     border-radius: 12px;
-    border-right: 4px solid var(--accent-gold);
+    border-inline-start: 4px solid var(--accent-gold);
     transition: var(--transition);
 }
 
@@ -1851,7 +1851,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .placeholder-overlay {
     position: absolute;
     bottom: 20px;
-    right: 20px;
+    inset-inline-start: 20px;
     background: rgba(35, 32, 85, 0.8);
     color: var(--white);
     padding: 0.5rem 1.5rem;
@@ -1902,7 +1902,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .ap-img-decoration {
     position: absolute;
     top: -20px;
-    left: -20px;
+    inset-inline-end: -20px;
     width: 100px;
     height: 100px;
     background: var(--accent-gold);
@@ -1987,12 +1987,12 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 @media (min-width: 993px) {
     .goals-official-grid .centered-item:nth-of-type(4) {
-        margin-left: -50%;
+        margin-inline-end: -50%;
         grid-column-start: 2;
     }
     .goals-official-grid .centered-item:nth-of-type(5) {
         grid-column-start: 3;
-        margin-left: -50%;
+        margin-inline-end: -50%;
     }
 }
 
@@ -2023,8 +2023,8 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .gallery-label {
     position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0;
+    inset-inline-end: 0;
+    inset-inline-start: 0;
     background: linear-gradient(to top, rgba(35, 32, 85, 0.9), transparent);
     color: var(--white);
     padding: 2rem 1rem 1rem;
@@ -2049,7 +2049,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
         grid-template-columns: 1fr;
     }
     .goals-official-grid .centered-item {
-        margin-left: 0 !important;
+        margin-inline-end: 0 !important;
     }
 }
 
@@ -2069,7 +2069,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .achievements-hero-v2::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0; inset-inline-end: 0; inset-inline-start: 0; bottom: 0;
     background: 
         radial-gradient(circle at 10% 20%, rgba(236, 176, 46, 0.1) 0%, transparent 40%),
         radial-gradient(circle at 90% 80%, rgba(186, 195, 120, 0.05) 0%, transparent 40%);
@@ -2115,7 +2115,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     content: '';
     position: absolute;
     top: 0;
-    right: 60px;
+    inset-inline-start: 60px;
     width: 1px;
     height: 100%;
     background: linear-gradient(to bottom, transparent, var(--accent-gold) 15%, var(--accent-gold) 85%, transparent);
@@ -2123,13 +2123,13 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 .timeline-block {
     position: relative;
-    padding-right: 170px;
+    padding-inline-start: 170px;
     margin-bottom: 120px;
 }
 
 .timeline-year-label {
     position: absolute;
-    right: 0;
+    inset-inline-start: 0;
     top: 0;
     width: 120px;
     height: 120px;
@@ -2181,7 +2181,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: right;
+    text-align: start;
 }
 
 .award-image {
@@ -2375,7 +2375,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     justify-content: space-between;
     align-items: center;
     padding: 2.5rem 4rem;
-    text-align: right;
+    text-align: start;
 }
 
 /* Cards Grid */
@@ -2435,8 +2435,8 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 /* Responsiveness */
 @media (max-width: 1100px) {
-    .main-timeline::before { right: 40px; }
-    .timeline-block { padding-right: 100px; }
+    .main-timeline::before { inset-inline-start: 40px; }
+    .timeline-block { padding-inline-start: 100px; }
     .timeline-year-label { width: 100px; height: 100px; font-size: 1.6rem; }
     .major-award-showcase { padding: 3rem; }
 }
@@ -2449,7 +2449,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 @media (max-width: 768px) {
     .main-timeline::before { display: none; }
-    .timeline-block { padding-right: 0; padding-top: 60px; }
+    .timeline-block { padding-inline-start: 0; padding-top: 60px; }
     .timeline-year-label { right: 50%; transform: translateX(50%); top: -40px; }
     .achievement-cards-grid { grid-template-columns: 1fr; }
     .stats-showcase-grid { grid-template-columns: 1fr; }
@@ -2540,7 +2540,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     padding: 1.2rem 2.5rem;
     border-radius: 20px;
     width: max-content;
-    margin-right: auto;
+    margin-inline-start: auto;
 }
 
 .info-item {
@@ -2671,7 +2671,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 .moment-overlay {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0; inset-inline-end: 0; inset-inline-start: 0; bottom: 0;
     background: rgba(35, 32, 85, 0.85);
     color: white;
     display: flex;
@@ -2826,7 +2826,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     flex: 1;
     height: 1px;
     background: linear-gradient(to left, rgba(236, 176, 46, 0.3), transparent);
-    margin-right: 2rem;
+    margin-inline-start: 2rem;
 }
 
 .year-tag {
@@ -3115,7 +3115,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .panorama-overlay {
     position: absolute;
     top: 0;
-    left: 0;
+    inset-inline-end: 0;
     width: 100%;
     height: 100%;
     background: radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.4) 100%);
@@ -3135,10 +3135,10 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     animation: float-particle 10s infinite ease-in-out;
 }
 
-.p1 { top: 10%; left: 5%; width: 25px; height: 25px; animation-duration: 12s; }
-.p2 { top: 80%; left: 15%; width: 15px; height: 15px; animation-duration: 8s; }
-.p3 { top: 20%; right: 10%; width: 20px; height: 20px; animation-duration: 15s; }
-.p4 { top: 70%; right: 5%; width: 30px; height: 30px; animation-duration: 10s; }
+.p1 { top: 10%; inset-inline-end: 5%; width: 25px; height: 25px; animation-duration: 12s; }
+.p2 { top: 80%; inset-inline-end: 15%; width: 15px; height: 15px; animation-duration: 8s; }
+.p3 { top: 20%; inset-inline-start: 10%; width: 20px; height: 20px; animation-duration: 15s; }
+.p4 { top: 70%; inset-inline-start: 5%; width: 30px; height: 30px; animation-duration: 10s; }
 
 @keyframes float-particle {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
@@ -3242,7 +3242,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     content: '';
     position: absolute;
     bottom: 0;
-    right: 0;
+    inset-inline-start: 0;
     width: 80px;
     height: 4px;
     background: var(--accent-gold);
@@ -3319,7 +3319,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 .moments-slider-container {
     width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    margin-inline-end: calc(-50vw + 50%);
     position: relative;
     overflow: hidden;
     padding: 20px 0;
@@ -3337,12 +3337,12 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 }
 
 .moments-slider-container::before {
-    left: 0;
+    inset-inline-end: 0;
     background: linear-gradient(to right, var(--light-gray) 0%, transparent 100%);
 }
 
 .moments-slider-container::after {
-    right: 0;
+    inset-inline-start: 0;
     background: linear-gradient(to left, var(--light-gray) 0%, transparent 100%);
 }
 
@@ -3437,7 +3437,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .activities-hero .hero-shapes .shape-1 {
     position: absolute;
     top: -50px;
-    right: -50px;
+    inset-inline-start: -50px;
     width: 300px;
     height: 300px;
     background: radial-gradient(circle, rgba(236,176,46,0.1) 0%, rgba(255,255,255,0) 70%);
@@ -3447,7 +3447,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .activities-hero .hero-shapes .shape-2 {
     position: absolute;
     bottom: -100px;
-    left: -50px;
+    inset-inline-end: -50px;
     width: 400px;
     height: 400px;
     background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
@@ -3600,7 +3600,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     align-items: center;
     justify-content: center;
     background: #fdfdfd;
-    border-right: 1px solid rgba(0,0,0,0.05);
+    border-inline-start: 1px solid rgba(0,0,0,0.05);
 }
 
 @media (max-width: 768px) {
@@ -3611,7 +3611,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
         min-height: 120px;
     }
     .event-action {
-        border-right: none;
+        border-inline-start: none;
         border-top: 1px solid rgba(0,0,0,0.05);
     }
 }
@@ -3671,7 +3671,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     flex: 3;
     position: relative;
     overflow: visible;
-    padding-left: 40px;
+    padding-inline-end: 40px;
     min-height: 250px;
     /* Tear on the LEFT side (where it meets the stub in RTL) */
     clip-path: polygon(
@@ -3693,7 +3693,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     flex: 1;
     position: relative;
     overflow: visible;
-    padding-right: 30px;
+    padding-inline-start: 30px;
     min-height: 250px;
     /* Tear on the RIGHT side (where it meets the main part in RTL) */
     clip-path: polygon(
@@ -3724,7 +3724,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 /* Redesigned Premium Ticket Modal */
 .event-modal {
     position: fixed;
-    top: 0; left: 0;
+    top: 0; inset-inline-end: 0;
     width: 100%; height: 100%;
     background: rgba(2, 6, 18, 0.98);
     display: none;
@@ -3774,7 +3774,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .modal-poster-side {
     height: 100%;
     background: #0f172a;
-    border-left: 1px solid rgba(255,255,255,0.05);
+    border-inline-end: 1px solid rgba(255,255,255,0.05);
     overflow: hidden;
     position: relative;
 }
@@ -3798,7 +3798,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .modal-side-piece {
     flex: 0 0 200px;
     background: linear-gradient(to bottom, rgba(255,255,255,0.02), rgba(255,255,255,0.05));
-    border-right: 2px dashed rgba(236, 176, 46, 0.3);
+    border-inline-start: 2px dashed rgba(236, 176, 46, 0.3);
     padding: 60px 20px;
     display: flex;
     flex-direction: column;
@@ -3817,7 +3817,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .modal-container::after {
     content: '';
     position: absolute;
-    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    top: -2px; inset-inline-end: -2px; inset-inline-start: -2px; bottom: -2px;
     background: linear-gradient(90deg, transparent, rgba(236, 176, 46, 0.4), transparent);
     background-size: 200% 100%;
     z-index: -1;
@@ -3855,7 +3855,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     height: 40px;
     background: rgba(2, 6, 18, 1);
     border-radius: 50%;
-    right: -20px;
+    inset-inline-start: -20px;
 }
 
 .modal-side-piece::before { top: -20px; border: 1px solid rgba(236, 176, 46, 0.4); }
@@ -3864,7 +3864,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .modal-close {
     position: absolute;
     top: 30px;
-    right: 30px;
+    inset-inline-start: 30px;
     background: none;
     border: none;
     color: var(--white);
@@ -3981,7 +3981,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
         display: flex;
         align-items: center;
         justify-content: center;
-        border-left: none;
+        border-inline-end: none;
         border-bottom: 1px solid rgba(255,255,255,0.06);
         background: #05070f;
     }
@@ -4027,7 +4027,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
         align-items: center;
         gap: 14px;
         padding: 14px 20px calc(14px + env(safe-area-inset-bottom));
-        border-right: none;
+        border-inline-start: none;
         border-top: 1px dashed rgba(236, 176, 46, 0.3);
         background: rgba(6, 10, 26, 0.97);
         backdrop-filter: blur(10px);
@@ -4055,7 +4055,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     .modal-close {
         position: fixed;
         top: 14px;
-        right: 14px;
+        inset-inline-start: 14px;
         font-size: 1.8rem;
         background: rgba(0,0,0,0.55);
         width: 40px;
@@ -4371,7 +4371,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .star-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 5px;
+    top: 0; inset-inline-end: 0; width: 100%; height: 5px;
     background: linear-gradient(90deg, var(--accent-gold), var(--primary-navy));
 }
 
@@ -4406,7 +4406,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .star-badge {
     position: absolute;
     bottom: 0;
-    right: 0;
+    inset-inline-start: 0;
     background: var(--primary-navy);
     color: var(--accent-gold);
     width: 40px;
@@ -4512,7 +4512,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .star-badge {
     position: absolute;
     top: 10px;
-    right: 10px;
+    inset-inline-start: 10px;
     background: var(--accent-gold);
     color: var(--white);
     width: 35px;
@@ -4625,7 +4625,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
         font-size: 1.2rem !important;
         bottom: 10px !important;
         position: relative !important;
-        left: 0 !important;
+        inset-inline-end: 0 !important;
         transform: none !important;
         margin-top: 15px !important;
         display: block !important;
@@ -4726,7 +4726,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 .hub-glow {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0; inset-inline-end: 0; inset-inline-start: 0; bottom: 0;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(236,176,46,0.3) 0%, transparent 70%);
     animation: pulse-glow 3s infinite ease-in-out;
@@ -4792,12 +4792,12 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 .hub-node-item.node-2 {
     bottom: 50px;
-    right: 20px;
+    inset-inline-start: 20px;
 }
 
 .hub-node-item.node-3 {
     bottom: 50px;
-    left: 20px;
+    inset-inline-end: 20px;
 }
 
 @media (max-width: 480px) {
@@ -4806,11 +4806,11 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     }
     .hub-node-item.node-2 {
         bottom: 30px;
-        right: 0px;
+        inset-inline-start: 0px;
     }
     .hub-node-item.node-3 {
         bottom: 30px;
-        left: 0px;
+        inset-inline-end: 0px;
     }
 }
 
@@ -4862,7 +4862,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 .node-pulse {
     position: absolute;
-    top: 0; left: 0; width: 65px; height: 65px;
+    top: 0; inset-inline-end: 0; width: 65px; height: 65px;
     border-radius: 50%;
     border: 2px solid var(--accent-gold);
     opacity: 0;
@@ -4925,7 +4925,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .info-panel-glow {
     position: absolute;
     top: -50px;
-    left: -50px;
+    inset-inline-end: -50px;
     width: 200px;
     height: 200px;
     background: radial-gradient(circle, rgba(236, 176, 46, 0.1) 0%, transparent 70%);
@@ -5019,7 +5019,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .node-btn::after {
     content: '';
     position: absolute;
-    top: -4px; left: -4px; right: -4px; bottom: -4px;
+    top: -4px; inset-inline-end: -4px; inset-inline-start: -4px; bottom: -4px;
     border-radius: 50%;
     border: 2px solid rgba(236, 176, 46, 0.4);
     opacity: 0;
