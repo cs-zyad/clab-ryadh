@@ -1,5 +1,7 @@
 /* Language controls and direction-specific public-page adjustments. */
 .header-actions {
+    position: relative;
+    z-index: 1001;
     display: flex;
     align-items: center;
     gap: 0.75rem;
