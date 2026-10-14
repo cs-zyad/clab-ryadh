@@ -1,17 +1,9 @@
-// Refresh only copyright text, preserving links and translation spans in the footer.
+// Set the dedicated copyright year element when the page is ready.
 function updateCopyrightYear() {
-    const year = String(new Date().getFullYear());
-    document.querySelectorAll('.site-footer-copyright').forEach(footer => {
-        const textNodes = document.createTreeWalker(footer, NodeFilter.SHOW_TEXT);
-        while (textNodes.nextNode()) {
-            const node = textNodes.currentNode;
-            node.nodeValue = node.nodeValue.replace(/[0-9]{4}|[٠-٩]{4}/g, previous => (
-                /[٠-٩]/.test(previous)
-                    ? year.replace(/[0-9]/g, digit => '٠١٢٣٤٥٦٧٨٩'[Number(digit)])
-                    : year
-            ));
-        }
-    });
+    const yearElement = document.getElementById('copyright-year');
+    if (yearElement) {
+        yearElement.textContent = String(new Date().getFullYear());
+    }
 }
 
 if (document.readyState === 'loading') {
@@ -19,7 +11,6 @@ if (document.readyState === 'loading') {
 } else {
     updateCopyrightYear();
 }
-window.addEventListener('site:languagechange', updateCopyrightYear);
 
 // Mobile Toggle Logic
 const mobileToggle = document.getElementById('mobile-toggle');
