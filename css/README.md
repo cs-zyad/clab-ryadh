@@ -2,6 +2,10 @@
 
 Public pages load styles in this order:
 
+`loading.css` loads first, before the list below, to protect the first paint with a
+white loading screen, club logo and spinner. It activates only when `loading.js`
+adds the loading class, so the Arabic page stays visible with JavaScript disabled.
+
 1. `style.css`: existing site design, components and responsive rules.
 2. `public-shared.css`: shared page hero, footer and small icon styles extracted from HTML.
 3. The page stylesheet, when needed:

@@ -4,11 +4,12 @@
     const dictionaries = window.siteTranslations || {};
     const supported = ['ar', 'en'];
     const previousText = new WeakMap();
+    const dictionariesReady = Boolean(dictionaries.ar && dictionaries.en);
     let language = 'ar';
 
     try {
         const saved = localStorage.getItem(storageKey);
-        if (supported.includes(saved)) language = saved;
+        if (dictionariesReady && !window.sitePageLoading?.timedOut && supported.includes(saved)) language = saved;
     } catch {
         // Browsers that block storage can still switch language for this page.
     }
@@ -45,6 +46,10 @@
 
     function updateControls() {
         document.querySelectorAll('[data-language-switch]').forEach(button => {
+            if (!dictionariesReady) {
+                button.hidden = true;
+                return;
+            }
             const next = language === 'ar' ? 'en' : 'ar';
             button.textContent = next === 'en' ? 'English' : 'العربية';
             button.lang = next;
@@ -82,6 +87,7 @@
             button.addEventListener('click', () => setLanguage(language === 'ar' ? 'en' : 'ar'));
         });
         setLanguage(language, false);
+        window.sitePageLoading?.finish(dictionariesReady);
     }
 
     if (document.readyState === 'loading') {
