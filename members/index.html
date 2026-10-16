@@ -3,90 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أعضاء النادي | نادي ريادة الأعمال</title>
+    <link rel="stylesheet" href="../css/loading.css">
+    <script src="../js/loading.js"></script>
+    <title data-i18n="members.pageTitle">أعضاء النادي | نادي ريادة الأعمال</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/public-shared.css">
+    <link rel="stylesheet" href="../css/members.css">
+    <link rel="stylesheet" href="../css/i18n.css">
+    <script src="../js/translations.js" defer></script>
+    <script src="../js/i18n.js" defer></script>
 </head>
 <body>
     <header class="main-header">
         <div class="container container-flex">
             <div class="logo-area">
-                <img src="../assets/image.png" alt="شعار نادي ريادة الأعمال" class="club-logo">
+                <img src="../assets/image.png" alt="شعار نادي ريادة الأعمال" class="club-logo" data-i18n-alt="common.logo">
             </div>
             <nav class="navbar">
-                <ul class="nav-menu">
-                    <li><a href="../index.html" class="nav-link">الرئيسية</a></li>
-                    <li><a href="../activities/" class="nav-link">الأنشطة والفعاليات</a></li>
-                    <li><a href="../about/" class="nav-link">من نحن</a></li>
-                    <li><a href="../development/" class="nav-link">قسم التطوير</a></li>
-                    <li><a href="../members/" class="nav-link active">أعضاء النادي</a></li>
-                    <li><a href="../achievements/" class="nav-link">الإنجازات</a></li>
+                <ul class="nav-menu" id="primary-navigation">
+                    <li><a href="../index.html" class="nav-link" data-i18n="common.home">الرئيسية</a></li>
+                    <li><a href="../activities/" class="nav-link" data-i18n="common.activities">الأنشطة والفعاليات</a></li>
+                    <li><a href="../about/" class="nav-link" data-i18n="common.about">من نحن</a></li>
+                    <li><a href="../development/" class="nav-link" data-i18n="common.development">قسم التطوير</a></li>
+                    <li><a href="../members/" class="nav-link active" data-i18n="common.members">أعضاء النادي</a></li>
+                    <li><a href="../achievements/" class="nav-link" data-i18n="common.achievements">الإنجازات</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
-                 <button class="mobile-toggle" id="mobile-toggle"><i data-lucide="menu"></i></button>
+                <button class="language-switch" type="button" data-language-switch lang="en" dir="ltr" aria-label="التبديل إلى الإنجليزية" hidden>English</button>
+                 <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="فتح أو إغلاق قائمة التنقل" data-i18n-aria-label="common.toggleMenu" aria-expanded="false" aria-controls="primary-navigation"><i data-lucide="menu"></i></button>
             </div>
         </div>
     </header>
         <!-- Unified Premium Hero Section -->
-                        <section class="page-hero" style="background: linear-gradient(135deg, #110e2d 0%, var(--primary-navy) 100%); color: var(--white); text-align: center; border-radius: 0 0 50px 50px; padding: 80px 0 60px 0; position: relative; overflow: hidden; box-shadow: 0 15px 30px rgba(17, 14, 45, 0.15);">
-            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(rgba(255,255,255,0.05) 2px, transparent 2px); background-size: 30px 30px; opacity: 0.6;"></div>
-            <div class="container" style="position: relative; z-index: 2;">
-                <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 20px; background: rgba(236, 176, 46, 0.08); color: var(--accent-gold); border-radius: 50px; font-weight: 700; margin-bottom: 20px; border: 1px solid rgba(236, 176, 46, 0.2); backdrop-filter: blur(5px); font-size: 0.9rem;">
-                    <i data-lucide="users" style="width: 16px; height: 16px;"></i> عائلة النادي
+                        <section class="page-hero page-hero-surface">
+            <div class="page-hero-pattern"></div>
+            <div class="container page-hero-content">
+                <div class="page-hero-label">
+                    <i class="icon-small" data-lucide="users"></i> <span data-i18n="members.badge">عائلة النادي</span>
                 </div>
-                <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; margin-bottom: 15px; color: var(--accent-gold);">أعضاء النادي</h1>
-                <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.8); line-height: 1.8;">نصنع القادة ونطور المهارات لبناء مستقبل ريادي واعد.</p>
+                <h1 class="page-hero-heading" data-i18n="common.members">أعضاء النادي</h1>
+                <p class="page-hero-description" data-i18n="common.heroDescription">نصنع القادة ونطور المهارات لبناء مستقبل ريادي واعد.</p>
             </div>
-            <div style="position: absolute; top: -100px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(236, 176, 46, 0.15) 0%, transparent 70%); border-radius: 50%; filter: blur(40px);"></div>
-            <div style="position: absolute; bottom: -100px; left: 10%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%); border-radius: 50%; filter: blur(40px);"></div>
+            <div class="page-hero-glow-gold"></div>
+            <div class="page-hero-glow-blue"></div>
         </section>
 
-<main class="members-premium-page" style="padding-top: 60px;">
+<main class="members-premium-page members-content-spacing">
         <div class="container">
             <!-- Stars of the Month Section -->
             <div class="stars-header mt-50">
-                <h1 class="section-title text-center">نجوم الشهر</h1>
-                <p class="text-center" style="margin-bottom: 50px; color: #666; font-size: 1.1rem;">نحتفي بالأعضاء الذين تركوا بصمة استثنائية بعطائهم وتأثيرهم</p>
+                <h1 class="section-title text-center" data-i18n="members.stars">نجوم الشهر</h1>
+                <p class="text-center members-section-description" data-i18n="members.starsDescription">نحتفي بالأعضاء الذين تركوا بصمة استثنائية بعطائهم وتأثيرهم</p>
             </div>
             
             <div class="stars-grid">
                 <!-- Star 1 -->
                 <div class="star-card">
                     <div class="star-img-wrapper">
-                        <img src="../assets/image copy 2.png" alt="شعار النادي" class="star-img placeholder-logo">
+                        <img src="../assets/image copy 2.png" alt="شعار النادي" class="star-img placeholder-logo" data-i18n-alt="common.shortLogo">
                         <div class="star-badge"><i data-lucide="star"></i></div>
                     </div>
                     <div class="star-info">
-                        <h3>نجم التطوير التقني</h3>
-                        <p>سيتم الإعلان عنه قريباً</p>
+                        <h3 data-i18n="members.techStar">نجم التطوير التقني</h3>
+                        <p data-i18n="members.announcement">سيتم الإعلان عنه قريباً</p>
                     </div>
                 </div>
 
                 <!-- Star 2 -->
                 <div class="star-card">
                     <div class="star-img-wrapper">
-                        <img src="../assets/image copy 2.png" alt="شعار النادي" class="star-img placeholder-logo">
+                        <img src="../assets/image copy 2.png" alt="شعار النادي" class="star-img placeholder-logo" data-i18n-alt="common.shortLogo">
                         <div class="star-badge"><i data-lucide="star"></i></div>
                     </div>
                     <div class="star-info">
-                        <h3>نجم العلاقات العامة</h3>
-                        <p>سيتم الإعلان عنه قريباً</p>
+                        <h3 data-i18n="members.prStar">نجم العلاقات العامة</h3>
+                        <p data-i18n="members.announcement">سيتم الإعلان عنه قريباً</p>
                     </div>
                 </div>
 
                 <!-- Star 3 -->
                 <div class="star-card">
                     <div class="star-img-wrapper">
-                        <img src="../assets/image copy 2.png" alt="شعار النادي" class="star-img placeholder-logo">
+                        <img src="../assets/image copy 2.png" alt="شعار النادي" class="star-img placeholder-logo" data-i18n-alt="common.shortLogo">
                         <div class="star-badge"><i data-lucide="star"></i></div>
                     </div>
                     <div class="star-info">
-                        <h3>نجم التسويق</h3>
-                        <p>سيتم الإعلان عنه قريباً</p>
+                        <h3 data-i18n="members.marketingStar">نجم التسويق</h3>
+                        <p data-i18n="members.announcement">سيتم الإعلان عنه قريباً</p>
                     </div>
                 </div>
             </div>
@@ -94,18 +102,18 @@
             <!-- Best Department Section -->
             <div class="best-dept-section mt-100">
                 <div class="stars-header">
-                    <h2 class="section-title text-center">أفضل قسم لهذا الشهر</h2>
-                    <p class="text-center" style="margin-bottom: 50px; color: #666;">تكريم للعمل الجماعي والروح الواحدة</p>
+                    <h2 class="section-title text-center" data-i18n="members.department">أفضل قسم لهذا الشهر</h2>
+                    <p class="text-center members-department-description" data-i18n="members.departmentDescription">تكريم للعمل الجماعي والروح الواحدة</p>
                 </div>
-                <div class="best-dept-container" style="display: flex; justify-content: center;">
-                    <div class="star-card best-dept-card" style="width: 400px; transform: rotate(0deg);">
-                        <div class="star-img-wrapper" style="height: 300px;">
-                            <img src="../assets/image copy 2.png" alt="أفضل قسم" class="star-img placeholder-logo">
-                            <div class="star-badge" style="background: var(--primary-navy); width: 50px; height: 50px;"><i data-lucide="users" style="width: 24px; height: 24px;"></i></div>
+                <div class="best-dept-container members-department-layout">
+                    <div class="star-card best-dept-card members-department-card">
+                        <div class="star-img-wrapper members-department-image">
+                            <img src="../assets/image copy 2.png" alt="أفضل قسم" class="star-img placeholder-logo" data-i18n-alt="members.departmentAlt">
+                            <div class="star-badge members-department-badge"><i class="members-department-icon" data-lucide="users"></i></div>
                         </div>
                         <div class="star-info">
-                            <h3 style="font-size: 1.5rem; color: var(--accent-gold);">قسم التطوير والابتكار</h3>
-                            <p style="font-size: 1.1rem;">أداء استثنائي وتكامل بين جميع أعضاء الفريق</p>
+                            <h3 class="members-department-title" data-i18n="members.departmentName">قسم التطوير والابتكار</h3>
+                            <p class="members-department-caption" data-i18n="members.departmentCaption">أداء استثنائي وتكامل بين جميع أعضاء الفريق</p>
                         </div>
                     </div>
                 </div>
@@ -113,90 +121,90 @@
 
 
             <!-- Generations Timeline -->
-            <div class="enjaz-header" style="margin-top: 100px;">
-                <h2 class="section-title text-center">أجيال النادي</h2>
-                <p class="text-center" style="margin-bottom: 80px; color: #666; font-size: 1.1rem;">مسيرة العطاء والإنجاز.. صور تجمع أعضاء النادي عبر السنوات</p>
+            <div class="enjaz-header members-history-heading">
+                <h2 class="section-title text-center" data-i18n="members.generations">أجيال النادي</h2>
+                <p class="text-center members-history-description" data-i18n="members.generationsDescription">مسيرة العطاء والإنجاز.. صور تجمع أعضاء النادي عبر السنوات</p>
             </div>
 
             <div class="generations-timeline mb-100">
                 <!-- 2024 - 2025 -->
                 <div class="timeline-item">
-                    <div class="timeline-year" style="text-align: center;">2024 - 2025</div>
+                    <div class="timeline-year members-history-year">2024 - 2025</div>
                     <div class="timeline-img-wrapper">
-                        <img src="../assets/enjaz/image.png" alt="جيل 2025" style="max-width: 800px; width: 90%; height: auto; display: block; margin: 0 auto;">
+                        <img class="members-history-image" src="../assets/enjaz/image.png" alt="جيل 2025" data-i18n-alt="members.generation2025">
                     </div>
                 </div>
 
                 <!-- 2023 - 2024 -->
                 <div class="timeline-item">
-                    <div class="timeline-year" style="text-align: center;">2023 - 2024</div>
+                    <div class="timeline-year members-history-year">2023 - 2024</div>
                     <div class="timeline-img-wrapper">
-                        <img src="../assets/enjaz/image copy.png" alt="جيل 2024" style="max-width: 800px; width: 90%; height: auto; display: block; margin: 0 auto;">
+                        <img class="members-history-image" src="../assets/enjaz/image copy.png" alt="جيل 2024" data-i18n-alt="members.generation2024">
                     </div>
                 </div>
 
                 <!-- 2022 - 2023 -->
                 <div class="timeline-item">
-                    <div class="timeline-year" style="text-align: center;">2022 - 2023</div>
+                    <div class="timeline-year members-history-year">2022 - 2023</div>
                     <div class="timeline-img-wrapper">
-                        <img src="../assets/enjaz/image copy 2.png" alt="جيل 2023" style="max-width: 800px; width: 90%; height: auto; display: block; margin: 0 auto;">
+                        <img class="members-history-image" src="../assets/enjaz/image copy 2.png" alt="جيل 2023" data-i18n-alt="members.generation2023">
                     </div>
                 </div>
 
                 <!-- 2021 - 2022 (تأسيس) -->
                 <div class="timeline-item">
-                    <div class="timeline-year" style="text-align: center;">تأسيس النادي 2022</div>
+                    <div class="timeline-year members-history-year" data-i18n="members.foundation">تأسيس النادي 2022</div>
                     <div class="timeline-img-wrapper">
-                        <img src="../assets/enjaz/image copy 3.png" alt="جيل التأسيس 2022" style="max-width: 800px; width: 90%; height: auto; display: block; margin: 0 auto;">
+                        <img class="members-history-image" src="../assets/enjaz/image copy 3.png" alt="جيل التأسيس 2022" data-i18n-alt="members.generation2022">
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-            <footer class="footer-section" style="background: var(--primary-navy); color: var(--white); padding: 80px 0 30px 0; position: relative; margin-top: 50px;">
-        <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: right;">
+            <footer class="footer-section site-footer">
+        <div class="container site-footer-grid">
             <div class="footer-col">
-                <img src="../assets/logo/logo-footer.png" alt="شعار النادي" style="height: 90px; margin-bottom: 20px;">
-                <p style="color: rgba(255,255,255,0.7); line-height: 1.8; font-size: 1rem; max-width: 280px;">نادي ريادة الأعمال، منصة الحالمين وصناع المستقبل. نهدف لتمكين الطلبة وبناء شخصية ريادية طموحة.</p>
+                <img class="site-footer-logo" src="../assets/logo/logo-footer.png" alt="شعار النادي" data-i18n-alt="common.shortLogo">
+                <p class="site-footer-description" data-i18n="common.footerDescription">نادي ريادة الأعمال، منصة الحالمين وصناع المستقبل. نهدف لتمكين الطلبة وبناء شخصية ريادية طموحة.</p>
             </div>
             <div class="footer-col">
-                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; color: var(--accent-gold); position: relative; padding-bottom: 10px; border-bottom: 2px solid rgba(236,176,46,0.3); display: inline-block;">روابط سريعة</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
-                    <li><a href="../index.html" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">الرئيسية</a></li>
-                    <li><a href="../activities/" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">الأنشطة والفعاليات</a></li>
-                    <li><a href="../about/" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">من نحن</a></li>
-                    <li><a href="../members/" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">أعضاء النادي</a></li>
+                <h3 class="site-footer-heading" data-i18n="common.quickLinks">روابط سريعة</h3>
+                <ul class="site-footer-list">
+                    <li><a class="site-footer-link" href="../index.html" data-i18n="common.home">الرئيسية</a></li>
+                    <li><a class="site-footer-link" href="../activities/" data-i18n="common.activities">الأنشطة والفعاليات</a></li>
+                    <li><a class="site-footer-link" href="../about/" data-i18n="common.about">من نحن</a></li>
+                    <li><a class="site-footer-link" href="../members/" data-i18n="common.members">أعضاء النادي</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; color: var(--accent-gold); position: relative; padding-bottom: 10px; border-bottom: 2px solid rgba(236,176,46,0.3); display: inline-block;">تواصل معنا</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
-                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8);">
-                        <a href="mailto:info@entclub.com" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 10px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-gold);"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> info@entclub.com
+                <h3 class="site-footer-heading" data-i18n="common.contact">تواصل معنا</h3>
+                <ul class="site-footer-list">
+                    <li class="site-footer-contact-item">
+                        <a class="site-footer-email" href="mailto:info@entclub.com">
+                            <svg class="icon-gold" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> info@entclub.com
                         </a>
                     </li>
-                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8);"><i data-lucide="map-pin" style="width: 18px; color: var(--accent-gold);"></i> جامعة الملك عبدالعزيز</li>
+                    <li class="site-footer-contact-item"><i class="site-footer-location-icon" data-lucide="map-pin"></i> <span data-i18n="common.university">جامعة الملك عبدالعزيز</span></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; color: var(--accent-gold); position: relative; padding-bottom: 10px; border-bottom: 2px solid rgba(236,176,46,0.3); display: inline-block;">منصاتنا</h3>
-                <div style="display: flex; gap: 15px;">
-                    <a href="https://x.com/EntrClub_KAU?s=20" target="_blank" rel="noopener noreferrer" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-gold); border: 1px solid rgba(236, 176, 46, 0.25); transition: all 0.3s;">
+                <h3 class="site-footer-heading" data-i18n="common.socials">منصاتنا</h3>
+                <div class="site-footer-socials">
+                    <a class="site-footer-social-link" href="https://x.com/EntrClub_KAU?s=20" target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
                     </a>
-                    <a href="https://www.instagram.com/entrclub_kau?igsh=MW0yNWd4a21iazk3MQ==" target="_blank" rel="noopener noreferrer" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-gold); border: 1px solid rgba(236, 176, 46, 0.25); transition: all 0.3s;">
+                    <a class="site-footer-social-link" href="https://www.instagram.com/entrclub_kau?igsh=MW0yNWd4a21iazk3MQ==" target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                     </a>
-                    <a href="https://www.linkedin.com/company/kau-entrepreneurship-club/" target="_blank" rel="noopener noreferrer" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-gold); border: 1px solid rgba(236, 176, 46, 0.25); transition: all 0.3s;">
+                    <a class="site-footer-social-link" href="https://www.linkedin.com/company/kau-entrepreneurship-club/" target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                     </a>
                 </div>
             </div>
         </div>
-        <div style="margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; color: rgba(255,255,255,0.5); font-size: 0.95rem;">
-            <p style="margin: 0;"><a href="../admin/index.html" style="color: inherit; text-decoration: none;">©</a> 2025 جميع الحقوق محفوظة | نادي ريادة الأعمال</p>
+        <div class="site-footer-copyright">
+            <p class="site-footer-copyright-text">© <span id="copyright-year"></span> <span data-i18n="common.copyright">جميع الحقوق محفوظة | نادي ريادة الأعمال</span></p>
         </div>
     </footer>
 

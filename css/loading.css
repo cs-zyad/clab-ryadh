@@ -1,0 +1,64 @@
+/* Critical first-paint styles: load before the page's other stylesheets. */
+html.page-loading {
+    background: #fff;
+    overflow: hidden;
+}
+
+html.page-loading body {
+    visibility: hidden;
+}
+
+html.page-loading::before,
+html.page-loading::after,
+html.page-loader-leaving::before,
+html.page-loader-leaving::after {
+    content: "";
+    position: fixed;
+    z-index: 2147483647;
+    pointer-events: auto;
+    opacity: 1;
+    transition: opacity 180ms ease;
+}
+
+html.page-loading::before,
+html.page-loader-leaving::before {
+    inset: 0;
+    background: #fff url("../assets/image.png") no-repeat center calc(50% - 24px);
+    background-size: 112px auto;
+}
+
+html.page-loading::after,
+html.page-loader-leaving::after {
+    top: calc(50% + 65px);
+    left: calc(50% - 16px);
+    width: 28px;
+    height: 28px;
+    border: 2px solid #ecebf1;
+    border-top-color: #232055;
+    border-radius: 50%;
+    animation: page-loader-spin 750ms linear infinite;
+}
+
+html.page-loader-leaving::before,
+html.page-loader-leaving::after {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes page-loader-spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.page-loading::after,
+    html.page-loader-leaving::after {
+        animation: none;
+    }
+
+    html.page-loading::before,
+    html.page-loading::after,
+    html.page-loader-leaving::before,
+    html.page-loader-leaving::after {
+        transition: none;
+    }
+}

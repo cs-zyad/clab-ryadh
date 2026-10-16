@@ -1,0 +1,77 @@
+/* Members public-page styles. Shared components: public-shared.css. */
+
+.members-content-spacing {
+    padding-top: 60px;
+}
+
+.members-section-description {
+    margin-bottom: 50px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.members-department-description {
+    margin-bottom: 50px;
+    color: #666;
+}
+
+.members-department-layout {
+    display: flex;
+    justify-content: center;
+}
+
+.star-card.members-department-card {
+    width: 400px;
+    transform: rotate(0deg);
+}
+
+.members-department-image {
+    height: 300px;
+}
+
+.members-department-badge {
+    background: var(--primary-navy);
+    width: 50px;
+    height: 50px;
+}
+
+.members-department-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.star-info .members-department-title {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+}
+
+.star-info .members-department-caption {
+    font-size: 1.1rem;
+}
+
+.members-history-heading {
+    margin-top: 100px;
+}
+
+.members-history-description {
+    margin-bottom: 80px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.members-history-year {
+    text-align: center;
+}
+
+.members-history-image {
+    max-width: 800px;
+    width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.members-admin-link {
+    color: inherit;
+    text-decoration: none;
+}

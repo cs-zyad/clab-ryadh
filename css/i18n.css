@@ -1,0 +1,114 @@
+/* Language controls and direction-specific public-page adjustments. */
+.header-actions {
+    position: relative;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.language-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid rgba(35, 32, 85, 0.18);
+    border-radius: 999px;
+    /* Tinted glass so the beige header shows through instead of a stark white pill */
+    background: rgba(255, 255, 255, 0.35);
+    color: var(--primary-navy);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.language-switch[hidden] {
+    display: none;
+}
+
+.language-switch:hover {
+    background: var(--primary-navy);
+    border-color: var(--primary-navy);
+    color: var(--white);
+    box-shadow: 0 6px 18px rgba(35, 32, 85, 0.18);
+}
+
+/* Inside the mobile slide-in menu the switch sits on the navy overlay. */
+.nav-language-item {
+    list-style: none;
+}
+
+.nav-menu .language-switch {
+    min-height: 52px;
+    padding: 0.6rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.5);
+    color: var(--white);
+}
+
+.nav-menu .language-switch:hover {
+    background: var(--white);
+    border-color: var(--white);
+    color: var(--primary-navy);
+    box-shadow: none;
+}
+
+.language-switch:focus-visible {
+    outline: 3px solid var(--accent-gold);
+    outline-offset: 3px;
+}
+
+/* Emails, account handles and ticket identifiers keep their natural LTR order. */
+.site-footer-email,
+.news-handle,
+.ticket-id,
+.modal-id-vertical {
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+html[dir="ltr"] [data-lucide="arrow-left"],
+html[dir="ltr"] [data-lucide="chevron-right"] {
+    transform: scaleX(-1);
+}
+
+@media (min-width: 993px) {
+    html[lang="en"] .nav-menu {
+        gap: 1rem;
+    }
+
+    html[lang="en"] .nav-link {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    html[dir="ltr"] .nav-menu:not(.active) {
+        transform: translateX(-100%);
+    }
+}
+
+/* Torn ticket edges meet the stub on the opposite side in LTR. */
+html[dir="ltr"] .ticket-card.separated .ticket-main {
+    clip-path: polygon(
+        0% 0%, 98% 0%, 97% 5%, 99% 10%, 96% 15%, 98% 20%,
+        95% 25%, 99% 30%, 94% 35%, 98% 40%, 95% 45%, 100% 50%,
+        94% 55%, 98% 60%, 93% 65%, 97% 70%, 94% 75%, 98% 80%,
+        95% 85%, 99% 90%, 96% 95%, 100% 100%, 0% 100%
+    );
+}
+
+html[dir="ltr"] .ticket-card.separated .ticket-side {
+    clip-path: polygon(
+        100% 0%, 2% 0%, 3% 5%, 1% 10%, 4% 15%, 2% 20%,
+        5% 25%, 1% 30%, 6% 35%, 2% 40%, 5% 45%, 0% 50%,
+        6% 55%, 2% 60%, 7% 65%, 3% 70%, 6% 75%, 2% 80%,
+        5% 85%, 1% 90%, 4% 95%, 0% 100%, 100% 100%
+    );
+}

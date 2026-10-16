@@ -1,0 +1,117 @@
+/* Activities public-page styles. Shared components: public-shared.css. */
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.events-state {
+    text-align:center;
+    padding:60px 20px;
+    color:rgba(255,255,255,0.5);
+}
+
+.events-loading-icon {
+    width:32px;
+    height:32px;
+    animation:spin 1s linear infinite;
+}
+
+.events-loading-text {
+    margin-top:12px;
+}
+
+.event-modal-poster-hidden {
+    display: none;
+}
+
+.event-modal-poster-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #0f172a, #1e293b);
+    color: var(--accent-gold);
+}
+
+.event-modal-placeholder-icon {
+    width: 80px;
+    height: 80px;
+    opacity: 0.1;
+}
+
+.events-empty-icon {
+    width:48px;
+    height:48px;
+    margin-bottom:12px;
+    opacity:0.3;
+}
+
+.ticket-registration-label {
+    background:rgba(236,176,46,0.2);
+    color:var(--accent-gold);
+    display:inline-block;
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:0.85rem;
+    margin-bottom:12px;
+    font-weight:bold;
+}
+
+.ticket-content-layout {
+    justify-content: space-between;
+}
+
+.ticket-description {
+    color: var(--white);
+    opacity: 0.9;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.ticket-meta-row {
+    display: flex;
+    gap: 20px;
+}
+
+.ticket-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ticket-status-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.ticket-status-text {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.ticket-poster-image {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.ticket-poster-placeholder {
+    width:100%;
+    height:100%;
+    background:#fdfdfd;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--primary-navy);
+    opacity:0.5;
+}
+
+.ticket-placeholder-icon {
+    width:30px;
+    height:30px;
+}
+
+.ticket-status-open { color: var(--accent-gold); }
+.ticket-status-soon { color: rgba(255,255,255,0.5); }
+.ticket-status-ended { color: #ff4d4d; }

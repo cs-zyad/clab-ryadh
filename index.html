@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نادي ريادة الأعمال | الصفحة الرئيسية</title>
+    <link rel="stylesheet" href="css/loading.css">
+    <script src="js/loading.js"></script>
+    <title data-i18n="home.pageTitle">نادي ريادة الأعمال | الصفحة الرئيسية</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,28 +17,34 @@
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/public-shared.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/i18n.css">
+    <script src="js/translations.js" defer></script>
+    <script src="js/i18n.js" defer></script>
 </head>
 <body>
     <!-- Header -->
     <header class="main-header">
         <div class="container container-flex">
             <div class="logo-area">
-                <img src="assets/image.png" alt="شعار نادي ريادة الأعمال" class="club-logo">
+                <img src="assets/image.png" alt="شعار نادي ريادة الأعمال" class="club-logo" data-i18n-alt="common.logo">
             </div>
             
             <nav class="navbar">
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link active">الرئيسية</a></li>
-                    <li><a href="activities/" class="nav-link">الأنشطة والفعاليات</a></li>
-                    <li><a href="about/" class="nav-link">من نحن</a></li>
-                    <li><a href="development/" class="nav-link">قسم التطوير</a></li>
-                    <li><a href="members/" class="nav-link">أعضاء النادي</a></li>
-                    <li><a href="achievements/" class="nav-link">الإنجازات</a></li>
+                <ul class="nav-menu" id="primary-navigation">
+                    <li><a href="index.html" class="nav-link active" data-i18n="common.home">الرئيسية</a></li>
+                    <li><a href="activities/" class="nav-link" data-i18n="common.activities">الأنشطة والفعاليات</a></li>
+                    <li><a href="about/" class="nav-link" data-i18n="common.about">من نحن</a></li>
+                    <li><a href="development/" class="nav-link" data-i18n="common.development">قسم التطوير</a></li>
+                    <li><a href="members/" class="nav-link" data-i18n="common.members">أعضاء النادي</a></li>
+                    <li><a href="achievements/" class="nav-link" data-i18n="common.achievements">الإنجازات</a></li>
                 </ul>
             </nav>
 
             <div class="header-actions">
-                 <button class="mobile-toggle" id="mobile-toggle">
+                <button class="language-switch" type="button" data-language-switch lang="en" dir="ltr" aria-label="التبديل إلى الإنجليزية" hidden>English</button>
+                 <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="فتح أو إغلاق قائمة التنقل" data-i18n-aria-label="common.toggleMenu" aria-expanded="false" aria-controls="primary-navigation">
                     <i data-lucide="menu"></i>
                  </button>
             </div>
@@ -49,135 +57,25 @@
             <div class="container quote-container">
 
                 <p class="quote-text">
-                    من لا يستطيع أن <span class="highlight">يحلم</span> لا يتفاوض معنا لا يأتي معنا ولا يأتي لأبوابنا فقط <span class="highlight">نرحب بالحالمين</span> الذين يريدون <span class="highlight">صنع عالم جديد!</span>
+                    <span data-i18n="home.quoteStart">من لا يستطيع أن</span> <span class="highlight" data-i18n="home.quoteDream">يحلم</span> <span data-i18n="home.quoteMiddle">لا يتفاوض معنا لا يأتي معنا ولا يأتي لأبوابنا فقط</span> <span class="highlight" data-i18n="home.quoteWelcome">نرحب بالحالمين</span> <span data-i18n="home.quoteWant">الذين يريدون</span> <span class="highlight" data-i18n="home.quoteWorld">صنع عالم جديد!</span>
                 </p>
-                <div class="quote-author">الأمير محمد بن سلمان</div>
+                <div class="quote-author" data-i18n="home.quoteAuthor">الأمير محمد بن سلمان</div>
             </div>
         </section>
 
         <!-- News Feed Section -->
         <section class="gallery-section py-100">
             <div class="container text-center">
-                <h2 class="section-title">أحدث الأخبار</h2>
-                <div id="newsFeed" style="max-width:1000px; margin:0 auto; display:flex; flex-direction:column; gap:24px; text-align:right;"></div>
-                <div id="newsEmpty" style="max-width:1000px; margin:0 auto; background:var(--white); border-radius:24px; box-shadow:var(--shadow); padding:80px 20px; display:none;">
-                    <i data-lucide="inbox" style="width:52px;height:52px;color:#ccc;margin-bottom:16px;"></i>
-                    <p style="color:#aaa;font-size:1rem;">لا توجد منشورات حتى الآن</p>
+                <h2 class="section-title" data-i18n="home.news">أحدث الأخبار</h2>
+                <div class="news-feed-layout" id="newsFeed"></div>
+                <div class="news-empty-panel" id="newsEmpty">
+                    <i class="news-empty-icon" data-lucide="inbox"></i>
+                    <p class="news-empty-text" data-i18n="home.newsEmpty">لا توجد منشورات حتى الآن</p>
                 </div>
             </div>
         </section>
 
-        <style>
-        .news-card {
-            --nc-navy: var(--primary-navy);
-            --nc-gold: var(--accent-gold);
-            --nc-ink: #2b2960;
-            --nc-muted: #8a88a8;
-            --nc-radius: 22px;
-            position: relative;
-            display: grid;
-            grid-template-columns: 1fr 320px;
-            direction: rtl;
-            align-items: stretch;
-            min-height: 250px;
-            background: linear-gradient(135deg, #ffffff 0%, #fcfcff 55%, #f6f7fc 100%);
-            border: 1px solid rgba(35,32,85,0.06);
-            border-radius: var(--nc-radius);
-            overflow: hidden;
-            isolation: isolate;
-            box-shadow:
-                0 1px 2px rgba(35,32,85,0.04),
-                0 8px 24px rgba(35,32,85,0.07),
-                0 24px 48px -16px rgba(35,32,85,0.11);
-            transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s cubic-bezier(0.22,1,0.36,1), border-color 0.45s ease;
-        }
-        .news-card.no-image { grid-template-columns: 1fr; }
-
-        /* خط ذهبي متدرج */
-        .news-card::before {
-            content:""; position:absolute; top:0; right:0; bottom:0; width:5px; z-index:3;
-            background: linear-gradient(180deg, var(--nc-gold) 0%, #f6cf6a 35%, #d99a1f 100%);
-            box-shadow: 0 0 18px rgba(236,176,46,0.45);
-            transition: width 0.45s cubic-bezier(0.22,1,0.36,1);
-        }
-        /* وهج ذهبي عند hover */
-        .news-card::after {
-            content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-            background: radial-gradient(120% 80% at 100% 0%, rgba(236,176,46,0.10) 0%, transparent 55%);
-            opacity:0; transition:opacity 0.45s ease; z-index:2;
-        }
-        .news-card:hover { transform:translateY(-6px); border-color:rgba(236,176,46,0.25);
-            box-shadow: 0 2px 4px rgba(35,32,85,0.05), 0 14px 32px rgba(35,32,85,0.10), 0 40px 70px -24px rgba(35,32,85,0.22); }
-        .news-card:hover::before { width:7px; }
-        .news-card:hover::after  { opacity:1; }
-
-        .news-body {
-            position:relative; z-index:4; padding:30px 34px;
-            display:flex; flex-direction:column; gap:16px; justify-content:space-between;
-        }
-        .news-card-header { display:flex; align-items:center; gap:13px; }
-        .news-avatar {
-            width:52px; height:52px; border-radius:50%; flex-shrink:0;
-            background:linear-gradient(135deg, var(--nc-navy), #3a3680);
-            border:2px solid #fff;
-            box-shadow: 0 0 0 2px var(--nc-gold), 0 6px 16px rgba(35,32,85,0.18);
-            display:flex; align-items:center; justify-content:center; overflow:hidden;
-        }
-        .news-avatar img { width:100%; height:100%; object-fit:cover; }
-        .news-name { font-weight:800; font-size:1.06rem; color:var(--nc-navy); letter-spacing:-0.2px; }
-        .news-handle { display:block; margin-top:2px; font-size:0.84rem; font-weight:600; color:var(--nc-muted); }
-        .news-text {
-            font-size:1.05rem; line-height:1.85; font-weight:500; color:var(--nc-ink);
-            display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; flex:1;
-        }
-        .news-footer {
-            display:flex; align-items:center; justify-content:space-between;
-            padding-top:16px; border-top:1px solid rgba(35,32,85,0.07);
-        }
-        .news-date { font-size:0.82rem; font-weight:600; color:var(--nc-muted); }
-        .news-badge {
-            padding:7px 15px; border-radius:999px; font-size:0.78rem; font-weight:800;
-            color:var(--nc-navy);
-            background:linear-gradient(135deg, #fbe7a8 0%, var(--nc-gold) 100%);
-            border:1px solid rgba(217,154,31,0.4);
-            box-shadow: 0 2px 8px rgba(236,176,46,0.30), inset 0 1px 0 rgba(255,255,255,0.5);
-        }
-        /* لا حاجة لهذه — الـ badge دائماً ذهبي */
-        .badge-tweet,.badge-photo,.badge-event {}
-
-        .news-img-wrap { position:relative; overflow:hidden; z-index:1; }
-        .news-img-wrap img {
-            width:100%; height:100%; object-fit:cover; display:block;
-            transition:transform 0.7s cubic-bezier(0.22,1,0.36,1);
-        }
-        /* overlay navy + تعتيم سفلي */
-        .news-img-wrap::before {
-            content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
-            background:
-                linear-gradient(90deg, rgba(35,32,85,0.28) 0%, rgba(35,32,85,0.05) 35%, transparent 70%),
-                linear-gradient(180deg, transparent 55%, rgba(35,32,85,0.22) 100%);
-        }
-        /* لمعة ذهبية عند حد التقاء الصورة بالنص */
-        .news-img-wrap::after {
-            content:""; position:absolute; top:0; bottom:0; right:0; width:1px; z-index:3;
-            background:linear-gradient(180deg, transparent, rgba(236,176,46,0.55), transparent);
-        }
-        .news-card:hover .news-img-wrap img { transform:scale(1.06); }
-
-        @media (max-width:700px) {
-            .news-card { grid-template-columns:1fr !important; }
-            .news-card::before { width:100%; height:4px; bottom:auto; top:0; }
-            .news-card:hover::before { width:100%; height:5px; }
-            .news-img-wrap { order:-1; height:210px; }
-            .news-body { padding:22px; }
-        }
-        @media (prefers-reduced-motion:reduce) {
-            .news-card,.news-card::before,.news-img-wrap img { transition:none; }
-            .news-card:hover { transform:none; }
-        }
-        </style>
-
-        <script type="module">
+<script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
         import { firebaseConfig } from "./js/firebase-config.js";
@@ -218,6 +116,7 @@
                 feed.style.display = 'flex';
 
                 const typeLabel = { tweet:'تغريدة', photo:'صورة', event:'فعالية' };
+                const typeKeys = { tweet:'home.typeTweet', photo:'home.typePhoto', event:'home.typeEvent' };
                 const typeBadge = { tweet:'badge-tweet', photo:'badge-photo', event:'badge-event' };
 
                 latest.forEach(p => {
@@ -230,10 +129,10 @@
                             <div>
                                 <div class="news-card-header">
                                     <div class="news-avatar">
-                                        <img src="assets/image.png" alt="شعار" onerror="this.style.display='none'">
+                                        <img src="assets/image.png" alt="شعار" data-i18n-alt="common.shortLogo" onerror="this.style.display='none'">
                                     </div>
                                     <div>
-                                        <div class="news-name">نادي ريادة الأعمال</div>
+                                        <div class="news-name" data-i18n="common.clubName">نادي ريادة الأعمال</div>
                                         <div class="news-handle">@EntrClub_KAU</div>
                                     </div>
                                 </div>
@@ -241,16 +140,17 @@
                             </div>
                             <div class="news-footer">
                                 <span class="news-date">${date}</span>
-                                <span class="news-badge ${typeBadge[p.type]||'badge-tweet'}">${typeLabel[p.type]||'منشور'}</span>
+                                <span class="news-badge ${typeBadge[p.type]||'badge-tweet'}" data-i18n="${typeKeys[p.type]||'home.typePost'}">${typeLabel[p.type]||'منشور'}</span>
                             </div>
                         </div>
-                        ${p.image ? `<div class="news-img-wrap"><img src="${p.image}" alt="صورة المنشور"></div>` : ''}
+                        ${p.image ? `<div class="news-img-wrap"><img src="${p.image}" alt="صورة المنشور" data-i18n-alt="home.postImage"></div>` : ''}
                     `;
 
                     if (p.link) { card.style.cursor='pointer'; card.onclick=()=>window.open(p.link,'_blank'); }
                     feed.appendChild(card);
                 });
                 lucide.createIcons();
+                window.siteI18n?.apply(feed);
             }
 
             // Real-time synchronization
@@ -275,7 +175,7 @@
         <!-- Minimal About Section -->
         <section class="about-simple-section py-100">
             <div class="container">
-                <h2 class="section-title text-center">نبذة عن النادي</h2>
+                <h2 class="section-title text-center" data-i18n="common.overview">نبذة عن النادي</h2>
                 
                 <div class="radial-hub-grid">
                     <!-- Column 1: Interactive Radial Hub -->
@@ -283,7 +183,7 @@
                         <div class="hub-system-wrapper">
                             <!-- Center logo with glowing effect -->
                             <div class="hub-center-logo">
-                                <img src="assets/image.png" alt="شعار النادي" class="hub-logo-img">
+                                <img src="assets/image.png" alt="شعار النادي" class="hub-logo-img" data-i18n-alt="common.shortLogo">
                                 <div class="hub-glow"></div>
                             </div>
                             
@@ -298,7 +198,7 @@
                                 <div class="node-btn">
                                     <i data-lucide="info"></i>
                                 </div>
-                                <span class="node-label">من نحن؟</span>
+                                <span class="node-label" data-i18n="common.who">من نحن؟</span>
                             </div>
                             
                             <!-- Node 2: Our Vision -->
@@ -307,7 +207,7 @@
                                 <div class="node-btn">
                                     <i data-lucide="eye"></i>
                                 </div>
-                                <span class="node-label">رؤيتنا</span>
+                                <span class="node-label" data-i18n="common.vision">رؤيتنا</span>
                             </div>
                             
                             <!-- Node 3: Our Mission -->
@@ -316,14 +216,14 @@
                                 <div class="node-btn">
                                     <i data-lucide="target"></i>
                                 </div>
-                                <span class="node-label">رسالتنا</span>
+                                <span class="node-label" data-i18n="common.mission">رسالتنا</span>
                             </div>
                         </div>
                         
                         <!-- Click Instruction Hint Badge -->
                         <div class="hub-instruction-hint">
                             <i data-lucide="mouse-pointer-click"></i>
-                            <span>انقر على الأيقونات للاستكشاف</span>
+                            <span data-i18n="common.explore">انقر على الأيقونات للاستكشاف</span>
                         </div>
                     </div>
                     
@@ -334,38 +234,38 @@
                             <!-- Info content blocks -->
                             <div class="info-block active" id="who-we-are">
                                 <div class="info-header">
-                                    <div class="info-badge"><i data-lucide="info"></i> تعريف عام</div>
-                                    <h3>من نحن؟</h3>
+                                    <div class="info-badge"><i data-lucide="info"></i> <span data-i18n="common.introduction">تعريف عام</span></div>
+                                    <h3 data-i18n="common.who">من نحن؟</h3>
                                 </div>
-                                <p class="info-desc">كيان طلابي بجامعة الملك عبدالعزيز يعزز وينشر مفهوم ريادة الأعمال من خلال برامج وأنشطة إبداعية ملهمة تصنع قادة الغد.</p>
+                                <p class="info-desc" data-i18n="common.whoDescription">كيان طلابي بجامعة الملك عبدالعزيز يعزز وينشر مفهوم ريادة الأعمال من خلال برامج وأنشطة إبداعية ملهمة تصنع قادة الغد.</p>
                                 <div class="info-action-row">
-                                    <a href="about/" class="premium-hub-link">اقرأ القصة الكاملة <i data-lucide="arrow-left"></i></a>
+                                    <a href="about/" class="premium-hub-link"><span data-i18n="home.story">اقرأ القصة الكاملة</span> <i data-lucide="arrow-left"></i></a>
                                 </div>
-                                <button class="hub-back-btn"><i data-lucide="chevron-right"></i> رجوع</button>
+                                <button class="hub-back-btn"><i data-lucide="chevron-right"></i> <span data-i18n="common.back">رجوع</span></button>
                             </div>
 
                             <div class="info-block" id="our-vision">
                                 <div class="info-header">
-                                    <div class="info-badge"><i data-lucide="eye"></i> تطلع مستقبلي</div>
-                                    <h3>رؤيتنا</h3>
+                                    <div class="info-badge"><i data-lucide="eye"></i> <span data-i18n="common.future">تطلع مستقبلي</span></div>
+                                    <h3 data-i18n="common.vision">رؤيتنا</h3>
                                 </div>
-                                <p class="info-desc">الريادة في خلق مجتمع طلابي ريادي طموح في الأعمال الريادية والابتكار على مستوى المملكة والمنطقة.</p>
+                                <p class="info-desc" data-i18n="common.visionDescription">الريادة في خلق مجتمع طلابي ريادي طموح في الأعمال الريادية والابتكار على مستوى المملكة والمنطقة.</p>
                                 <div class="info-action-row">
-                                    <a href="about/" class="premium-hub-link">رؤية 2030 والريادة <i data-lucide="arrow-left"></i></a>
+                                    <a href="about/" class="premium-hub-link"><span data-i18n="common.visionLink">رؤية 2030 والريادة</span> <i data-lucide="arrow-left"></i></a>
                                 </div>
-                                <button class="hub-back-btn"><i data-lucide="chevron-right"></i> رجوع</button>
+                                <button class="hub-back-btn"><i data-lucide="chevron-right"></i> <span data-i18n="common.back">رجوع</span></button>
                             </div>
 
                             <div class="info-block" id="our-mission">
                                 <div class="info-header">
-                                    <div class="info-badge"><i data-lucide="target"></i> خارطة الطريق</div>
-                                    <h3>رسالتنا</h3>
+                                    <div class="info-badge"><i data-lucide="target"></i> <span data-i18n="common.roadmap">خارطة الطريق</span></div>
+                                    <h3 data-i18n="common.mission">رسالتنا</h3>
                                 </div>
-                                <p class="info-desc">تطوير الجانب الريادي والمهاري لدى الطلبة لبناء شخصية ريادية تتسم بالمسؤولية الكاملة، المبادرة، والطموح اللامحدود.</p>
+                                <p class="info-desc" data-i18n="common.missionDescription">تطوير الجانب الريادي والمهاري لدى الطلبة لبناء شخصية ريادية تتسم بالمسؤولية الكاملة، المبادرة، والطموح اللامحدود.</p>
                                 <div class="info-action-row">
-                                    <a href="about/" class="premium-hub-link">أهدافنا ومسيرتنا <i data-lucide="arrow-left"></i></a>
+                                    <a href="about/" class="premium-hub-link"><span data-i18n="home.goalsLink">أهدافنا ومسيرتنا</span> <i data-lucide="arrow-left"></i></a>
                                 </div>
-                                <button class="hub-back-btn"><i data-lucide="chevron-right"></i> رجوع</button>
+                                <button class="hub-back-btn"><i data-lucide="chevron-right"></i> <span data-i18n="common.back">رجوع</span></button>
                             </div>
                         </div>
                     </div>
@@ -376,68 +276,68 @@
         <!-- Booklet Section -->
         <section class="booklet-section py-100 bg-light">
             <div class="container container-flex">
-                <div class="booklet-info" style="max-width: 500px;">
-                    <h2 class="section-title" style="text-align: right;">الكتيب التعريفي</h2>
-                    <p>استكشف تفاصيل النادي، رؤيتنا، وأهدافنا للمستقبل من خلال الكتيب التعريفي الخاص بنا.</p>
+                <div class="booklet-info booklet-info-width">
+                    <h2 class="section-title booklet-heading-align" data-i18n="home.booklet">الكتيب التعريفي</h2>
+                    <p data-i18n="home.bookletDescription">استكشف تفاصيل النادي، رؤيتنا، وأهدافنا للمستقبل من خلال الكتيب التعريفي الخاص بنا.</p>
                     <div class="mt-50">
                         <a href="https://heyzine.com/flip-book/550438701d.html" target="_blank" class="btn btn-primary">
                             <i data-lucide="file-text"></i>
-                            استعراض الكتيب
+                            <span data-i18n="home.bookletAction">استعراض الكتيب</span>
                         </a>
                     </div>
                 </div>
                 <div class="booklet-visual">
                     <div class="booklet-mockup">
-                        <i data-lucide="book-open" style="width: 150px; height: 150px; color: var(--accent-gold);"></i>
+                        <i class="booklet-cover-icon" data-lucide="book-open"></i>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-            <footer class="footer-section" style="background: var(--primary-navy); color: var(--white); padding: 80px 0 30px 0; position: relative; margin-top: 50px;">
-        <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: right;">
+            <footer class="footer-section site-footer">
+        <div class="container site-footer-grid">
             <div class="footer-col">
-                <img src="assets/logo/logo-footer.png" alt="شعار النادي" style="height: 90px; margin-bottom: 20px;">
-                <p style="color: rgba(255,255,255,0.7); line-height: 1.8; font-size: 1rem; max-width: 280px;">نادي ريادة الأعمال، منصة الحالمين وصناع المستقبل. نهدف لتمكين الطلبة وبناء شخصية ريادية طموحة.</p>
+                <img class="site-footer-logo" src="assets/logo/logo-footer.png" alt="شعار النادي" data-i18n-alt="common.shortLogo">
+                <p class="site-footer-description" data-i18n="common.footerDescription">نادي ريادة الأعمال، منصة الحالمين وصناع المستقبل. نهدف لتمكين الطلبة وبناء شخصية ريادية طموحة.</p>
             </div>
             <div class="footer-col">
-                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; color: var(--accent-gold); position: relative; padding-bottom: 10px; border-bottom: 2px solid rgba(236,176,46,0.3); display: inline-block;">روابط سريعة</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
-                    <li><a href="index.html" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">الرئيسية</a></li>
-                    <li><a href="activities/" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">الأنشطة والفعاليات</a></li>
-                    <li><a href="about/" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">من نحن</a></li>
-                    <li><a href="members/" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">أعضاء النادي</a></li>
+                <h3 class="site-footer-heading" data-i18n="common.quickLinks">روابط سريعة</h3>
+                <ul class="site-footer-list">
+                    <li><a class="site-footer-link" href="index.html" data-i18n="common.home">الرئيسية</a></li>
+                    <li><a class="site-footer-link" href="activities/" data-i18n="common.activities">الأنشطة والفعاليات</a></li>
+                    <li><a class="site-footer-link" href="about/" data-i18n="common.about">من نحن</a></li>
+                    <li><a class="site-footer-link" href="members/" data-i18n="common.members">أعضاء النادي</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; color: var(--accent-gold); position: relative; padding-bottom: 10px; border-bottom: 2px solid rgba(236,176,46,0.3); display: inline-block;">تواصل معنا</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
-                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8);">
-                        <a href="mailto:info@entclub.com" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 10px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-gold);"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> info@entclub.com
+                <h3 class="site-footer-heading" data-i18n="common.contact">تواصل معنا</h3>
+                <ul class="site-footer-list">
+                    <li class="site-footer-contact-item">
+                        <a class="site-footer-email" href="mailto:info@entclub.com">
+                            <svg class="icon-gold" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> info@entclub.com
                         </a>
                     </li>
-                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8);"><i data-lucide="map-pin" style="width: 18px; color: var(--accent-gold);"></i> جامعة الملك عبدالعزيز</li>
+                    <li class="site-footer-contact-item"><i class="site-footer-location-icon" data-lucide="map-pin"></i> <span data-i18n="common.university">جامعة الملك عبدالعزيز</span></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 25px; color: var(--accent-gold); position: relative; padding-bottom: 10px; border-bottom: 2px solid rgba(236,176,46,0.3); display: inline-block;">منصاتنا</h3>
-                <div style="display: flex; gap: 15px;">
-                    <a href="https://x.com/EntrClub_KAU?s=20" target="_blank" rel="noopener noreferrer" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-gold); border: 1px solid rgba(236, 176, 46, 0.25); transition: all 0.3s;">
+                <h3 class="site-footer-heading" data-i18n="common.socials">منصاتنا</h3>
+                <div class="site-footer-socials">
+                    <a class="site-footer-social-link" href="https://x.com/EntrClub_KAU?s=20" target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
                     </a>
-                    <a href="https://www.instagram.com/entrclub_kau?igsh=MW0yNWd4a21iazk3MQ==" target="_blank" rel="noopener noreferrer" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-gold); border: 1px solid rgba(236, 176, 46, 0.25); transition: all 0.3s;">
+                    <a class="site-footer-social-link" href="https://www.instagram.com/entrclub_kau?igsh=MW0yNWd4a21iazk3MQ==" target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                     </a>
-                    <a href="https://www.linkedin.com/company/kau-entrepreneurship-club/" target="_blank" rel="noopener noreferrer" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-gold); border: 1px solid rgba(236, 176, 46, 0.25); transition: all 0.3s;">
+                    <a class="site-footer-social-link" href="https://www.linkedin.com/company/kau-entrepreneurship-club/" target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                     </a>
                 </div>
             </div>
         </div>
-        <div style="margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; color: rgba(255,255,255,0.5); font-size: 0.95rem;">
-            <p style="margin: 0;">© 2025 جميع الحقوق محفوظة | نادي ريادة الأعمال</p>
+        <div class="site-footer-copyright">
+            <p class="site-footer-copyright-text">© <span id="copyright-year"></span> <span data-i18n="common.copyright">جميع الحقوق محفوظة | نادي ريادة الأعمال</span></p>
         </div>
     </footer>
 
