@@ -31,6 +31,34 @@ function setMenuOpen(open) {
 
 mobileToggle?.addEventListener('click', () => setMenuOpen(!navMenu?.classList.contains('active')));
 
+// On phones the language switch belongs inside the slide-in menu, not next to the logo.
+const languageSwitch = document.querySelector('[data-language-switch]');
+const headerActions = languageSwitch?.closest('.header-actions');
+const navLanguageItem = document.createElement('li');
+navLanguageItem.className = 'nav-language-item';
+const narrowNav = window.matchMedia('(max-width: 992px)');
+
+function placeLanguageSwitch() {
+    if (!languageSwitch || !navMenu || !headerActions) return;
+    if (narrowNav.matches) {
+        if (languageSwitch.parentElement !== navLanguageItem) {
+            navLanguageItem.appendChild(languageSwitch);
+            navMenu.appendChild(navLanguageItem);
+        }
+    } else if (languageSwitch.parentElement === navLanguageItem) {
+        headerActions.insertBefore(languageSwitch, headerActions.firstChild);
+        navLanguageItem.remove();
+    }
+}
+
+placeLanguageSwitch();
+narrowNav.addEventListener('change', placeLanguageSwitch);
+
+// Switching language from inside the menu closes it, the same as tapping a link.
+languageSwitch?.addEventListener('click', () => {
+    if (narrowNav.matches) setMenuOpen(false);
+});
+
 // Close menu when clicking links
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
