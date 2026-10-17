@@ -40,7 +40,7 @@
         </div>
     </header>
 
-    <main class="achievements-page">
+    <main class="achievements-page ach">
         <!-- Premium Hero Section -->
                 <section class="page-hero page-hero-surface">
             <div class="page-hero-pattern"></div>
@@ -55,161 +55,79 @@
             <div class="page-hero-glow-blue"></div>
         </section>
 
-        <!-- Premium Impact Stats Section -->
-        <section class="impact-stats-premium impact-stats-surface">
+        <!-- Numbers -->
+        <section class="ach-numbers" aria-label="النادي في أرقام" data-i18n-aria-label="achievements.numbersLabel">
             <div class="container">
-<div class="impact-stats-grid">
-                    
-                    <!-- Stat Item 4 (Right-most in screenshot: 100+) -->
-                    <div class="stat-card-ultra">
-                        <div class="stat-icon-wrapper">
-                            <i class="impact-stat-icon" data-lucide="calendar"></i>
-                        </div>
-                        <div class="impact-stat-value" dir="ltr">
-                            <span class="impact-stat-plus">+</span>100
-                        </div>
-                        <div class="impact-stat-caption" data-i18n="achievements.events">فعالية ونشاط</div>
+                <div class="ach-stats">
+                    <div class="ach-stat">
+                        <div class="ach-stat__value" dir="ltr"><span class="ach-stat__plus">+</span><span class="ach-stat__num" data-target="100">100</span></div>
+                        <div class="ach-stat__label"><i data-lucide="calendar"></i><span data-i18n="achievements.events">فعالية ونشاط</span></div>
                     </div>
-
-                    <!-- Stat Item 3 (300+) -->
-                    <div class="stat-card-ultra">
-                        <div class="stat-icon-wrapper">
-                            <i class="impact-stat-icon" data-lucide="lightbulb"></i>
-                        </div>
-                        <div class="impact-stat-value" dir="ltr">
-                            <span class="impact-stat-plus">+</span>300
-                        </div>
-                        <div class="impact-stat-caption" data-i18n="achievements.ideas">فكرة ومشروع</div>
+                    <div class="ach-stat">
+                        <div class="ach-stat__value" dir="ltr"><span class="ach-stat__plus">+</span><span class="ach-stat__num" data-target="300">300</span></div>
+                        <div class="ach-stat__label"><i data-lucide="lightbulb"></i><span data-i18n="achievements.ideas">فكرة ومشروع</span></div>
                     </div>
-
-                    <!-- Stat Item 2 (15K+) -->
-                    <div class="stat-card-ultra">
-                        <div class="stat-icon-wrapper">
-                            <i class="impact-stat-icon" data-lucide="users"></i>
-                        </div>
-                        <div class="impact-stat-value" dir="ltr">
-                            <span class="impact-stat-plus">+</span>15K
-                        </div>
-                        <div class="impact-stat-caption" data-i18n="achievements.followers">صديق ومتابع</div>
+                    <div class="ach-stat">
+                        <div class="ach-stat__value" dir="ltr"><span class="ach-stat__plus">+</span><span class="ach-stat__num" data-target="15" data-suffix="K">15K</span></div>
+                        <div class="ach-stat__label"><i data-lucide="users"></i><span data-i18n="achievements.followers">صديق ومتابع</span></div>
                     </div>
-
-                    <!-- Stat Item 1 (Left-most in screenshot: 3M+) -->
-                    <div class="stat-card-ultra">
-                        <div class="stat-icon-wrapper">
-                            <i class="impact-stat-icon" data-lucide="eye"></i>
-                        </div>
-                        <div class="impact-stat-value" dir="ltr">
-                            <span class="impact-stat-plus">+</span>3M
-                        </div>
-                        <div class="impact-stat-caption" data-i18n="achievements.impressions">ظهور في المنصات</div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Achievements Timeline Section -->
-        <section class="timeline-section py-100">
-            <div class="container achievements-timeline-container">
-                <div class="elite-timeline">
-                    
-                    <!-- Timeline Item: 2025 -->
-                    <div class="clean-timeline-item achievement-timeline-item">
-                        <div class="achievement-timeline-line-gold"></div>
-                        <div class="achievement-timeline-dot-gold"></div>
-                        <div class="achievement-year-row-featured">
-                            <span class="achievement-year-featured">2025</span>
-                            <span class="achievement-year-label-featured" data-i18n="achievements.future">القادم أعظم</span>
-                        </div>
-                        <div class="timeline-card achievement-card-featured">
-                            <div class="achievement-placeholder">
-                                <div class="achievement-placeholder-content">
-                                    <i class="achievement-placeholder-icon" data-lucide="sparkles"></i>
-                                    <h4 class="achievement-placeholder-title" data-i18n="achievements.placeholder">مساحة مخصصة للإنجاز القادم</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Timeline Item: 2024 -->
-                    <div class="clean-timeline-item achievement-timeline-item">
-                        <div class="achievement-timeline-line-muted"></div>
-                        <div class="achievement-timeline-dot-navy"></div>
-                        <div class="achievement-year-row">
-                            <span class="achievement-year">2024</span>
-                            <span class="achievement-year-label" data-i18n="achievements.impact">عام التأثير</span>
-                        </div>
-                        <div class="timeline-card achievement-award-card">
-                            <div class="achievement-card-header">
-                                <div class="achievement-award-badge"><i class="achievement-award-icon" data-lucide="award"></i></div>
-                                <h3 class="achievement-card-title" data-i18n="achievements.award">النادي الأعلى تأثيراً</h3>
-                            </div>
-                            <p class="achievement-card-description" data-i18n="achievements.awardDescription">تقديراً للدور الريادي والجهود الاستثنائية، توج النادي بجائزة المركز الأول كأكثر الأندية الطلابية تأثيراً في ملتقى بييان السنوي، بجامعة الملك عبدالعزيز.</p>
-                            
-                            <!-- مساحة الصورة -->
-                            <div class="image-placeholder-container achievement-image-frame">
-                                <!-- ضع مسار صورتك هنا -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Timeline Item: 2023 -->
-                    <div class="clean-timeline-item achievement-timeline-item-last">
-                        <!-- Simple Dot -->
-                        <div class="achievement-timeline-dot-muted"></div>
-                        
-                        <div class="achievement-year-row">
-                            <span class="achievement-year-foundation">2023</span>
-                            <span class="achievement-year-label-foundation" data-i18n="achievements.foundation">التأسيس</span>
-                        </div>
-                        
-                        <div class="timeline-card achievement-card-foundation">
-                            <h3 class="achievement-foundation-title" data-i18n="achievements.journey">بداية الرحلة</h3>
-                            <p class="achievement-foundation-description" data-i18n="achievements.journeyDescription">بداية صناعة الأثر وإطلاق البرامج التأسيسية التي مهدت الطريق للنجاحات الحالية في نشر ثقافة ريادة الأعمال.</p>
-                            
-                            <!-- مساحة الصورة -->
-                            <div class="image-placeholder-container achievement-image-frame">
-                                <!-- ضع مسار صورتك هنا -->
-                            </div>
-                        </div>
+                    <div class="ach-stat">
+                        <div class="ach-stat__value" dir="ltr"><span class="ach-stat__plus">+</span><span class="ach-stat__num" data-target="3" data-suffix="M">3M</span></div>
+                        <div class="ach-stat__label"><i data-lucide="eye"></i><span data-i18n="achievements.impressions">ظهور في المنصات</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Partners Panorama Section -->
-        <section class="partners-panorama py-100">
+        <!-- Achievements by year (cards are built by js/achievements.js from js/achievements-data.js) -->
+        <section class="ach-journey" id="journey">
             <div class="container">
-                <div class="section-header text-center mb-80">
-                    <h2 class="panorama-title" data-i18n="achievements.partners">كوكبة النجاح</h2>
-                    <p data-i18n="achievements.partnersDescription">منظومة ريادية متكاملة وشراكات تصنع المستقبل</p>
-                </div>
-                
-                <div class="panorama-viewport">
-                    <div class="panorama-container">
-                        <div class="panorama-image-wrapper">
-                            <img src="../assets/prnamg/image copy 3.png" alt="شركاء نادي ريادة الأعمال" class="partners-master-image" data-i18n-alt="achievements.partnersAlt">
-                        </div>
-                        <div class="panorama-overlay"></div>
-                    </div>
-                    
-                    <!-- Decorative Elements -->
-                    <div class="floating-particle p1"></div>
-                    <div class="floating-particle p2"></div>
-                    <div class="floating-particle p3"></div>
-                    <div class="floating-particle p4"></div>
-                </div>
+                <header class="ach-head text-center">
+                    <h2 class="section-title" data-i18n="achievements.journeyTitle">مسيرة الإنجازات</h2>
+                    <p class="ach-head__text" data-i18n="achievements.journeySubtitle">أبرز ما حققه النادي في كل عام</p>
+                </header>
+
+                <nav class="year-rail" id="year-rail" aria-label="التنقل بين السنوات" data-i18n-aria-label="achievements.yearsLabel"></nav>
+
+                <div class="journey" id="journey-list"></div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="join-the-legacy py-100">
-            <div class="container text-center">
-                <h2 class="legacy-title" data-i18n="achievements.join">كن جزءاً من تاريخنا القادم</h2>
-                <p data-i18n="achievements.joinDescription">طموحنا لا يتوقف، وانجازاتنا هي البداية فقط لما هو أعظم.</p>
-                <div class="cta-actions mt-50">
-                    <a href="#" class="btn btn-primary btn-lg disabled-btn"><span data-i18n="achievements.registrationSoon">التسجيل يفتح قريباً</span> <i data-lucide="clock"></i></a>
+        <!-- Partners (logos are built by js/achievements.js) -->
+        <section class="ach-partners">
+            <div class="container">
+                <header class="ach-head text-center">
+                    <h2 class="section-title" data-i18n="achievements.partners">كوكبة النجاح</h2>
+                    <p class="ach-head__text" data-i18n="achievements.partnersDescription">منظومة ريادية متكاملة وشراكات تصنع المستقبل</p>
+                </header>
+                <div class="partners-grid" id="partners-grid"></div>
+            </div>
+        </section>
+
+        <!-- Registration: sealed envelope -->
+        <section class="ach-cta">
+            <div class="container ach-cta__inner">
+                <div class="ach-cta__copy">
+                    <h2 class="ach-cta__title" data-i18n="achievements.join">كن جزءاً من تاريخنا القادم</h2>
+                    <p class="ach-cta__text" data-i18n="achievements.joinDescription">طموحنا لا يتوقف، وإنجازاتنا هي البداية فقط لما هو أعظم.</p>
                 </div>
+
+                <button class="envelope" id="cta-envelope" type="button" aria-expanded="false" aria-controls="envelope-letter">
+                    <span class="envelope__back" aria-hidden="true"></span>
+                    <span class="envelope__letter" id="envelope-letter">
+                        <span class="envelope__letter-kicker" data-i18n="achievements.envelopeKicker">دعوة قادمة</span>
+                        <span class="envelope__letter-title" data-i18n="achievements.registrationSoon">التسجيل يفتح قريباً</span>
+                        <span class="envelope__letter-text" data-i18n="achievements.envelopeText">تابع حساباتنا ليصلك موعد فتح التسجيل أول بأول</span>
+                    </span>
+                    <span class="envelope__pocket" aria-hidden="true"></span>
+                    <span class="envelope__flap" aria-hidden="true"></span>
+                    <span class="envelope__seal" aria-hidden="true"><i data-lucide="clock"></i></span>
+                    <span class="envelope__stamp">
+                        <span class="envelope__stamp-title" data-i18n="achievements.registrationSoon">التسجيل يفتح قريباً</span>
+                        <span class="envelope__stamp-sub" data-i18n="common.clubName">نادي ريادة الأعمال</span>
+                    </span>
+                    <span class="envelope__hint" data-i18n="achievements.envelopeHint">اضغط لفتح الدعوة</span>
+                </button>
             </div>
         </section>
     </main>
@@ -262,6 +180,8 @@
 
     <script src="../js/main.js"></script>
     <script>lucide.createIcons();</script>
+    <script src="../js/achievements-data.js" defer></script>
+    <script src="../js/achievements.js" defer></script>
     
 </body>
 </html>
