@@ -254,6 +254,14 @@
         .post-thumb img { width: 100%; height: 100%; border-radius: 12px; object-fit: cover; }
         .post-info { flex: 1; min-width: 0; }
         .post-type-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .post-item.is-live { border-color: rgba(16,185,129,0.35); background: rgba(16,185,129,0.03); }
+        .live-badge {
+            display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px;
+            border-radius: 20px; font-size: 0.78rem; font-weight: 700;
+        }
+        .live-badge i { width: 14px; height: 14px; }
+        .live-badge.on { background: rgba(16,185,129,0.12); color: var(--green); }
+        .live-badge.off { background: rgba(107,114,128,0.1); color: var(--text-light); }
         .post-text { font-size: 0.9rem; color: var(--navy); line-height: 1.5;
             overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .post-meta { color: var(--text-light); font-size: 0.78rem; margin-top: 6px; }
@@ -362,7 +370,7 @@
                 </div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon gold"><i data-lucide="twitter" style="width:24px;height:24px;"></i></div>
+                <div class="stat-icon gold"><i data-lucide="message-square-text" style="width:24px;height:24px;"></i></div>
                 <div>
                     <div class="stat-num" id="statTweets">0</div>
                     <div class="stat-label">تغريدات</div>
@@ -397,7 +405,7 @@
                             <div class="type-selector">
                                 <input type="radio" name="postType" id="typeTweet" value="tweet" class="type-option" checked>
                                 <label for="typeTweet" class="type-label">
-                                    <i data-lucide="twitter"></i> تغريدة
+                                    <i data-lucide="message-square-text"></i> تغريدة
                                 </label>
                                 <input type="radio" name="postType" id="typePhoto" value="photo" class="type-option">
                                 <label for="typePhoto" class="type-label">
@@ -698,8 +706,11 @@ function renderPostsList(posts) {
     const typeLabel = { tweet: 'تغريدة', photo: 'صورة', event: 'فعالية' };
     const typeBadge = { tweet: 'badge-tweet', photo: 'badge-photo', event: 'badge-event' };
 
+    // The homepage shows only the newest post (posts are sorted by date, newest first)
+    const liveId = posts.length ? posts[0].id : null;
+
     list.innerHTML = filtered.map(p => `
-        <div class="post-item" id="post-${p.id}">
+        <div class="post-item${p.id === liveId ? ' is-live' : ''}" id="post-${p.id}">
             <div class="post-thumb">
                 ${p.image
                     ? `<img src="${p.image}" alt="صورة">`
@@ -708,6 +719,9 @@ function renderPostsList(posts) {
             <div class="post-info">
                 <div class="post-type-row">
                     <span class="preview-type-badge ${typeBadge[p.type]}">${typeLabel[p.type]}</span>
+                    ${p.id === liveId
+                        ? `<span class="live-badge on"><i data-lucide="check-circle-2"></i> معروض في الموقع</span>`
+                        : `<span class="live-badge off"><i data-lucide="eye-off"></i> غير معروض</span>`}
                 </div>
                 <div class="post-text">${p.text}</div>
                 <div class="post-meta">${new Date(p.date).toLocaleDateString('ar-SA', {year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'})}</div>
