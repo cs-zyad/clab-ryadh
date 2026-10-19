@@ -1,0 +1,31 @@
+/* Media pages. The body has both `page-panel` (shared frame, form pieces, tabs,
+   filters and tables in styles/panel.css) and `page-media` (this file). */
+body.page-media {
+    --navy: #232055;
+    --text-light: #6b7280;
+    --border: rgba(35,32,85,0.08);
+    --red: #ef4444;
+}
+
+.page-media .char-count { font-size: 0.78rem; color: var(--text-light); text-align: left; margin-top: 5px; }
+.page-media .char-count.warn { color: #f59e0b; }
+.page-media .char-count.over { color: var(--red); }
+
+/* Live preview: the post as a tweet card */
+.page-media .preview-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 18px;
+    background: #fafafa;
+}
+.page-media .preview-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.page-media .preview-avatar {
+    width: 46px; height: 46px; border-radius: 50%; background: var(--navy);
+    display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;
+}
+.page-media .preview-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.page-media .preview-name { font-weight: 800; font-size: 0.95rem; }
+.page-media .preview-handle { color: var(--text-light); font-size: 0.82rem; }
+.page-media .preview-text { font-size: 0.95rem; line-height: 1.7; color: var(--navy); min-height: 40px; margin-bottom: 14px; white-space: pre-wrap; word-break: break-word; }
+.page-media .preview-text.empty { color: var(--text-light); font-style: italic; }
+.page-media .preview-image { width: 100%; border-radius: 12px; max-height: 200px; object-fit: cover; display: none; margin-bottom: 14px; }
+.page-media .preview-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid var(--border); }
+.page-media .preview-date { color: var(--text-light); font-size: 0.8rem; }

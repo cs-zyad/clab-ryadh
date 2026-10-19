@@ -1,0 +1,58 @@
+/* Used on every page (same size everywhere), so not scoped to a page class.
+   RTL: avatar on the right, name (and role) to its left. */
+.account-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.account-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f6cf6a 0%, #ecb02e 100%);
+    color: #232055;
+    font-size: 1.2rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(236, 176, 46, 0.25);
+}
+
+.account-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    text-align: right;
+}
+
+.account-name {
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 220px;
+}
+
+.account-role { font-size: 0.85rem; font-weight: 700; line-height: 1.25; }
+
+/* Dark background (landing page) */
+.account-chip.dark { color: #ffffff; }
+.account-chip.dark .account-role { color: #ecb02e; }
+
+/* Light background (events, media and users pages) */
+.account-chip.light { color: #232055; }
+.account-chip.light .account-role { color: #b45309; }
+
+/* Slightly smaller on phones so it fits beside the logout button */
+@media (max-width: 640px) {
+    .account-avatar { width: 42px; height: 42px; font-size: 1.05rem; }
+    .account-name { font-size: 0.95rem; max-width: 150px; }
+    .account-role { font-size: 0.78rem; }
+}
