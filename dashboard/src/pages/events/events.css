@@ -1,0 +1,78 @@
+/* Events pages. The body has both `page-panel` (shared frame, form pieces, tabs,
+   filters and tables in styles/panel.css) and `page-events` (this file).
+   The preview mirrors the ticket card on the website's activities page. */
+
+.page-events .ticket-preview {
+    position: relative;
+    overflow: hidden;
+    background: #232055;
+    color: #ffffff;
+    border-radius: 22px;
+    border: 1px solid rgba(236, 176, 46, 0.3);
+    box-shadow: 0 14px 34px rgba(35, 32, 85, 0.18);
+}
+/* "انتهى" stamp, styled like `.expired-stamp` on the website */
+.page-events .tp-stamp {
+    /* Centred on the poster (18px margin + half of its 190px height) */
+    position: absolute; top: 113px; left: 50%; z-index: 2;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    border: 4px solid #ff4d4d; border-radius: 12px; color: #ff4d4d;
+    background: rgba(0, 0, 0, 0.1); box-shadow: 0 0 20px rgba(255, 77, 77, 0.2);
+    font-size: 1.8rem; font-weight: 900; padding: 6px 28px;
+    opacity: 0.85; pointer-events: none;
+}
+
+.page-events .tp-poster {
+    margin: 18px 18px 0; height: 190px;
+    border-radius: 12px; border: 3px solid #ecb02e; overflow: hidden;
+    background: #ffffff; color: rgba(35, 32, 85, 0.35);
+    display: flex; align-items: center; justify-content: center;
+}
+/* Posters are often tall: crop from the top so their heading stays visible */
+.page-events .tp-poster img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+.page-events .tp-body { padding: 16px 20px 18px; }
+.page-events .tp-top { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; min-height: 24px; }
+.page-events .tp-label {
+    background: rgba(236, 176, 46, 0.2); color: #ecb02e;
+    padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 800;
+}
+.page-events .tp-status { margin-inline-start: auto; font-size: 0.85rem; font-weight: 700; }
+.page-events .tp-status.open { color: #ecb02e; }
+.page-events .tp-status.soon { color: rgba(255, 255, 255, 0.55); }
+.page-events .tp-status.ended { color: #ff4d4d; }
+
+.page-events .tp-title {
+    margin: 0 0 6px; font-size: 1.2rem; font-weight: 900; line-height: 1.4;
+    color: #ecb02e; word-break: break-word;
+}
+.page-events .tp-desc {
+    margin: 0 0 12px; font-size: 0.88rem; line-height: 1.7; color: rgba(255, 255, 255, 0.9);
+    white-space: pre-wrap; word-break: break-word;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.page-events .tp-title.empty,
+.page-events .tp-desc.empty { opacity: 0.45; font-style: italic; }
+
+.page-events .tp-meta { display: flex; flex-wrap: wrap; gap: 16px; color: #ecb02e; font-size: 0.85rem; font-weight: 700; }
+.page-events .tp-meta span { display: inline-flex; align-items: center; gap: 6px; direction: ltr; }
+
+/* Dashed tear line with half-circle notches on both edges */
+.page-events .tp-divider { position: relative; margin: 0 14px; border-top: 2px dashed rgba(255, 255, 255, 0.25); }
+.page-events .tp-cut {
+    position: absolute; top: -12px; width: 22px; height: 22px;
+    border-radius: 50%; background: #ffffff;
+}
+.page-events .tp-cut.start { right: -25px; }
+.page-events .tp-cut.end { left: -25px; }
+
+.page-events .tp-side {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px; background: rgba(255, 255, 255, 0.03);
+}
+.page-events .tp-id { direction: ltr; font-size: 0.8rem; letter-spacing: 2px; opacity: 0.6; }
+.page-events .tp-action {
+    background: #ecb02e; color: #232055;
+    padding: 8px 20px; border-radius: 12px; font-size: 0.9rem; font-weight: 800;
+}
+.page-events .ticket-preview.ended .tp-action { background: rgba(255, 255, 255, 0.12); color: #ffffff; }

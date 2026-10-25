@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* Always reserve the scrollbar's space, so switching between a long page and a
+   short one (e.g. the add / list tabs) doesn't shift the centred content sideways */
+html { scrollbar-gutter: stable; }
+
+/* Let page wrappers lay out directly inside <body>, as in the original HTML pages */
+#root { display: contents; }
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

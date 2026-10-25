@@ -1,0 +1,142 @@
+/* Users & permissions page (builds on styles/panel.css) */
+
+.page-panel .section-hint { color: #6b7280; font-size: 0.85rem; margin-top: -12px; }
+
+/* Permission editor */
+.page-panel .perm-editor {
+    border: 1px solid #eee;
+    border-radius: 14px;
+    padding: 14px 16px;
+    background: #fafafa;
+}
+.page-panel .admin-note { font-size: 0.8rem; color: #6b7280; margin-top: 2px; }
+.page-panel .perm-groups {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 12px;
+}
+.page-panel .perm-group {
+    background: var(--white);
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 10px 14px;
+}
+.page-panel .perm-group h4 {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--primary-navy);
+    margin-bottom: 4px;
+}
+
+/* Toggle switch (label.* so it wins over `.form-group label`) */
+.page-panel label.switch-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0;
+    padding: 7px 0;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+}
+.page-panel label.switch-row.disabled { cursor: not-allowed; opacity: 0.5; }
+.page-panel .switch-input { position: absolute; opacity: 0; width: 0; height: 0; }
+.page-panel .switch {
+    position: relative;
+    flex-shrink: 0;
+    width: 40px;
+    height: 22px;
+    border-radius: 22px;
+    background: #d1d5db;
+    transition: background 0.2s;
+}
+.page-panel .switch::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+.page-panel .switch-input:checked + .switch { background: #10b981; }
+.page-panel .switch-input:checked + .switch::after { transform: translateX(-18px); }
+.page-panel .switch-input:focus-visible + .switch { box-shadow: 0 0 0 3px rgba(236, 176, 46, 0.35); }
+
+/* User cards */
+.page-panel .users-list { display: flex; flex-direction: column; gap: 18px; margin-top: 20px; }
+.page-panel .user-card {
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 20px;
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(35, 32, 85, 0.04);
+}
+.page-panel .user-card.inactive { background: #fafafa; }
+.page-panel .user-card.inactive .perm-editor { opacity: 0.6; }
+.page-panel .user-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.page-panel .user-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--primary-navy);
+    color: var(--accent-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+.page-panel .user-id { flex: 1; min-width: 0; }
+.page-panel .user-name { font-weight: 800; display: flex; align-items: center; gap: 8px; }
+.page-panel .user-email {
+    color: #6b7280;
+    font-size: 0.85rem;
+    direction: ltr;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.page-panel .user-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.page-panel .tag { padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+.page-panel .tag-admin { background: rgba(236, 176, 46, 0.15); color: #b45309; }
+.page-panel .tag-active { background: #dcfce7; color: #166534; }
+.page-panel .tag-inactive { background: #fee2e2; color: #991b1b; }
+.page-panel .tag-self { background: #e0e7ff; color: #3730a3; }
+
+.page-panel .user-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #eee;
+}
+.page-panel .link-btn {
+    background: none;
+    border: none;
+    color: #2563eb;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: 'Cairo', sans-serif;
+}
+.page-panel .link-btn:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+    .page-panel .grid-form,
+    .page-panel .perm-groups { grid-template-columns: 1fr; }
+    .page-panel .user-head { flex-wrap: wrap; }
+}
+
+.page-panel .user-links { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.page-panel .link-btn.danger { color: #dc2626; }

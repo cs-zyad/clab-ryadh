@@ -1,8 +1,80 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if true;
+
+    // ── Helpers ────────────────────────────────────────────────────────
+    // Each signed-in dashboard user has a profile at users/{uid}:
+    //   { name, email, active: bool, admin: bool, permissions: { posts_view: bool, ... } }
+    // Permission keys must match dashboard/src/auth/permissions.js.
+
+    function signedIn() {
+      return request.auth != null;
     }
+
+    function profilePath() {
+      return /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    function profile() {
+      return get(profilePath()).data;
+    }
+
+    function isActive() {
+      return signedIn() && exists(profilePath()) && profile().get('active', false) == true;
+    }
+
+    function isAdmin() {
+      return isActive() && profile().get('admin', false) == true;
+    }
+
+    function hasPerm(key) {
+      return profile().get('permissions', {}).get(key, false) == true;
+    }
+
+    // e.g. can('posts', 'create'): admins always; others need the action
+    // *and* the section's view permission.
+    function can(section, action) {
+      return isAdmin()
+        || (isActive() && hasPerm(section + '_view') && hasPerm(section + '_' + action));
+    }
+
+    // ── Public website content ─────────────────────────────────────────
+    // Anyone can read (the website shows these without signing in).
+
+    match /posts/{postId} {
+      allow read: if true;
+      allow create: if can('posts', 'create');
+      allow update: if can('posts', 'edit');
+      allow delete: if can('posts', 'delete');
+    }
+
+    match /events/{eventId} {
+      allow read: if true;
+      allow create: if can('events', 'create');
+      allow update: if can('events', 'edit');
+      allow delete: if can('events', 'delete');
+    }
+
+    // ── Dashboard accounts ─────────────────────────────────────────────
+
+    match /users/{uid} {
+      // Users can read their own profile (to load their permissions); admins read all
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+
+      allow create: if isAdmin();
+
+      // Admins manage everyone, but can't remove their own admin rights or
+      // deactivate themselves (so the last admin can't lock everyone out)
+      allow update: if isAdmin()
+        && (uid != request.auth.uid
+            || (request.resource.data.get('admin', false) == true
+                && request.resource.data.get('active', false) == true));
+
+      // The dashboard "deletes" an account by setting deleted: true (an update above);
+      // removing the Auth login itself needs the Admin SDK (paid plan)
+      allow delete: if false;
+    }
+
+    // Everything else is closed
   }
 }
