@@ -1,9 +1,9 @@
 // A row of icon tiles that behaves like radio buttons (post type, event category,
 // registration status). Styles live in styles/panel.css.
 // options: [{ value, label, Icon }]
-export default function TilePicker({ name, options, value, onChange }) {
+export default function TilePicker({ name, options, value, onChange, className = '' }) {
   return (
-    <div className="tile-selector" role="radiogroup">
+    <div className={`tile-selector${className ? ` ${className}` : ''}`} role="radiogroup">
       {options.map(({ value: optionValue, label, Icon }) => {
         const id = `${name}-${optionValue}`
         return (

@@ -12,6 +12,7 @@ const FILTERS = [
   ['tweet', 'تغريدات'],
   ['photo', 'صور'],
   ['event', 'فعاليات'],
+  ['star', 'نجوم الشهر'],
 ]
 
 // "المنشورات المضافة" tab
@@ -34,6 +35,8 @@ export default function PostsPage() {
         image: post.image || null,
         imageName: post.image ? SAVED_IMAGE_LABEL : '',
         link: post.link || '',
+        name: post.name || '',
+        department: post.department || '',
         editingId: post.id,
       })
       navigate('/media')
@@ -65,8 +68,8 @@ export default function PostsPage() {
       <PostsTable
         posts={filtered}
         error={postsError}
-        // The homepage shows only the newest post
-        liveId={posts[0]?.id}
+        // The homepage news feed shows only the newest non-star post (stars live on the members page instead)
+        liveId={posts.find((p) => p.type !== 'star')?.id}
         canEdit={can('posts_edit')}
         canDelete={can('posts_delete')}
         onEdit={editPost}

@@ -382,6 +382,7 @@ body.page-panel.tone-violet {
 .page-panel .tone-blue { background: rgba(29, 161, 242, 0.1); color: #1da1f2; }
 .page-panel .tone-purple { background: rgba(168, 85, 247, 0.1); color: #a855f7; }
 .page-panel .tone-amber { background: rgba(236, 176, 46, 0.12); color: #d97706; }
+.page-panel .tone-gold { background: rgba(180, 83, 9, 0.12); color: #b45309; }
 
 .page-panel .status-badge { white-space: nowrap; }
 .page-panel .status-hidden { background: #f1f2f5; color: #6b7280; }
@@ -437,6 +438,7 @@ body.page-panel.tone-violet {
 
 /* Tile picker (label.* so it wins over `.form-group label`) */
 .page-panel .tile-selector { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.page-panel .tile-selector-4 { grid-template-columns: repeat(4, 1fr); }
 .page-panel .tile-option { display: none; }
 .page-panel .tile-selector label.tile-label {
     display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 0;
@@ -475,4 +477,5 @@ body.page-panel.tone-violet {
 @media (max-width: 640px) {
     .page-panel .form-row-2 { grid-template-columns: 1fr; }
     .page-panel .tile-selector label.tile-label { padding: 12px 6px; font-size: 0.8rem; }
+    .page-panel .tile-selector-4 { grid-template-columns: repeat(2, 1fr); }
 }

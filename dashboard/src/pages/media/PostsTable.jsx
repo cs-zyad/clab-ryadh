@@ -1,9 +1,9 @@
 import { memo } from 'react'
 import { loadErrorMessage } from '../../hooks/useCollection.js'
-import { Calendar, ExternalLink, Image as ImageIcon, MessageSquareText, PenLine, Trash2 } from 'lucide-react'
+import { Calendar, ExternalLink, Image as ImageIcon, MessageSquareText, PenLine, Star, Trash2 } from 'lucide-react'
 import { TYPE_LABELS, TYPE_TONES } from './constants.js'
 
-const TYPE_ICONS = { tweet: MessageSquareText, photo: ImageIcon, event: Calendar }
+const TYPE_ICONS = { tweet: MessageSquareText, photo: ImageIcon, event: Calendar, star: Star }
 
 const dayFormat = new Intl.DateTimeFormat('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' })
 const timeFormat = new Intl.DateTimeFormat('ar-SA', { hour: '2-digit', minute: '2-digit' })

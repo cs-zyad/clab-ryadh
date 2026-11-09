@@ -157,13 +157,15 @@
 
             // Real-time synchronization
             if (useFirebase) {
-                const q = query(collection(db, "posts"), orderBy("date", "desc"), limit(1));
+                // Fetches a few of the newest posts and filters out "star" posts client-side
+                // (those belong to the "نجوم الشهر" section on the members page, not here)
+                const q = query(collection(db, "posts"), orderBy("date", "desc"), limit(10));
                 onSnapshot(q, (snapshot) => {
                     const posts = [];
                     snapshot.forEach((doc) => {
                         posts.push({ id: doc.id, ...doc.data() });
                     });
-                    displayPosts(posts);
+                    displayPosts(posts.filter(p => p.type !== 'star'));
                 }, (error) => {
                     console.error("Error fetching live posts: ", error);
                     displayPosts([]);
