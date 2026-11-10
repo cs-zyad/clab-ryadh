@@ -21,6 +21,16 @@ export const PERMISSION_GROUPS = [
       { key: 'events_delete', label: 'حذف فعالية' },
     ],
   },
+  {
+    id: 'stars',
+    title: 'نجوم الشهر',
+    permissions: [
+      { key: 'stars_view', label: 'عرض نجوم الشهر' },
+      { key: 'stars_create', label: 'إضافة نجم' },
+      { key: 'stars_edit', label: 'تعديل نجم' },
+      { key: 'stars_delete', label: 'حذف نجم' },
+    ],
+  },
 ]
 
 export const viewKey = (sectionId) => `${sectionId}_view`

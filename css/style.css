@@ -4535,6 +4535,20 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     font-weight: 800;
 }
 
+.stars-empty-state {
+    width: 100%;
+    text-align: center;
+    color: #aaa;
+    padding: 40px 20px;
+}
+
+.stars-empty-state i {
+    width: 44px;
+    height: 44px;
+    color: #ccc;
+    margin-bottom: 12px;
+}
+
 /* Generations Timeline (Polaroid Style) */
 .generations-timeline {
     display: flex;

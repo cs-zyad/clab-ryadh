@@ -6,7 +6,7 @@ body.page-panel {
     --bg-color: #f4f4f7;
 
     /* Section colour, same as the section's card on the landing page.
-       Default gold (events); .tone-sky = media, .tone-violet = users.
+       Default gold (events); .tone-sky = media, .tone-violet = users, .tone-emerald = stars.
        bright: on the navy header · ink: text/icons on white · soft/border/ring/wash: tints */
     --tone-bright: #ecb02e;
     --tone-ink: #b45309;
@@ -38,6 +38,14 @@ body.page-panel.tone-violet {
     --tone-border: rgba(167, 139, 250, 0.5);
     --tone-ring: rgba(167, 139, 250, 0.22);
     --tone-wash: rgba(167, 139, 250, 0.08);
+}
+body.page-panel.tone-emerald {
+    --tone-bright: #10b981;
+    --tone-ink: #047857;
+    --tone-soft: rgba(16, 185, 129, 0.1);
+    --tone-border: rgba(16, 185, 129, 0.5);
+    --tone-ring: rgba(16, 185, 129, 0.22);
+    --tone-wash: rgba(16, 185, 129, 0.08);
 }
 
 /* Signed-in account above the card, aligned to its right edge */

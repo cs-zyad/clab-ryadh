@@ -1,0 +1,60 @@
+/* Stars of the month page — live preview card (mirrors the public .star-card look) */
+
+.page-panel .star-preview-card {
+    background: var(--white);
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.page-panel .star-preview-photo {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    border-radius: 10px;
+    background: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #ccc;
+}
+
+.page-panel .star-preview-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.page-panel .star-preview-badge {
+    position: absolute;
+    top: 10px;
+    inset-inline-start: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-panel .star-preview-title {
+    margin-top: 16px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--primary-navy);
+}
+
+.page-panel .star-preview-title.empty { color: #bbb; }
+
+.page-panel .star-preview-name {
+    margin-top: 4px;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.page-panel .star-preview-name.empty { color: #ccc; }

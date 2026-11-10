@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft, CalendarDays, Megaphone, UsersRound } from 'lucide-react'
+import { ArrowLeft, CalendarDays, Megaphone, Star, UsersRound } from 'lucide-react'
 import { useAuth } from '../../auth/AuthContext.jsx'
 import AccountChip from '../../components/AccountChip.jsx'
-import { loadEvents, loadMedia, loadUsers } from '../../routes/loaders.js'
+import { loadEvents, loadMedia, loadStars, loadUsers } from '../../routes/loaders.js'
 import PortalShell from './PortalShell.jsx'
 
 // Each section has its own colour (tone) so the cards are easy to tell apart
@@ -24,6 +24,15 @@ const SECTIONS = [
     Icon: Megaphone,
     title: 'الأخبار والمنشورات',
     desc: 'انشر التغريدات وصور الإعلانات لتظهر فوراً في قسم أحدث الأخبار بالصفحة الرئيسية.',
+  },
+  {
+    to: '/stars',
+    permission: 'stars_view',
+    preload: loadStars,
+    tone: 'emerald',
+    Icon: Star,
+    title: 'نجوم الشهر',
+    desc: 'أضف اسم العضو وقسمه وصورته ليظهر في قسم نجوم الشهر بصفحة أعضاء النادي.',
   },
   {
     to: '/users',

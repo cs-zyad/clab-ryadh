@@ -251,6 +251,7 @@ body.page-portal {
 /* Admins see three cards; other users may see one or two */
 .page-portal .portal-wrapper.wide { max-width: 1160px; }
 .page-portal .chooser-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.page-portal .chooser-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
 .page-portal .chooser-grid.cols-1 {
     grid-template-columns: 1fr;
     max-width: 420px;
@@ -263,6 +264,7 @@ body.page-portal {
 .page-portal .tone-gold   { --tone: #ecb02e; --tone-soft: rgba(236, 176, 46, 0.14);  --tone-border: rgba(236, 176, 46, 0.4); }
 .page-portal .tone-sky    { --tone: #38bdf8; --tone-soft: rgba(56, 189, 248, 0.14);  --tone-border: rgba(56, 189, 248, 0.4); }
 .page-portal .tone-violet { --tone: #a78bfa; --tone-soft: rgba(167, 139, 250, 0.14); --tone-border: rgba(167, 139, 250, 0.4); }
+.page-portal .tone-emerald { --tone: #10b981; --tone-soft: rgba(16, 185, 129, 0.14); --tone-border: rgba(16, 185, 129, 0.4); }
 
 .page-portal .chooser-card {
     position: relative;
@@ -352,7 +354,8 @@ body.page-portal {
 
 @media (max-width: 768px) {
     .page-portal .chooser-grid,
-    .page-portal .chooser-grid.cols-3 {
+    .page-portal .chooser-grid.cols-3,
+    .page-portal .chooser-grid.cols-4 {
         grid-template-columns: 1fr;
     }
     .page-portal .portal-bar { top: 16px; padding: 0 16px; }

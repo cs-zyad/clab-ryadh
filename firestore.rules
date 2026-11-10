@@ -55,6 +55,13 @@ service cloud.firestore {
       allow delete: if can('events', 'delete');
     }
 
+    match /stars/{starId} {
+      allow read: if true;
+      allow create: if can('stars', 'create');
+      allow update: if can('stars', 'edit');
+      allow delete: if can('stars', 'delete');
+    }
+
     // ── Dashboard accounts ─────────────────────────────────────────────
 
     match /users/{uid} {

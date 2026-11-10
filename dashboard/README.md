@@ -1,7 +1,7 @@
 # Admin Dashboard (React + Vite)
 
 React version of the old `admin/` HTML pages, with Firebase Authentication and per-user permissions.
-Same design and the same Firestore data (`posts`, `events`) that the public site reads.
+Same design and the same Firestore data (`posts`, `events`, `stars`) that the public site reads.
 
 ## Run
 
@@ -22,6 +22,8 @@ npm run build    # production build in dashboard/dist
 | `/events/list` | Events – list tab (filters + table) | `events_view` |
 | `/media`       | Posts – add / edit tab       | `posts_view` + `posts_create` (or `posts_edit` while editing) |
 | `/media/posts` | Posts – list tab (filters + table) | `posts_view` |
+| `/stars`       | Stars of the month – add / edit tab | `stars_view` + `stars_create` (or `stars_edit` while editing) |
+| `/stars/list`  | Stars of the month – list tab (table) | `stars_view` |
 | `/users`       | Users & permissions          | admin            |
 
 ## Accounts & permissions
@@ -36,6 +38,7 @@ Accounts are Firebase Auth users. Each one has a profile document `users/{uid}`:
   permissions: {
     posts_view: true,  posts_create: true,  posts_edit: false, posts_delete: false,
     events_view: true, events_create: false, events_edit: false, events_delete: false,
+    stars_view: true,  stars_create: false, stars_edit: false, stars_delete: false,
   },
 }
 ```

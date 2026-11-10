@@ -12,7 +12,7 @@
 .page-panel .admin-note { font-size: 0.8rem; color: #6b7280; margin-top: 2px; }
 .page-panel .perm-groups {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 14px;
     margin-top: 12px;
 }
