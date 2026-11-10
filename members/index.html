@@ -70,23 +70,44 @@
                 </div>
             </div>
 
+            <!-- Best Department Section -->
+            <div class="best-dept-section mt-100">
+                <div class="stars-header">
+                    <h2 class="section-title text-center" data-i18n="members.department">أفضل قسم لهذا الشهر</h2>
+                    <p class="text-center members-department-description" data-i18n="members.departmentDescription">تكريم للعمل الجماعي والروح الواحدة</p>
+                </div>
+                <div class="best-dept-container members-department-layout" id="bestDeptContainer">
+                    <div class="stars-empty-state">
+                        <i data-lucide="users"></i>
+                        <p data-i18n="members.announcement">سيتم الإعلان عنه قريباً</p>
+                    </div>
+                </div>
+            </div>
+
             <script type="module">
                 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-                import { getFirestore, collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+                import { getFirestore, collection, query, orderBy, onSnapshot, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
                 import { firebaseConfig } from "../js/firebase-config.js";
 
                 (function () {
                     const grid = document.getElementById('starsGrid');
-                    const emptyState = `
+                    const deptContainer = document.getElementById('bestDeptContainer');
+                    const starsEmptyState = `
                         <div class="stars-empty-state">
                             <i data-lucide="star"></i>
+                            <p data-i18n="members.announcement">سيتم الإعلان عنه قريباً</p>
+                        </div>
+                    `;
+                    const deptEmptyState = `
+                        <div class="stars-empty-state">
+                            <i data-lucide="users"></i>
                             <p data-i18n="members.announcement">سيتم الإعلان عنه قريباً</p>
                         </div>
                     `;
 
                     function displayStars(stars) {
                         if (stars.length === 0) {
-                            grid.innerHTML = emptyState;
+                            grid.innerHTML = starsEmptyState;
                         } else {
                             grid.innerHTML = stars.map(star => `
                                 <div class="star-card">
@@ -105,12 +126,34 @@
                         window.siteI18n?.apply(grid);
                     }
 
+                    function displayBestDepartment(dept) {
+                        if (!dept || !dept.department) {
+                            deptContainer.innerHTML = deptEmptyState;
+                        } else {
+                            deptContainer.innerHTML = `
+                                <div class="star-card best-dept-card members-department-card">
+                                    <div class="star-img-wrapper members-department-image">
+                                        <img src="${dept.image || '../assets/image copy 2.png'}" alt="${dept.department}" class="star-img${dept.image ? '' : ' placeholder-logo'}">
+                                        <div class="star-badge members-department-badge"><i class="members-department-icon" data-lucide="users"></i></div>
+                                    </div>
+                                    <div class="star-info">
+                                        <h3 class="members-department-title">${dept.department}</h3>
+                                        <p class="members-department-caption">${dept.caption || ''}</p>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                        lucide.createIcons();
+                        window.siteI18n?.apply(deptContainer);
+                    }
+
                     if (firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY") {
                         try {
                             const app = initializeApp(firebaseConfig);
                             const db = getFirestore(app);
-                            const q = query(collection(db, "stars"), orderBy("date", "desc"));
-                            onSnapshot(q, (snapshot) => {
+
+                            const starsQuery = query(collection(db, "stars"), orderBy("date", "desc"));
+                            onSnapshot(starsQuery, (snapshot) => {
                                 const stars = [];
                                 snapshot.forEach((doc) => stars.push({ id: doc.id, ...doc.data() }));
                                 displayStars(stars);
@@ -118,35 +161,24 @@
                                 console.error("Error fetching stars: ", error);
                                 displayStars([]);
                             });
+
+                            onSnapshot(doc(db, "settings", "bestDepartment"), (snap) => {
+                                displayBestDepartment(snap.exists() ? snap.data() : null);
+                            }, (error) => {
+                                console.error("Error fetching best department: ", error);
+                                displayBestDepartment(null);
+                            });
                         } catch (e) {
                             console.error("Firebase connection error: ", e);
                             displayStars([]);
+                            displayBestDepartment(null);
                         }
                     } else {
                         displayStars([]);
+                        displayBestDepartment(null);
                     }
                 })();
             </script>
-
-            <!-- Best Department Section -->
-            <div class="best-dept-section mt-100">
-                <div class="stars-header">
-                    <h2 class="section-title text-center" data-i18n="members.department">أفضل قسم لهذا الشهر</h2>
-                    <p class="text-center members-department-description" data-i18n="members.departmentDescription">تكريم للعمل الجماعي والروح الواحدة</p>
-                </div>
-                <div class="best-dept-container members-department-layout">
-                    <div class="star-card best-dept-card members-department-card">
-                        <div class="star-img-wrapper members-department-image">
-                            <img src="../assets/image copy 2.png" alt="أفضل قسم" class="star-img placeholder-logo" data-i18n-alt="members.departmentAlt">
-                            <div class="star-badge members-department-badge"><i class="members-department-icon" data-lucide="users"></i></div>
-                        </div>
-                        <div class="star-info">
-                            <h3 class="members-department-title" data-i18n="members.departmentName">قسم التطوير والابتكار</h3>
-                            <p class="members-department-caption" data-i18n="members.departmentCaption">أداء استثنائي وتكامل بين جميع أعضاء الفريق</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
             <!-- Generations Timeline -->

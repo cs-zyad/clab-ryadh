@@ -62,6 +62,13 @@ service cloud.firestore {
       allow delete: if can('stars', 'delete');
     }
 
+    // Singleton settings docs (currently just settings/bestDepartment), part of the
+    // same "stars" feature/permission group.
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if can('stars', 'edit');
+    }
+
     // ── Dashboard accounts ─────────────────────────────────────────────
 
     match /users/{uid} {

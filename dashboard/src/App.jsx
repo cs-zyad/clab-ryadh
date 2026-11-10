@@ -19,6 +19,7 @@ const PostsPage = lazy(() => loadMedia().then((m) => ({ default: m.PostsPage }))
 const StarsLayout = lazy(() => loadStars().then((m) => ({ default: m.StarsLayout })))
 const AddStarPage = lazy(() => loadStars().then((m) => ({ default: m.AddStarPage })))
 const StarsListPage = lazy(() => loadStars().then((m) => ({ default: m.StarsListPage })))
+const BestDepartmentPage = lazy(() => loadStars().then((m) => ({ default: m.BestDepartmentPage })))
 
 export default function App() {
   return (
@@ -53,6 +54,7 @@ export default function App() {
                   <Route path="/stars" element={<StarsLayout />}>
                     <Route index element={<AddStarPage />} />
                     <Route path="list" element={<StarsListPage />} />
+                    <Route path="department" element={<BestDepartmentPage />} />
                   </Route>
                 </Route>
 

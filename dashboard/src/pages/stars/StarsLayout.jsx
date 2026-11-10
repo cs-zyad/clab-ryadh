@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { addDoc, collection, deleteDoc, doc, updateDoc } from 'firebase/firestore'
-import { CirclePlus, LayoutList, PenLine, Star } from 'lucide-react'
+import { CirclePlus, LayoutList, PenLine, Star, Trophy } from 'lucide-react'
 import { db } from '../../lib/db.js'
 import { SITE_URL } from '../../lib/site.js'
 import { useAuth } from '../../auth/AuthContext.jsx'
@@ -108,6 +108,7 @@ export default function StarsLayout() {
       ? [{ to: '/stars', end: true, label: isEditing ? 'تعديل النجم' : 'إضافة نجم جديد', Icon: isEditing ? PenLine : CirclePlus }]
       : []),
     { to: '/stars/list', label: 'نجوم الشهر المضافة', Icon: LayoutList },
+    ...(can('stars_edit') ? [{ to: '/stars/department', label: 'أفضل قسم', Icon: Trophy }] : []),
   ]
 
   const outletContext = {
@@ -123,6 +124,7 @@ export default function StarsLayout() {
     cancelEdit,
     startEdit,
     deleteStar,
+    showToast,
   }
 
   return (
