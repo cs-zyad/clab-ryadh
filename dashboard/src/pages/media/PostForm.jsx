@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { addDoc, collection, doc, updateDoc } from 'firebase/firestore'
-import { Calendar, CloudUpload, Image as ImageIcon, MessageSquareText, Send, Star } from 'lucide-react'
+import { Calendar, CloudUpload, Image as ImageIcon, MessageSquareText, Send } from 'lucide-react'
 import { db } from '../../lib/db.js'
 import { compressImage } from '../../lib/compressImage.js'
 import TilePicker from '../../components/TilePicker.jsx'
@@ -11,7 +11,6 @@ const TYPE_OPTIONS = [
   { value: 'tweet', label: 'تغريدة', Icon: MessageSquareText },
   { value: 'photo', label: 'صورة / إعلان', Icon: ImageIcon },
   { value: 'event', label: 'فعالية', Icon: Calendar },
-  { value: 'star', label: 'نجم الشهر', Icon: Star },
 ]
 
 const MAX_CHARS = 280
@@ -30,7 +29,6 @@ export default function PostForm({ draft, setDraft, showToast, onEditDone }) {
   // Changing the key remounts the file input, which clears the selected file
   const [fileInputKey, setFileInputKey] = useState(0)
   const isEditing = draft.editingId !== null
-  const isStar = draft.type === 'star'
 
   const setField = (name, value) => setDraft((d) => ({ ...d, [name]: value }))
 
@@ -57,16 +55,15 @@ export default function PostForm({ draft, setDraft, showToast, onEditDone }) {
 
   async function handleSubmit(e) {
     e.preventDefault()
-
-    const name = draft.name.trim()
-    const department = draft.department.trim()
     const text = draft.text.trim()
+    if (!text) return
 
-    if (isStar ? (!name || !department) : !text) return
-
-    const fields = isStar
-      ? { type: 'star', name, department, text: `${name} — ${department}`, image: draft.image || null, link: null }
-      : { type: draft.type, text, image: draft.image || null, link: draft.link || null }
+    const fields = {
+      type: draft.type,
+      text,
+      image: draft.image || null,
+      link: draft.link || null,
+    }
 
     setPublishing(true)
     try {
@@ -105,86 +102,44 @@ export default function PostForm({ draft, setDraft, showToast, onEditDone }) {
             options={TYPE_OPTIONS}
             value={draft.type}
             onChange={(type) => setField('type', type)}
-            className="tile-selector-4"
           />
         </div>
 
-        {isStar ? (
-          <>
-            <div className="form-group">
-              <label>اسم العضو <span className="req">*</span></label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="اسم عضو النادي"
-                value={draft.name}
-                onChange={(e) => setField('name', e.target.value)}
-              />
-            </div>
+        <div className="form-group">
+          <label>النص <span className="req">*</span></label>
+          <textarea
+            className="form-control"
+            placeholder="اكتب نص التغريدة أو المنشور هنا..."
+            value={draft.text}
+            onChange={(e) => setField('text', e.target.value)}
+          ></textarea>
+          {/* ltr so it reads "0 / 280", not "280 / 0" */}
+          <div className={countClass} dir="ltr">{len} / {MAX_CHARS}</div>
+        </div>
 
-            <div className="form-group">
-              <label>القسم <span className="req">*</span></label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="مثال: التسويق، العلاقات العامة، التطوير التقني..."
-                value={draft.department}
-                onChange={(e) => setField('department', e.target.value)}
-              />
-            </div>
+        <div className="form-group">
+          <label>صورة (اختياري)</label>
+          <div className={`upload-zone${draft.image ? ' has-image' : ''}`}>
+            <input key={fileInputKey} type="file" accept="image/*" onChange={handleImage} />
+            <CloudUpload size={34} className="upload-icon" />
+            <div className="upload-text">{draft.imageName || 'اضغط لرفع صورة'}</div>
+            <div className="upload-hint">PNG، JPG — حجم أقصى 5MB</div>
+            {draft.image && (
+              <img src={draft.image} className="upload-preview" alt="معاينة" />
+            )}
+          </div>
+        </div>
 
-            <div className="form-group">
-              <label>صورة العضو (اختياري)</label>
-              <div className={`upload-zone${draft.image ? ' has-image' : ''}`}>
-                <input key={fileInputKey} type="file" accept="image/*" onChange={handleImage} />
-                <CloudUpload size={34} className="upload-icon" />
-                <div className="upload-text">{draft.imageName || 'اضغط لرفع صورة'}</div>
-                <div className="upload-hint">PNG، JPG — حجم أقصى 5MB</div>
-                {draft.image && (
-                  <img src={draft.image} className="upload-preview" alt="معاينة" />
-                )}
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="form-group">
-              <label>النص <span className="req">*</span></label>
-              <textarea
-                className="form-control"
-                placeholder="اكتب نص التغريدة أو المنشور هنا..."
-                value={draft.text}
-                onChange={(e) => setField('text', e.target.value)}
-              ></textarea>
-              {/* ltr so it reads "0 / 280", not "280 / 0" */}
-              <div className={countClass} dir="ltr">{len} / {MAX_CHARS}</div>
-            </div>
-
-            <div className="form-group">
-              <label>صورة (اختياري)</label>
-              <div className={`upload-zone${draft.image ? ' has-image' : ''}`}>
-                <input key={fileInputKey} type="file" accept="image/*" onChange={handleImage} />
-                <CloudUpload size={34} className="upload-icon" />
-                <div className="upload-text">{draft.imageName || 'اضغط لرفع صورة'}</div>
-                <div className="upload-hint">PNG، JPG — حجم أقصى 5MB</div>
-                {draft.image && (
-                  <img src={draft.image} className="upload-preview" alt="معاينة" />
-                )}
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label>رابط التغريدة على X (اختياري)</label>
-              <input
-                type="url"
-                className="form-control"
-                placeholder="https://x.com/EntrClub_KAU/status/..."
-                value={draft.link}
-                onChange={(e) => setField('link', e.target.value)}
-              />
-            </div>
-          </>
-        )}
+        <div className="form-group">
+          <label>رابط التغريدة على X (اختياري)</label>
+          <input
+            type="url"
+            className="form-control"
+            placeholder="https://x.com/EntrClub_KAU/status/..."
+            value={draft.link}
+            onChange={(e) => setField('link', e.target.value)}
+          />
+        </div>
 
         <button
           type="submit"
@@ -201,11 +156,7 @@ export default function PostForm({ draft, setDraft, showToast, onEditDone }) {
         )}
       </form>
 
-      <PostPreview
-        text={isStar ? [draft.name, draft.department].filter(Boolean).join(' — ') : draft.text}
-        image={draft.image}
-        type={draft.type}
-      />
+      <PostPreview text={draft.text} image={draft.image} type={draft.type} />
     </div>
   )
 }

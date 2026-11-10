@@ -63,70 +63,43 @@
                 <p class="text-center members-section-description" data-i18n="members.starsDescription">نحتفي بالأعضاء الذين تركوا بصمة استثنائية بعطائهم وتأثيرهم</p>
             </div>
             
-            <div class="stars-grid" id="starsGrid">
-                <div class="stars-empty-state">
-                    <i data-lucide="star"></i>
-                    <p data-i18n="members.announcement">سيتم الإعلان عنه قريباً</p>
+            <div class="stars-grid">
+                <!-- Star 1 -->
+                <div class="star-card">
+                    <div class="star-img-wrapper">
+                        <img src="../assets/image copy 2.png" alt="شعار النادي" class="star-img placeholder-logo" data-i18n-alt="common.shortLogo">
+                        <div class="star-badge"><i data-lucide="star"></i></div>
+                    </div>
+                    <div class="star-info">
+                        <h3 data-i18n="members.techStar">نجم التطوير التقني</h3>
+                        <p data-i18n="members.announcement">سيتم الإعلان عنه قريباً</p>
+                    </div>
+                </div>
+
+                <!-- Star 2 -->
+                <div class="star-card">
+                    <div class="star-img-wrapper">
+                        <img src="../assets/image copy 2.png" alt="شعار النادي" class="star-img placeholder-logo" data-i18n-alt="common.shortLogo">
+                        <div class="star-badge"><i data-lucide="star"></i></div>
+                    </div>
+                    <div class="star-info">
+                        <h3 data-i18n="members.prStar">نجم العلاقات العامة</h3>
+                        <p data-i18n="members.announcement">سيتم الإعلان عنه قريباً</p>
+                    </div>
+                </div>
+
+                <!-- Star 3 -->
+                <div class="star-card">
+                    <div class="star-img-wrapper">
+                        <img src="../assets/image copy 2.png" alt="شعار النادي" class="star-img placeholder-logo" data-i18n-alt="common.shortLogo">
+                        <div class="star-badge"><i data-lucide="star"></i></div>
+                    </div>
+                    <div class="star-info">
+                        <h3 data-i18n="members.marketingStar">نجم التسويق</h3>
+                        <p data-i18n="members.announcement">سيتم الإعلان عنه قريباً</p>
+                    </div>
                 </div>
             </div>
-
-            <script type="module">
-                import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-                import { getFirestore, collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-                import { firebaseConfig } from "../js/firebase-config.js";
-
-                (function () {
-                    const grid = document.getElementById('starsGrid');
-                    const emptyState = `
-                        <div class="stars-empty-state">
-                            <i data-lucide="star"></i>
-                            <p data-i18n="members.announcement">سيتم الإعلان عنه قريباً</p>
-                        </div>
-                    `;
-
-                    function displayStars(stars) {
-                        if (stars.length === 0) {
-                            grid.innerHTML = emptyState;
-                        } else {
-                            grid.innerHTML = stars.map(star => `
-                                <div class="star-card">
-                                    <div class="star-img-wrapper">
-                                        <img src="${star.image || '../assets/image copy 2.png'}" alt="${star.name || 'شعار النادي'}" class="star-img${star.image ? '' : ' placeholder-logo'}">
-                                        <div class="star-badge"><i data-lucide="star"></i></div>
-                                    </div>
-                                    <div class="star-info">
-                                        <h3>${star.department ? 'نجم ' + star.department : 'نجم الشهر'}</h3>
-                                        <p>${star.name || ''}</p>
-                                    </div>
-                                </div>
-                            `).join('');
-                        }
-                        lucide.createIcons();
-                        window.siteI18n?.apply(grid);
-                    }
-
-                    if (firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY") {
-                        try {
-                            const app = initializeApp(firebaseConfig);
-                            const db = getFirestore(app);
-                            const q = query(collection(db, "posts"), orderBy("date", "desc"));
-                            onSnapshot(q, (snapshot) => {
-                                const posts = [];
-                                snapshot.forEach((doc) => posts.push({ id: doc.id, ...doc.data() }));
-                                displayStars(posts.filter(p => p.type === 'star'));
-                            }, (error) => {
-                                console.error("Error fetching stars: ", error);
-                                displayStars([]);
-                            });
-                        } catch (e) {
-                            console.error("Firebase connection error: ", e);
-                            displayStars([]);
-                        }
-                    } else {
-                        displayStars([]);
-                    }
-                })();
-            </script>
 
             <!-- Best Department Section -->
             <div class="best-dept-section mt-100">
