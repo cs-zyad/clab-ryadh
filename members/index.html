@@ -95,7 +95,7 @@
                                         <div class="star-badge"><i data-lucide="star"></i></div>
                                     </div>
                                     <div class="star-info">
-                                        <h3>${star.department ? 'نجم ' + star.department : 'نجم الشهر'}</h3>
+                                        <h3>${star.department || 'نجم الشهر'}</h3>
                                         <p>${star.name || ''}</p>
                                     </div>
                                 </div>

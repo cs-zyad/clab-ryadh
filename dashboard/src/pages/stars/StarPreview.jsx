@@ -11,7 +11,7 @@ function StarPreview({ name, department, image }) {
           <span className="star-preview-badge"><Star size={14} /></span>
         </div>
         <h4 className={`star-preview-title${department ? '' : ' empty'}`}>
-          {department ? `نجم ${department}` : 'نجم القسم'}
+          {department || 'القسم'}
         </h4>
         <p className={`star-preview-name${name ? '' : ' empty'}`}>{name || 'اسم العضو'}</p>
       </div>
